@@ -1,0 +1,164 @@
+<div id="toolbar" class="toolbar">
+	<div class="btn-group hideOnPhone btn-group-lg hide" title="文件" id="openFile">
+		<a type="button" class="btn btn-link dropdown-toggle hideOnPhone btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<i class="glyphicon glyphicon-folder-open"></i> <span class="caret"></span>
+			<p class="toolbar-text">文件</p>
+		</a>
+		<ul class="dropdown-menu layout" role="menu">
+			<li class="folder" id="folderOpen">
+				<a href="#">
+					<input type="file" name="uploadFile" id="uploadFile" multiple /><span>打开文件</span>
+					<i class="glyphicon glyphicon-folder-open"></i>
+				</a>
+			</li>
+			<li class="folder" id="logOut">
+				<a href="#"><span>退出</span><i class="glyphicon glyphicon-log-out"></i></a>
+			</li>
+		</ul>
+	</div>
+	<div class="btn-group hideOnPhone btn-group-lg" title="导出图像" id="saveImage">
+		<a type="button" class="btn btn-link changeOffset  btn-lg">
+			<i class="glyphicon glyphicon-floppy-save"></i>
+			<p class="toolbar-text">导出</p>
+		</a>
+	</div>
+	<div class="btn-group hideOnPhone btn-group-lg" title="图像布局" id="imageLayout">
+		<a type="button" class="btn btn-link dropdown-toggle hideOnPhone btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<i class="glyphicon glyphicon-th-large"></i><span class="caret"></span>
+			<p class="toolbar-text">布局</p>
+		</a>
+		<ul class="dropdown-menu pull-right choose-layout" role="menu">
+			<li class="presetLayout" id="layout1x1">
+				<a href="#"><span>1 X 1</span></a>
+			</li>
+			<li class="presetLayout" id="layout1x2">
+				<a href="#"><span>1 X 2</span></a>
+			</li>
+			<li class="presetLayout" id="layout2x1">
+				<a href="#"><span>2 X 1</span></a>
+			</li>
+			<li class="presetLayout" id="layout2x2">
+				<a href="#"><span>2 X 2</span></a>
+			</li>
+	</div>
+	<div class="btn-group hideOnPhone btn-group-lg" title="调整为预设的窗宽窗位设置" id="enableWindowLevelTool">
+		<a type="button" class="btn btn-link dropdown-toggle hideOnPhone btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<i class="glyphicon glyphicon-adjust"></i><span class="caret"></span>
+			<p class="toolbar-text">调窗</p>
+		</a>
+		<ul class="dropdown-menu" role="menu">
+			<li class="presetLayout" id="softTissue">
+				<a href="#"><span>Soft Tissue</span><i>400/20</i></a>
+			</li>
+			<li class="presetLayout" id="lung">
+				<a href="#"><span>Lung</span><i>1600/-600</i></a>
+			</li>
+			<li class="presetLayout" id="bone">
+				<a href="#"><span>Bone</span><i>2000/300</i></a>
+			</li>
+		</ul>
+	</div>
+	<div class="btn-group hideOnPhone btn-group-lg" id="invert" title="按下鼠标时图像反片">
+		<a type="button" class="btn btn-link changeOffset  btn-lg">
+			<i class="glyphicon glyphicon-certificate"></i>
+			<p class="toolbar-text">反片</p>
+		</a>
+	</div>
+	<div class="btn-group hideOnPhone btn-group-lg" id="pan" title="按下鼠标移动时移动图像">
+		<a type="button" class="btn btn-link changeOffset  btn-lg">
+			<i class="glyphicon glyphicon-move"></i>
+			<p class="toolbar-text">移动</p>
+		</a>
+	</div>
+	<div class="btn-group hideOnPhone btn-group-lg" id="rotation" title="按下鼠标移动时旋转图像">
+		<a type="button" class="btn btn-link changeOffset  btn-lg">
+			<i class="glyphicon glyphicon-repeat"></i>
+			<p class="toolbar-text">旋转</p>
+		</a>
+	</div>
+	<div class="btn-group hideOnPhone btn-group-lg" title="按下鼠标移动时反片" id="reverse">
+		<a type="button" class="btn btn-link dropdown-toggle hideOnPhone btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<img src="img/reverse.png" style="width: 30px; height: 36px;" /><span class="caret" style="margin-top: 10px;"></span>
+			<p class="toolbar-text">翻转</p>
+		</a>
+		<ul class="dropdown-menu" role="menu">
+			<li id="hReverse" class="reverse">
+				<a href="#"><span>水平翻转</span><i><img src="img/hreverse.png"/></i></a>
+			</li>
+			<li id="vReverse" class="reverse">
+				<a href="#"><span>垂直翻转</span><i><img src="img/vreverse.png"/></i></a>
+			</li>
+		</ul>
+	</div>
+	<div class="btn-group hideOnPhone btn-group-lg" title="按下鼠标移动时放大图像" id="zoom">
+		<a type="button" class="btn btn-link changeOffset  btn-lg">
+			<i class="glyphicon glyphicon-zoom-in"></i>
+			<p class="toolbar-text">缩放</p>
+		</a>
+	</div>
+	<div class="btn-group hideOnPhone btn-group-lg" title="标注测量工具" id="marker">
+		<a type="button" class="btn btn-link dropdown-toggle hideOnPhone btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<i class="glyphicon glyphicon-plus"></i><span class="caret"></span>
+			<p class="toolbar-text">标注</p>
+		</a>
+		<ul class="dropdown-menu" role="menu">
+			<li id="enableLength" class="markerTools">
+				<a href="#"><span>直线</span><i>/</i></a>
+			</li>
+			<li id="circleroi" class="markerTools">
+				<a href="#"><span>椭圆</span><i style="border: 1px solid #bcbcbc;width: 20px;height: 10px;border-radius: 50%;"></i></a>
+			</li>
+			<li id="autoCircle" class="markerTools">
+				<a href="#"><span>自动椭圆</span><i style="border: 1px solid #bcbcbc;width: 20px;height: 10px;border-radius: 50%;"></i></a>
+			</li>
+			<li id="rectangleroi" class="markerTools">
+				<a href="#"><span>矩形</span><i style="border: 1px solid #bcbcbc;width: 20px;height: 10px;"></i></a>
+			</li>
+			<li id="angle" class="markerTools">
+				<a href="#"><span>角度</span><i style="width: 20px; height: 10px;border-left: 1px solid #dcdcdc;border-bottom: 1px solid #dcdcdc;"></i></a>
+			</li>
+			<li class="markerTools" id="markerText">
+				<a href="#"><span>文本</span><i class="glyphicon glyphicon-pencil"></i></a>
+			</li>
+			<li class="markerTools" id="clearToolData">
+				<a href="#"><span>清除所有</span><i class="glyphicon glyphicon-trash"></i></a>
+			</li>
+		</ul>
+	</div>
+	<div class="btn-group hideOnPhone btn-group-lg" id="reset" title="重置">
+		<a type="button" class="btn btn-link changeOffset  btn-lg">
+			<i class="glyphicon glyphicon-ban-circle"></i>
+			<p class="toolbar-text">重置</p>
+		</a>
+	</div>
+	<!-- <div class="btn-group hideOnPhone btn-group-lg" title="松开鼠标移动时截图" id="printscreen">
+		<a type="button" class="btn btn-link changeOffset  btn-lg">
+			<i class="glyphicon glyphicon-camera"></i>
+			<p class="toolbar-text">截图</p>
+		</a>
+	</div> -->
+	<div class="btn-group hideOnPhone btn-group-lg" title="向后查找" id="preSearch">
+		<a type="button" class="btn btn-link changeOffset  btn-lg">
+			<i class="glyphicon glyphicon-step-backward"></i>
+			<p class="toolbar-text">向后</p>
+		</a>
+	</div>
+	<div class="btn-group hideOnPhone btn-group-lg" title="向前查找" id="nextSearch">
+		<a type="button" class="btn btn-link changeOffset  btn-lg">
+			<i class="glyphicon glyphicon-step-forward"></i>
+			<p class="toolbar-text">向前</p>
+		</a>
+	</div>
+	<div class="btn-group hideOnPhone btn-group-lg" title="关于" id="about">
+		<a type="button" class="btn btn-link changeOffset  btn-lg">
+			<i class="glyphicon glyphicon-info-sign"></i>
+			<p class="toolbar-text">关于</p>
+		</a>
+	</div>
+	<div class="btn-group fullscreen btn-group-lg" title="全屏显示" id="fullScreen">
+		<a type="button" class="btn btn-link  btn-lg">
+			<i class="glyphicon glyphicon-fullscreen"></i>
+			<p class="toolbar-text">全屏</p>
+		</a>
+	</div>
+</div>

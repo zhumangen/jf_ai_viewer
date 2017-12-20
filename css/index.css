@@ -1,0 +1,292 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body,
+html {
+	width: 100%;
+	height: 100%;
+	font-size: 14px;
+	background-color: #000;
+}
+
+.head {
+	width: 100%;
+	height: 30px;
+	background-color: #ccc;
+	line-height: 30px;
+}
+
+.header_text {
+	float: left;
+	margin-left: 5px;
+}
+
+.logo {
+	width: 26px;
+	float: left;
+}
+
+.nav {
+	height: 80px;
+	border-bottom: 2px solid #3e3f3a;
+	background-color: #252525;
+}
+
+.btn {
+	border: none;
+}
+
+.nav .open>a,
+.nav .open>a:hover {
+	background-color: transparent;
+	border-color: #337ab7;
+}
+
+.btn-group {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	float: left;
+	padding: 0;
+	border: none;
+	height: 70px;
+}
+
+a.btn-link {
+	color: #bcbcbc;
+	line-height: 70px;
+}
+
+a.btn-link:hover {
+	text-decoration: none;
+	color: white;
+}
+
+.active {
+	border-bottom: 2px solid #fff;
+}
+.folder a span{
+	float: left;
+}
+.presetLayout a span{
+	float: left;
+}
+
+.glyphicon{
+	font-size: 30px;
+}
+
+.glyphicon-pencil,
+.glyphicon-trash {
+	font-size: 15px;
+}
+
+.dropdown-menu {
+	background: #252525;
+	border: 1px solid rgba(0, 0, 0, .15);
+}
+
+.dropdown-menu>li>a {
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	color: #bcbcbc;
+	overflow: hidden;
+}
+
+.viewerLayoutIconTable {
+	width: 20px;
+	height: 20px;
+	border-collapse: collapse;
+}
+
+.viewerLayoutIconTable td {
+	border: 1px solid #bcbcbc;
+}
+
+.modal-content {
+	background-color: #252525;
+	color: #ccc;
+}
+
+#myModalLabel {
+	font-size: 20px;
+	margin-left: 10px;
+}
+
+.modal-header img {
+	width: 30px;
+}
+
+#folderOpen {
+	position: relative;
+}
+
+.form-horizontal {
+	width: 100%;
+	position: absolute;
+	top: 0px;
+}
+
+#uploadFile {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	outline: medium none;
+	opacity: 0;
+	left: 0;
+}
+
+.folder .glyphicon-folder-open,
+.glyphicon-log-out {
+	font-size: 14px;
+}
+
+.presetLayout i,
+.markerTools i,
+.reverse i,
+.folder i {
+	float: right;
+}
+.reverse span{
+	float: left;
+}
+p {
+	font-size: 14px;
+}
+
+.btn-group:last-child {
+	float: right;
+}
+
+aside {
+	width: 150px;
+	height: calc(100% - 110px);
+	background-color: #252525;
+	position: absolute;
+	top: 110px;
+}
+
+.glyphicon-menu-left,
+.glyphicon-menu-right {
+	font-size: 50px;
+}
+
+.glyphicon-menu-left:hover,
+.glyphicon-menu-right:hover {
+	color: #fff;
+	border: none;
+}
+
+.aside_next {
+	right: 20px;
+}
+
+.aside_pre {
+	left: 20px;
+}
+
+.aside_content {
+	width: 100%;
+	height: 100%;
+	border-right: 2px solid #3e3f3a;
+	border-bottom: 2px solid #3e3f3a;
+	overflow: hidden;
+}
+
+.content {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.markerTools>a,
+.markerTools a i {
+	display: block;
+}
+
+.markerTools a span{
+	float: left;
+}
+.viewerContainer {
+	width: 100%;
+	height: 100%;
+}
+
+.viewerContent {
+	width: calc(100% - 150px);
+	height: calc(100% - 110px);
+	float: right;
+}
+
+.viewerPort {
+	width: 100%;
+	height: 100%;
+	float: right;
+}
+
+.viewerPortImage {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	display: inline-block;
+	color: white;
+	left: 50%;
+	top: 0px;
+	transform: translateX(-50%);
+}
+
+#dicomImage {
+	width: 100%;
+	height: 512px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.aside_canItem {
+	width: 130px;
+	height: 130px;
+	margin: 10px auto;
+	border: 1px solid #3e3f3a;
+}
+
+.actived {
+	border: 1px solid #FFFF00;
+}
+
+#aside_pos {
+	position: absolute;
+	top: 11px;
+	left: 10px;
+	color: #fff;
+	background-color: #000;
+}
+
+.annotationDialog,
+.relabelDialog {
+	z-index: 1000;
+	position: absolute;
+	margin: 0px;
+	left: 40%;
+	top: 40%;
+	width: 300px;
+	border: 1px black solid;
+	border-radius: 5px;
+}
+
+.annotationTextInputOptions {
+	padding: 5px 0px;
+}
+
+.annotationTextInput {
+	margin-left: 5px;
+}
+
+.annotationDialogConfirm {
+	float: right;
+}

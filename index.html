@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Dicom Viewer H5 阅片工作站</title>
+  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+  <!-- Support for mobile touch devices -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/dialogPolyfill.css" />
+  <link rel="stylesheet" href="css/index.css" />
+
+  <!-- Font awesome CSS for tool icons -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link href="lib/bootstrap.min.css" rel="stylesheet">
+
+  <!-- UI CSS -->
+  <link href="lib/jquery-ui.min.css" rel="stylesheet">  
+
+  <!-- Cornerstone Base CSS -->
+  <link href="lib/cornerstone.min.css" rel="stylesheet">
+
+  <!-- Cornerstone Demo CSS -->
+  <link href="css/webviewer.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id = "main" class="main" style="height: 100%;">
+    <!-- <div class="head">
+      <img src="img/favicon.ico" class="logo" />
+      <span class="header_text">DICOM Viewer H5 阅片工作站</span>
+    </div> -->
+
+    <!-- Toolbar -->
+    <div id="toolbarWrapper" class="toolbarWrapper">
+    </div>
+    <div style="clear:both;"></div>
+    <!-- StudyContainer -->
+    <div id="studyContainerWrapper" class="studyContainerWrapper">
+    </div>
+  </div>
+
+
+<!-- Javascripts -->
+
+<!-- Include JQuery -->
+<script src="lib/jquery.min.js"></script>
+
+<!-- Include JQuery UI for drag/drop -->
+<script src="lib/jquery-ui.min.js"></script>
+
+<!-- Include JQuery Hammerjs adapter for mobile touch-->
+<script src="lib/hammer.min.js"></script>
+
+<!-- Include Bootstrap js -->
+<script src="lib/bootstrap.min.js"></script>
+
+<!-- include the cornerstone library -->
+<script src="lib/cornerstone.js"></script>
+
+<!-- include the dicomParser library -->
+<script src="lib/dicomParser.js"></script>
+
+<!-- include the cornerstone library -->
+<script src="lib/cornerstoneMath.js"></script>
+
+<!-- include the cornerstone tools library -->
+<script src="lib/cornerstoneTools.js"></script>
+
+<!-- include the cornerstoneWADOImageLoader library -->
+<script src="lib/cornerstoneWADOImageLoader.js"></script>
+
+<!-- include the cornerstoneWebImageLoader library -->
+<script src="lib/cornerstoneWebImageLoader.js"></script>
+
+<script src="lib/dialogPolyfill.js"></script>
+
+
+<!-- include cornerstoneDemo.js -->
+<script src="js/setupViewport.js?version=1.0"></script>
+<script src="js/displayThumbnail.js?version=1.0"></script>
+<script src="js/loadStudy.js?version=1.0"></script>
+<script src="js/mixin.js?version=1.01"></script>
+<script src="js/setupButtons.js?version=1.0"></script>
+<script src="js/aiRequest.js?version=1.0"></script>
+<script src="js/disableAllTools.js?version=1.0"></script>
+<script src="js/forEachViewport.js?version=1.0"></script>
+<script src="js/imageViewer.js?version=1.0"></script>
+<script src="js/loadTemplate.js?version=1.0"></script>
+<script src="js/toolbar.js?version=1.0"></script>
+<script src="js/help.js?version=1.0"></script>
+<script src="js/about.js?version=1.0"></script>
+<script src="js/annoDialog.js?version=1.0"></script>
+<script src="js/setupViewportOverlays.js?version=1.0"></script>
+<script src="js/webviewer.js?version=1.0"></script>
+
+</body>
+</html>
