@@ -33,8 +33,7 @@ function loadStudy(studyUid) {
                 seriesIndex: seriesIndex,
                 currentImageIdIndex: 0,
                 frameRate: undefined,
-                metaData: imageMeta,
-                aiData:{}
+                metaData: imageMeta
             };
 
             var imageFrameUri = baseUri + studyUid + '/series/' + 

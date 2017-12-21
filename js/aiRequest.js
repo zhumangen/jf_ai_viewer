@@ -1,8 +1,25 @@
 function aiCallback(stackIdx, aiResult) {
 	console.log(aiResult);
 
-	if (aiRequest["reportStatus"] === 5000) {
-		imageViewer.stacks[stackIdx].aiData = aiResult["detection_result"];
+	if (aiResult["reportStatus"] === 5000) {
+		// let seriesList = $(studyViewerTemplate).find('.thumbnails')[0];
+		// let seriesElement = $(seriesList).find('.list-group-item')[stackIdx];
+		// let thumbnail = $(seriesElement).find('.div')[0];
+		// console.log(thumbnail);
+		let thumbnail = $('.csthumbnail')[stackIdx];
+		console.log(thumbnail);
+		
+		if (aiResult["detection_result"].length > 0) {
+			let items = aiResult["detection_result"][0]["data"];
+			items.forEach(function(item){
+				let aiData = {
+					element: thumbnail,
+					data: item,
+				};
+				cornerstoneTools.ellipticalAi.addNewMeasurement(aiData);
+			});
+		}
+		
 	} else {
 		console.log("Invalid ai result.");
 	}

@@ -127,7 +127,8 @@ function setupButtons() {
     $('#autoCircle').on('click touchstart', function() {
         showAiResult = !showAiResult;
         forEachViewport(function (element) {
-          cornerstone.updateImage(element); 
+            cornerstoneTools.ellipticalAi.enable(element);
+            cornerstone.updateImage(element); 
         });
     });
 
