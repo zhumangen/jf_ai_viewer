@@ -24,6 +24,14 @@ cornerstoneTools.external.cornerstone = cornerstone;
 cornerstoneTools.external.$ = $;
 cornerstoneTools.external.Hammer = Hammer;
 
+var measurementConfig = { drawHandlesOnHover: true };
+cornerstoneTools.ellipticalAi.setConfiguration(measurementConfig);
+cornerstoneTools.length.setConfiguration(measurementConfig);
+cornerstoneTools.ellipticalRoi.setConfiguration(measurementConfig);
+cornerstoneTools.rectangleRoi.setConfiguration(measurementConfig);
+cornerstoneTools.angle.setConfiguration(measurementConfig);
+cornerstoneTools.arrowAnnotate.setConfiguration(measurementConfig);
+
 var showAiResult = false;
 
 function getQueryString(name) { 
@@ -66,57 +74,6 @@ $(window).resize(function() {
     resizeMain();
 });
 resizeMain();
-
-// // Get study list from JSON manifest
-// $.getJSON('studyList.json', function(data) {
-//   data.studyList.forEach(function(study) {
-
-//     // Create one table row for each study in the manifest
-//     var studyRow = '<tr><td>' +
-//     study.patientName + '</td><td>' +
-//     study.patientId + '</td><td>' +
-//     study.studyDate + '</td><td>' +
-//     study.modality + '</td><td>' +
-//     study.studyDescription + '</td><td>' +
-//     study.numImages + '</td><td>' +
-//     '</tr>';
-
-//     // Append the row to the study list
-//     var studyRowElement = $(studyRow).appendTo('#studyListData');
-
-//     // On study list row click
-//     $(studyRowElement).click(function() {
-
-//       // Add new tab for this study and switch to it
-//       var studyTab = '<li><a href="#x' + study.patientId + '" data-toggle="tab">' + study.patientName + '</a></li>';
-//       $('#tabs').append(studyTab);
-
-//       // Add tab content by making a copy of the studyViewerTemplate element
-//       var studyViewerCopy = studyViewerTemplate.clone();
-
-//       /*var viewportCopy = viewportTemplate.clone();
-//       studyViewerCopy.find('.imageViewer').append(viewportCopy);*/
-
-
-//       studyViewerCopy.attr("id", 'x' + study.patientId);
-//       // Make the viewer visible
-//       studyViewerCopy.removeClass('hidden');
-//       // Add section to the tab content
-//       studyViewerCopy.appendTo('#tabContent');
-
-//       // Show the new tab (which will be the last one since it was just added
-//       $('#tabs a:last').tab('show');
-
-//       // Toggle window resize (?)
-//       $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-//         $(window).trigger('resize');
-//       });
-
-//       // Now load the study.json
-//       loadStudy(studyViewerCopy, viewportTemplate, study.studyId + ".json");
-//     });
-//   });
-// });
 
 // Prevent scrolling on iOS
 document.body.addEventListener('touchmove', function(e) {

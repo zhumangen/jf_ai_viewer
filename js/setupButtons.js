@@ -115,20 +115,7 @@ function setupButtons() {
     $('#circleroi').on('click touchstart', function() {
         disableAllTools();
         forEachViewport(function(element) {
-            const ellipseConfig = {
-                drawHandlesOnHover: true
-            };
-            cornerstoneTools.ellipticalRoi.setConfiguration(ellipseConfig);
             cornerstoneTools.ellipticalRoi.activate(element, 1);
-        });
-    });
-
-    // Auto Elliptical ROI
-    $('#autoCircle').on('click touchstart', function() {
-        showAiResult = !showAiResult;
-        forEachViewport(function (element) {
-            cornerstoneTools.ellipticalAi.enable(element);
-            cornerstone.updateImage(element); 
         });
     });
 
@@ -197,6 +184,27 @@ function setupButtons() {
             cornerstoneTools.rotate.activate(element, 1);
             cornerstoneTools.rotateTouchDrag.activate(element);
         })
+    });
+
+    $('#ai').click(function() { // AI
+        activate("#ai");
+        if(showAiResult){
+            $('#ai a i').removeClass("glyphicon glyphicon-eye-open");
+            $('#ai a i').addClass("glyphicon glyphicon-eye-close");
+            showAiResult = false;
+            forEachViewport(function(element) {
+                cornerstoneTools.ellipticalAi.disable(element);
+                cornerstone.updateImage(element);
+            })
+        } else {
+            $('#ai a i').removeClass("glyphicon glyphicon-eye-close");
+            $('#ai a i').addClass("glyphicon glyphicon-eye-open");
+            showAiResult = true;
+            forEachViewport(function(element) {
+                cornerstoneTools.ellipticalAi.deactivate(element);
+                cornerstone.updateImage(element);
+            })
+        }
     });
 
     activate("#enableWindowLevelTool");
