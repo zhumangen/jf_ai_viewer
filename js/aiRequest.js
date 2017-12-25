@@ -7,9 +7,10 @@ function aiCallback(stackIdx, aiResult) {
 		// let thumbnail = $(seriesElement).find('.div')[0];
 		// console.log(thumbnail);
 		let thumbnail = $('.csthumbnail')[stackIdx];
-		console.log(thumbnail);
+		// console.log(thumbnail);
 		
 		if (aiResult["detection_result"].length > 0) {
+
 			let items = aiResult["detection_result"][0]["data"];
 			items.forEach(function(item){
 				let aiData = {
@@ -17,6 +18,10 @@ function aiCallback(stackIdx, aiResult) {
 					data: item,
 				};
 				cornerstoneTools.ellipticalAi.addNewMeasurement(aiData);
+			});
+
+			forEachViewport(function(element){
+				cornerstone.updateImage(element);
 			});
 		}
 		
@@ -26,7 +31,6 @@ function aiCallback(stackIdx, aiResult) {
 }
 
 function aiRequest(metaData, stackIdx, callback) {
-	let baseUrl = "/ai?wado=";
 	let aiObj = {
 		studyUid: metaData["0020000D"].Value[0],
 		seriesUid: metaData["0020000E"].Value[0],
@@ -37,7 +41,7 @@ function aiRequest(metaData, stackIdx, callback) {
 	aiArr.push(aiObj);
 	let aiUrl = JSON.stringify(aiArr);
 	aiUrl = encodeURIComponent(aiUrl).replace(/'/g,"%27").replace(/"/g,"%22");
-	aiUrl = baseUrl + aiUrl;
+	aiUrl = baseAiUrl + aiUrl;
 
 	$.ajax({
 		url: aiUrl,

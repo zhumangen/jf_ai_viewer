@@ -15,8 +15,8 @@ function loadStudy(studyUid) {
 
     // Get the JSON data for the selected studyId
     // var baseUrl = 'http://v2.jfhealthcare.cn/v1/picl/aets/piclarc/rs/studies/';
-    var baseUri = '/pacs/studies/'; ///dcm4chee-arc/aets/DCM4CHEE/rs/studies/';
-    var metaDataUri = baseUri + studyUid + '/metadata';
+    ///dcm4chee-arc/aets/DCM4CHEE/rs/studies/';
+    var metaDataUri = baseStudyUrl + studyUid + '/metadata';
     $.ajax({
         url: metaDataUri,
         headers: {
@@ -36,7 +36,7 @@ function loadStudy(studyUid) {
                 metaData: imageMeta
             };
 
-            var imageFrameUri = baseUri + studyUid + '/series/' + 
+            var imageFrameUri = baseStudyUrl + studyUid + '/series/' + 
                                 imageMeta["0020000E"].Value[0] + '/instances/' +
                                 imageMeta["00080018"].Value[0];
             if(!(imageMeta["7FE00010"] && imageMeta["7FE00010"].BulkDataURI)) {

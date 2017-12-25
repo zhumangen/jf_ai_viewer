@@ -32,12 +32,14 @@ cornerstoneTools.rectangleRoi.setConfiguration(measurementConfig);
 cornerstoneTools.angle.setConfiguration(measurementConfig);
 cornerstoneTools.arrowAnnotate.setConfiguration(measurementConfig);
 
+var baseStudyUrl = '/pacs/studies/';
+var baseAiUrl = '/ai?wado=';
 var showAiResult = false;
 
 function getQueryString(name) { 
   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
   var r = window.location.search.substr(1).match(reg); 
-  if (r != null) return unescape(r[2]); return null; 
+  if (r != null) return unescape(r[2]); return null;
 } 
 
 var studyUid = getQueryString('studyUid');
