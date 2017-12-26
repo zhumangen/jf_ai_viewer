@@ -21,6 +21,10 @@ function setupButtons() {
         activate('#marker');
     })
 
+    $('#rotation').click(function() { // 旋转
+        activate("#rotation");
+    });
+
     $('#reverse').on('click touchstart', function() {
         activate('#reverse');
     })
@@ -156,7 +160,7 @@ function setupButtons() {
 
     $('#hReverse').click(function(e) { // 水平翻转
         forEachViewport(function(element) {
-            var viewport = cornerstone.getViewport(element);
+            let viewport = cornerstone.getViewport(element);
             viewport.hflip = !viewport.hflip;
             cornerstone.setViewport(element, viewport);
         })
@@ -164,7 +168,7 @@ function setupButtons() {
     });
     $('#vReverse').click(function(e) { // 垂直翻转
         forEachViewport(function(element) {
-            var viewport = cornerstone.getViewport(element);
+            let viewport = cornerstone.getViewport(element);
             viewport.vflip = !viewport.vflip;
             cornerstone.setViewport(element, viewport);
         })
@@ -177,12 +181,19 @@ function setupButtons() {
         })
     });
 
-    $('#rotation').click(function() { // 旋转
-        activate("#rotation");
-        disableAllTools();
+    $('#lrotate').click(function() { // 左旋
         forEachViewport(function(element) {
-            cornerstoneTools.rotate.activate(element, 1);
-            cornerstoneTools.rotateTouchDrag.activate(element);
+            let viewport = cornerstone.getViewport(element);
+            viewport.rotation -= 90;
+            cornerstone.setViewport(element, viewport);
+        })
+    });
+
+    $('#rrotate').click(function() { // 右旋
+        forEachViewport(function(element) {
+            let viewport = cornerstone.getViewport(element);
+            viewport.rotation += 90;
+            cornerstone.setViewport(element, viewport);
         })
     });
 

@@ -43,7 +43,6 @@ function getQueryString(name) {
 } 
 
 var studyUid = getQueryString('studyUid');
-console.log(studyUid);
 
 if (studyUid != null && studyUid.length > 0) {
   var viewportTemplate; // the viewport template
@@ -59,6 +58,10 @@ if (studyUid != null && studyUid.length > 0) {
 
       initImageViewer();
       setupButtons();
+
+      if (getQueryString('ai') === 'on') {
+        $('#ai').click();
+      }
 
       loadStudy(studyUid);
   });

@@ -58,10 +58,10 @@
 			</li>
 		</ul>
 	</div>
-	<div class="btn-group hideOnPhone btn-group-lg" id="invert" title="按下鼠标时图像反片">
+	<div class="btn-group hideOnPhone btn-group-lg" id="invert" title="按下鼠标时图像负向">
 		<a type="button" class="btn btn-link changeOffset  btn-lg">
 			<i class="glyphicon glyphicon-certificate"></i>
-			<p class="toolbar-text">反片</p>
+			<p class="toolbar-text">负向</p>
 		</a>
 	</div>
 	<div class="btn-group hideOnPhone btn-group-lg" id="pan" title="按下鼠标移动时移动图像">
@@ -70,13 +70,21 @@
 			<p class="toolbar-text">移动</p>
 		</a>
 	</div>
-	<div class="btn-group hideOnPhone btn-group-lg" id="rotation" title="按下鼠标移动时旋转图像">
-		<a type="button" class="btn btn-link changeOffset  btn-lg">
-			<i class="glyphicon glyphicon-repeat"></i>
+	<div class="btn-group hideOnPhone btn-group-lg" id="rotation" title="旋转图像">
+		<a type="button" class="btn btn-link dropdown-toggle hideOnPhone btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<img src="img/rotate.png" style="width: 30px; height: 36px;" /><span class="caret" style="margin-top: 10px;"></span>
 			<p class="toolbar-text">旋转</p>
 		</a>
+		<ul class="dropdown-menu" role="menu">
+			<li id="lrotate" class="rotate">
+				<a href="#"><span>向左旋转</span><i><img src="img/lrotate.png"/></i></a>
+			</li>
+			<li id="rrotate" class="rotate">
+				<a href="#"><span>向右旋转</span><i><img src="img/rrotate.png"/></i></a>
+			</li>
+		</ul>
 	</div>
-	<div class="btn-group hideOnPhone btn-group-lg" title="按下鼠标移动时反片" id="reverse">
+	<div class="btn-group hideOnPhone btn-group-lg" title="翻转图像" id="reverse">
 		<a type="button" class="btn btn-link dropdown-toggle hideOnPhone btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			<img src="img/reverse.png" style="width: 30px; height: 36px;" /><span class="caret" style="margin-top: 10px;"></span>
 			<p class="toolbar-text">翻转</p>
