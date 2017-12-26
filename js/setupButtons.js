@@ -131,11 +131,20 @@ function setupButtons() {
         });
     });
 
-    $("#softTissue").click(function() {
+    $("#head").click(function() {
         forEachViewport(function(element) {
             var viewport = cornerstone.getViewport(element);
-            viewport.voi.windowWidth = 500;
-            viewport.voi.windowCenter = 60;
+            viewport.voi.windowWidth = 1600;
+            viewport.voi.windowCenter = 450;
+            cornerstone.setViewport(element, viewport);
+        })
+    });
+
+    $('#cspine').click(function() {
+        forEachViewport(function(element) {
+            var viewport = cornerstone.getViewport(element);
+            viewport.voi.windowWidth = 4000;
+            viewport.voi.windowCenter = 700;
             cornerstone.setViewport(element, viewport);
         })
     });
@@ -143,17 +152,53 @@ function setupButtons() {
     $('#lung').click(function() {
         forEachViewport(function(element) {
             var viewport = cornerstone.getViewport(element);
-            viewport.voi.windowWidth = 1600;
-            viewport.voi.windowCenter = -600;
+            viewport.voi.windowWidth = 1000;
+            viewport.voi.windowCenter = -650;
             cornerstone.setViewport(element, viewport);
         })
     });
 
-    $('#bone').click(function() {
+    $('#mediastinum').click(function() {
         forEachViewport(function(element) {
             var viewport = cornerstone.getViewport(element);
-            viewport.voi.windowWidth = 2000;
-            viewport.voi.windowCenter = 300;
+            viewport.voi.windowWidth = 350;
+            viewport.voi.windowCenter = 40;
+            cornerstone.setViewport(element, viewport);
+        })
+    });
+
+    $('#abdomen').click(function() {
+        forEachViewport(function(element) {
+            var viewport = cornerstone.getViewport(element);
+            viewport.voi.windowWidth = 1500;
+            viewport.voi.windowCenter = -700;
+            cornerstone.setViewport(element, viewport);
+        })
+    });
+
+    $('#liver').click(function() {
+        forEachViewport(function(element) {
+            var viewport = cornerstone.getViewport(element);
+            viewport.voi.windowWidth = 400;
+            viewport.voi.windowCenter = 40;
+            cornerstone.setViewport(element, viewport);
+        })
+    });
+
+    $('#joint').click(function() {
+        forEachViewport(function(element) {
+            var viewport = cornerstone.getViewport(element);
+            viewport.voi.windowWidth = 1600;
+            viewport.voi.windowCenter = 550;
+            cornerstone.setViewport(element, viewport);
+        })
+    });
+
+    $('#vessel').click(function() {
+        forEachViewport(function(element) {
+            var viewport = cornerstone.getViewport(element);
+            viewport.voi.windowWidth = 500;
+            viewport.voi.windowCenter = 40;
             cornerstone.setViewport(element, viewport);
         })
     });
@@ -284,8 +329,8 @@ function setupButtons() {
     }
 
     var configImg = {
-        minScale: 0.25,
-        maxScale: 20.0,
+        minScale: 0.01,
+        maxScale: 50.0,
         preventZoomOutsideImage: true,
         getTextCallback: getTextCallback,
         changeTextCallback: changeTextCallback,
