@@ -32,15 +32,32 @@ cornerstoneTools.rectangleRoi.setConfiguration(measurementConfig);
 cornerstoneTools.angle.setConfiguration(measurementConfig);
 cornerstoneTools.arrowAnnotate.setConfiguration(measurementConfig);
 
-var baseStudyUrl = '/pacs/studies/';
-var baseAiUrl = '/ai?wado=';
+var baseStudyUrl = 'http://v2.jfhealthcare.cn/v1/picl/aets/piclarc/rs/studies/';
+var baseAiUrl = 'http://47.100.46.22:8915/diagnose?wado=';
 var showAiResult = false;
+var enableAi = false;
 
 function getQueryString(name) { 
   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
   var r = window.location.search.substr(1).match(reg); 
   if (r != null) return unescape(r[2]); return null;
 } 
+
+if (getQueryString('ai') === 'on') {
+  enableAi = true;
+}
+
+if (window.location.protocol == "https:") {
+  if (baseStudyUrl.substr(0, 1) !== '/') {
+    baseStudyUrl = baseStudyUrl.replace('http:', 'https:');
+  }
+
+  if (baseAiUrl.substr(0, 1) !== '/') {
+    baseAiUrl = baseAiUrl.replace('http:', 'https:');
+  }
+
+  enableAi = false;
+}
 
 var studyUid = getQueryString('studyUid');
 
@@ -59,7 +76,7 @@ if (studyUid != null && studyUid.length > 0) {
       initImageViewer();
       setupButtons();
 
-      if (getQueryString('ai') === 'on') {
+      if (enableAi && getQueryString('ai') === 'on') {
         $('#ai').click();
       }
 

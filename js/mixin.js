@@ -87,6 +87,10 @@ function useItemStack(item, stack) {
             setupViewport(el, stack, this);
             setupViewportOverlays(el, stack.metaData);
             $(el).data('setup', true);
+
+            if (showAiResult) {
+                cornerstoneTools.ellipticalAi.deactivate(el);
+            }
         }
     });
     /*cornerstone.loadAndCacheImage(imageId).then(function(image){

@@ -109,7 +109,9 @@ function loadStudy(studyUid) {
             // Enable cornerstone on the thumbnail
             cornerstone.enable(thumbnail);
 
-            aiRequest(stack.metaData, stackIndex, aiCallback);
+            if (enableAi) {
+                aiRequest(stack.metaData, stackIndex, aiCallback);
+            }
 
             // Have cornerstone load the thumbnail image
             cornerstone.loadAndCacheImage(imageViewer.stacks[stack.seriesIndex].imageIds[0]).then(function(image) {

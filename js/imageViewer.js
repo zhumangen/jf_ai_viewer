@@ -20,9 +20,6 @@ ImageViewer = function(root, viewport) {
             width : perWidth + '%', height : perHeight + '%'
           }).appendTo(self.root.find('.imageViewer'));
           elem.find('.viewport').data('index', i).data('waiting', true);
-          if (showAiResult) {
-            cornerstoneTools.ellipticalAi.deactivate(elem.find('.viewport'));
-          }
 
           self.viewports.push(elem);
           i++;
