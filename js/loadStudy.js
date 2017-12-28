@@ -82,10 +82,15 @@ function loadStudy(studyUid) {
         imageViewer.stacks.forEach(function(stack, stackIndex) {
 
             // Create series thumbnail item
-            var patName;
-            if (stack.metaData && stack.metaData["00100010"]) {
-                patName = stack.metaData["00100010"].Value[0]["Alphabetic"];
+            let patName;
+            let data = stack.metaData;
+            if (data["00100010"] && data["00100010"].Value && data["00100010"].Value.length > 0) {
+                patName = data["00100010"].Value[0]["Alphabetic"];
+                if (data["00100010"].Value[0]["Ideographic"]) {
+                    patName = data["00100010"].Value[0]["Ideographic"]
+                }
             }
+            
             var seriesEntry = '<a class="list-group-item" + ' +
                 'oncontextmenu="return false"' +
                 'unselectable="on"' +
@@ -109,12 +114,12 @@ function loadStudy(studyUid) {
             // Enable cornerstone on the thumbnail
             cornerstone.enable(thumbnail);
 
-            if (enableAi) {
-                aiRequest(stack.metaData, stackIndex, aiCallback);
-            }
-
             // Have cornerstone load the thumbnail image
             cornerstone.loadAndCacheImage(imageViewer.stacks[stack.seriesIndex].imageIds[0]).then(function(image) {
+                if (enableAi) {
+                    aiRequest(stack.metaData, stackIndex, aiCallback);
+                }
+
                 // Make the first thumbnail active
                 if (stack.seriesIndex === 0) {
                     $(seriesElement).addClass('active');

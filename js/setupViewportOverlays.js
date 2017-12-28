@@ -42,31 +42,35 @@ function setupViewportOverlays(element, data) {
         var data = stack.metaData;
         // Set the overlay text
         if (data) {
-            if (data["00100010"]) {
-                $(topLeft[0]).text(data["00100010"].Value[0]["Alphabetic"]);
+            if (data["00100010"] && data["00100010"].Value && data["00100010"].Value.length > 0) {
+                let patName = data["00100010"].Value[0]["Alphabetic"];
+                if (data["00100010"].Value[0]["Ideographic"]) {
+                    patName = data["00100010"].Value[0]["Ideographic"]
+                }
+                $(topLeft[0]).text(patName);
             }
-            if (data["00101010"]) {
+            if (data["00101010"] && data["00101010"].Value) {
                 $(topLeft[1]).text(data["00101010"].Value[0]);
             }
-            if (data["00100040"]) {
+            if (data["00100040"] && data["00100040"]) {
                 $(topLeft[2]).text(data["00100040"].Value[0]);
             }
-            if (data["00200011"]) {
+            if (data["00200011"] && data["00200011"].Value) {
                 $(topRight[1]).text("序列：" + data["00200011"].Value[0]);
             }
-            if (data["00180015"]) {
+            if (data["00180015"] && data["00180015"].Value) {
                 $(topRight[2]).text(data["00180015"].Value[0]);
             }
-            if (data["00080070"]) {
+            if (data["00080070"] && data["00080070"].Value) {
                 $(bottomLeft[2]).text(data["00080070"].Value[0]);
             }
-            if (data["00180060"] && data["00181151"] && data["00181150"]) {
-                $(bottomRight[0]).text(data["00180060"].Value[0] + "kV " + data["00181151"].Value[0] + "mA " + data["00181150"].Value[0] + "mS");
-            }
-            if (data["00080022"] && data["00080032"]) {
+            // if (data["00180060"] && data["00181151"] && data["00181150"]) {
+            //     $(bottomRight[0]).text(data["00180060"].Value[0] + "kV " + data["00181151"].Value[0] + "mA " + data["00181150"].Value[0] + "mS");
+            // }
+            if (data["00080022"] && data["00080022"].Value && data["00080032"] && data["00080032"].Value) {
                 $(bottomRight[1]).text(data["00080022"].Value[0] + " " + data["00080032"].Value[0]);
             }
-            if (data["00080080"]) {
+            if (data["00080080"] && data["00080080"].Value) {
                 $(bottomRight[2]).text(data["00080080"].Value[0]);
             }
         }
