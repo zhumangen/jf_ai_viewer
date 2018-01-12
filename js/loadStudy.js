@@ -129,17 +129,22 @@ function loadStudy(studyUid) {
                 cornerstone.displayImage(thumbnail, image);
                 $(seriesElement).draggable({helper: "clone"});
             });
-
-            // beauty scroll
-            $(".thumbnails").mCustomScrollbar();
+            
 
             // Handle thumbnail click
             $(seriesElement).on('click touchstart', function() {
               useItemStack(0, stackIndex);
             }).data('stack', stackIndex);
+
+            // beauty scroll
+            $(".thumbnails").mCustomScrollbar();
         });
         
         if (imageViewer.isSingle())
             useItemStack(0, 0);
+    }).error(function(data){
+        console.log('error');
+        $(".imageViewer .overlay-text").remove();
+        $(".viewportWrapper").append( "<div class='overlay-text'><img src='img/404.png' style='position: absolute; left: 50%; top: 50%; margin-left: -200px; margin-top: -150px;'></div>");        
     });
 }
