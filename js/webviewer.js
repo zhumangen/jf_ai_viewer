@@ -38,7 +38,7 @@ cornerstone.events.addEventListener('cornerstoneimageloadprogress', function(eve
 
 var baseStudyUrl = '/pacs/studies/';
 // var baseStudyUrl = 'http://v2.jfhealthcare.cn/v1/picl/aets/piclarc/rs/studies/';
-var baseAiUrl = 'http://47.100.46.22:8915/diagnose?wado=';
+var baseAiUrl = 'http://47.100.46.22:8915/diagnose?jpgurl=';
 var showAiResult = false;
 var enableAi = false;
 

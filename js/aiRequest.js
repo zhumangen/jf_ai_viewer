@@ -46,16 +46,24 @@ function AIFinshed(status){
 }
 
 function aiRequest(metaData, stackIdx, callback) {
-	let aiObj = {
-		studyUid: metaData["0020000D"].Value[0],
-		seriesUid: metaData["0020000E"].Value[0],
-		instanceUid: metaData["00080018"].Value[0]
-	};
+	// let aiObj = {
+	// 	studyUid: metaData["0020000D"].Value[0],
+	// 	seriesUid: metaData["0020000E"].Value[0],
+	// 	instanceUid: metaData["00080018"].Value[0]
+	// };
 
-	aiArr = [];
-	aiArr.push(aiObj);
-	let aiUrl = JSON.stringify(aiArr);
-	aiUrl = encodeURIComponent(aiUrl).replace(/'/g,"%27").replace(/"/g,"%22");
+	// aiArr = [];
+	// aiArr.push(aiObj);
+	// let aiUrl = JSON.stringify(aiArr);
+	
+	let studyUid = metaData["0020000D"].Value[0];
+	let seriesUid = metaData["0020000E"].Value[0];
+	let imageUid = metaData["00080018"].Value[0];
+	let aiStr = 'http://10.10.10.50:8080/dcm4chee-arc/aets/DCM4CHEE/wado?requestType=WADO&contentType=image/jpeg';
+	aiStr += '&studyUid=' + studyUid;
+	aiStr += '&seriesUID=' + seriesUid;
+	aiStr += '&objectUID=' + imageUid;
+	let aiUrl = encodeURIComponent(aiStr).replace(/'/g,"%27").replace(/"/g,"%22");
 	aiUrl = baseAiUrl + aiUrl;
 
 	$.ajax({
