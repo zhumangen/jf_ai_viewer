@@ -130,14 +130,14 @@ function loadStudy(studyUid) {
                 $(seriesElement).draggable({helper: "clone"});
             });
 
-            // beauty scroll
-            $(".thumbnails").mCustomScrollbar();
-
             // Handle thumbnail click
             $(seriesElement).on('click touchstart', function() {
               useItemStack(0, stackIndex);
             }).data('stack', stackIndex);
         });
+
+        // beauty scroll
+        $(".thumbnails").mCustomScrollbar();
         
         if (imageViewer.isSingle())
             useItemStack(0, 0);
