@@ -107,8 +107,20 @@ body, html {height:100%}
 .thumbnails {
     margin:0px;
     margin-bottom: 0px;
-    overflow-y:scroll;
+   /*  overflow-y:scroll; */
     overflow-x:hidden;
+}
+
+.thumbnails .mCSB_scrollTools{
+    width: 10px;
+}
+
+.thumbnails .mCSB_inside>.mCSB_container {
+    margin-right: 10px;
+}
+
+.thumbnails .mCSB_scrollTools .mCSB_draggerContainer{
+    background-color: #424242;
 }
 
 .table {

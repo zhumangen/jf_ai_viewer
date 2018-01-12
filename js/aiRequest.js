@@ -30,6 +30,21 @@ function aiCallback(stackIdx, aiResult) {
 	}
 }
 
+function AIFinshed(status){	
+	if(status){
+		// al deal success
+		$("#ai .toolbar-text").html("<span style='color: green;'>成功</span>");
+	}else{
+		// al deal fail
+		$("#ai .toolbar-text").html("<span style='color: red;'>失败</span>");
+	}
+	setTimeout(function(){
+		// anyway show AI after 3s
+		$("#ai .toolbar-text").html("AI");
+	},3000);
+	
+}
+
 function aiRequest(metaData, stackIdx, callback) {
 	let aiObj = {
 		studyUid: metaData["0020000D"].Value[0],
@@ -49,6 +64,10 @@ function aiRequest(metaData, stackIdx, callback) {
 		type: "GET",
 		success: function(aiResult) {
 			callback(stackIdx, aiResult);
+			AIFinshed(true);
+		},
+		error: function(aiResult){
+			AIFinshed(false);
 		}
 	})
 }
