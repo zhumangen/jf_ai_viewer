@@ -32,6 +32,11 @@
 </head>
 
 <body>
+  <div id="loadingUI" style="color:#1C86EE;position:absolute; top:45%;left:45%;margin-left:-30px; text-align:center">
+    <img width="80" height="80" src="img/progress_ring.svg">
+    <span style="font-size:20px;">Loading</span>
+  </div>
+
   <div id = "main" class="main" style="height: 100%;">
     <!-- <div class="head">
       <img src="img/favicon.ico" class="logo" />
@@ -100,6 +105,10 @@
 <script src="js/annoDialog.js?version=1.0"></script>
 <script src="js/setupViewportOverlays.js?version=1.0"></script>
 <script src="js/webviewer.js?version=1.0"></script>
+
+<script>
+  $("#loadingUI").hide();
+</script>
 
 </body>
 </html>

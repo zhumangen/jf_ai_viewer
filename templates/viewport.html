@@ -5,7 +5,9 @@
      onselectstart='return false;'
      onmousedown='return false;'>
     <!-- Viewport -->
-    <div class="viewport"></div>
+    <div class="viewport" style="position: relative;">
+        <img class="loading hide" src="img/progress_spin.svg" alt="" width="128" height="128" style="position: absolute; left: 50%; top: 50%; margin-top: -64px; margin-left: -64px; z-index: 10">
+    </div>
 
     <!-- Overlays -->
     <div class="overlay" style="top:0px; left:0px">

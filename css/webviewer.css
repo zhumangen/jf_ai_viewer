@@ -166,3 +166,15 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 .dropdown-menu {
   min-width: 40px;
 }
+
+.progressBarContainer{  
+   width:100%;
+   border:1px solid #6C9C2C;
+   height:3px;
+ }
+
+.progressBar{  
+   background:#95CA0D;
+   float:left;
+   height:100%;
+ } 

@@ -90,17 +90,19 @@ function loadStudy(studyUid) {
                     patName = data["00100010"].Value[0]["Ideographic"]
                 }
             }
-            
-            var seriesEntry = '<a class="list-group-item" + ' +
+
+            var seriesEntry = '<a class="list-group-item" style="position: relative"' +
                 'oncontextmenu="return false"' +
                 'unselectable="on"' +
                 'onselectstart="return false;"' +
-                'onmousedown="return false;">' +
+                'onmousedown="return false;"><img class="loading" src="img/image_spin.svg" width=50 height= 50 style="position: absolute; left: 50%; top: 25%; margin-left: -25px;">' +
                 '<div class="csthumbnail"' +
                 'oncontextmenu="return false"' +
                 'unselectable="on"' +
                 'onselectstart="return false;"' +
                 'onmousedown="return false;"></div>' +
+                '<div class="progressBarContainer hide">' +
+                '<div class="progressBar" style="width:0%;"></div></div>' +  
                 "<div class='text-center small'>" +
                 patName +
                 '</div></a>';
@@ -126,6 +128,7 @@ function loadStudy(studyUid) {
                 }
                 // Display the image
                 cornerstone.displayImage(thumbnail, image);
+                $(seriesElement).find('.loading').remove();
                 $(seriesElement).draggable({helper: "clone"});
             });
 

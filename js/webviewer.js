@@ -32,8 +32,12 @@ cornerstoneTools.rectangleRoi.setConfiguration(measurementConfig);
 cornerstoneTools.angle.setConfiguration(measurementConfig);
 cornerstoneTools.arrowAnnotate.setConfiguration(measurementConfig);
 
-// var baseStudyUrl = '/pacs/studies/';
-var baseStudyUrl = 'http://v2.jfhealthcare.cn/v1/picl/aets/piclarc/rs/studies/';
+cornerstone.events.addEventListener('cornerstoneimageloadprogress', function(event){
+  updateImageProgress(event.detail);
+});
+
+var baseStudyUrl = '/pacs/studies/';
+// var baseStudyUrl = 'http://v2.jfhealthcare.cn/v1/picl/aets/piclarc/rs/studies/';
 var baseAiUrl = 'http://47.100.46.22:8915/diagnose?wado=';
 var showAiResult = false;
 var enableAi = false;
@@ -64,25 +68,28 @@ var studyUid = getQueryString('studyUid');
 
 if (studyUid != null && studyUid.length > 0) {
   var viewportTemplate; // the viewport template
-  loadTemplate("templates/viewport.html", function(element) {
-      viewportTemplate = element;
-  });
-
   var studyViewerTemplate; // the study viewer template
   var imageViewer;
-  loadTemplate("templates/studyViewer.html", function(element) {
-      studyViewerTemplate = element;
-      studyViewerTemplate.appendTo('#studyContainerWrapper');
 
-      initImageViewer();
-      setupButtons();
+  loadTemplate("templates/viewport.html", function(element) {
+      viewportTemplate = element;
 
-      if (enableAi && getQueryString('ai') === 'on') {
-        $('#ai').click();
-      }
+      loadTemplate("templates/studyViewer.html", function(element) {
+        studyViewerTemplate = element;
+        studyViewerTemplate.appendTo('#studyContainerWrapper');
 
-      loadStudy(studyUid);
+        initImageViewer();
+        setupButtons();
+
+        if (enableAi && getQueryString('ai') === 'on') {
+          $('#ai').click();
+        }
+
+        loadStudy(studyUid);
+    });
   });
+  
+  
 }
 
 // Resize main

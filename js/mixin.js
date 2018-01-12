@@ -73,6 +73,19 @@ function initViewports() {
     });            
 }
 
+function updateImageProgress(eventData) {
+    // console.log(eventData);
+    let iStacks = imageViewer.stacks;
+    let i = 0;
+    for (; i < iStacks.length; ++i) {
+        if (iStacks[i].imageIds[0] === eventData.imageId) {
+            let bar = $('.progressBar')[i];
+            bar.style.width = eventData.percentComplete;
+            break;
+        }
+    }
+}
+
 function useItemStack(item, stack) {
     var imageId = imageViewer.stacks[stack].imageIds[0], element = imageViewer.getElement(item);
     if ($(element).data('waiting')) {
@@ -80,10 +93,12 @@ function useItemStack(item, stack) {
         $(element).data('waiting', false);
     }
     $(element).data('useStack', stack);
+    $(element).find('img').removeClass('hide');
 
     var seriesList = $(studyViewerTemplate).find('.thumbnails')[0];
     displayThumbnail(seriesList, $(seriesList).find('.list-group-item')[stack], element, imageViewer.stacks[stack], function(el, stack){
         if (!$(el).data('setup')) {
+            $(el).find('img').addClass('hide');
             setupViewport(el, stack, this);
             setupViewportOverlays(el, stack.metaData);
             $(el).data('setup', true);
