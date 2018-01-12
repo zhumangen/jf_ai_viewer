@@ -132,6 +132,9 @@ function loadStudy(studyUid) {
                 $(seriesElement).draggable({helper: "clone"});
             });
 
+            // beauty scroll
+            $(".thumbnails").mCustomScrollbar();
+
             // Handle thumbnail click
             $(seriesElement).on('click touchstart', function() {
               useItemStack(0, stackIndex);
