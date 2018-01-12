@@ -119,6 +119,7 @@ function loadStudy(studyUid) {
             // Have cornerstone load the thumbnail image
             cornerstone.loadAndCacheImage(imageViewer.stacks[stack.seriesIndex].imageIds[0]).then(function(image) {
                 if (enableAi) {
+                    $("#ai .toolbar-text").html("<marquee style='width: 40px; position: absolute; left: 50%; margin-left: -20px; color: yellow'>AI处理中...</marquee>");                    
                     aiRequest(stack.metaData, stackIndex, aiCallback);
                 }
 
@@ -132,14 +133,14 @@ function loadStudy(studyUid) {
                 $(seriesElement).draggable({helper: "clone"});
             });
 
-            // beauty scroll
-            $(".thumbnails").mCustomScrollbar();
-
             // Handle thumbnail click
             $(seriesElement).on('click touchstart', function() {
               useItemStack(0, stackIndex);
             }).data('stack', stackIndex);
         });
+
+        // beauty scroll
+        $(".thumbnails").mCustomScrollbar();
         
         if (imageViewer.isSingle())
             useItemStack(0, 0);
