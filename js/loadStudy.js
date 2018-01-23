@@ -141,8 +141,25 @@ function loadStudy(studyUid) {
         });
 
         // beauty scroll
-        $(".thumbnails").mCustomScrollbar();
-        
+        // scroll change at different size
+        function changeScroll() {
+            if($(window).height() > $(window).width()){                    
+                $(".thumbnails").mCustomScrollbar("destroy");           
+                $(".thumbnails").mCustomScrollbar({
+                    axis:"x",
+                    theme:"light-3",
+                    advanced:{autoExpandHorizontalScroll:true}
+                });
+            }else{                 
+                $(".thumbnails").mCustomScrollbar("destroy");              
+                $(".thumbnails").mCustomScrollbar();               
+            }
+        }
+        changeScroll();
+        $(window).resize(function() {
+            changeScroll();
+        });
+
         if (imageViewer.isSingle())
             useItemStack(0, 0);
         
