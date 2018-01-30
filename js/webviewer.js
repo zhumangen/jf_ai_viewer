@@ -78,6 +78,21 @@ if (studyUid != null && studyUid.length > 0) {
         studyViewerTemplate = element;
         studyViewerTemplate.appendTo('#studyContainerWrapper');
 
+        // thumbnail position
+        function changePosition() {
+          if($(window).height() > $(window).width()){
+            $(".thumbnailSelector").addClass('thumbnailSelector1');
+            $(".viewer").addClass("viewer1").css("height", $(window).height() - 72 - 123 - 16);              
+          }else{
+            $(".thumbnailSelector").removeClass('thumbnailSelector1');
+            $(".viewer").removeClass("viewer1").css("height",$(window).height() - 72);             
+          }
+        }    
+        changePosition();
+        $(window).resize(function() {         
+          changePosition();
+        });
+
         initImageViewer();
         setupButtons();
 
@@ -98,10 +113,9 @@ function resizeMain() {
   $('#studyContainerWrapper').height(height - 72);
 }
 
-
 // Call resize main on window resize
 $(window).resize(function() {
-    resizeMain();
+    resizeMain();    
 });
 resizeMain();
 
