@@ -19,6 +19,10 @@ function setupButtons() {
 
     $('#marker').on('click touchstart', function() {
         activate('#marker');
+        forEachViewport(function(element) {
+            cornerstoneTools.zoom.deactivate(element, 1);
+        });
+        
     })
 
     $('#toolbar').find('div').click(function() {
@@ -58,7 +62,7 @@ function setupButtons() {
     $('#reverse').on('click touchstart', function() {
         activate('#reverse');
         $(this).find('ul').hide();         
-        $('#vReverse').trigger('click');
+        $('#hReverse').trigger('click');
     })
 
     $('#reverse').find('.caret').click(function(e){
@@ -112,7 +116,8 @@ function setupButtons() {
         activate('#enableWindowLevelTool')
         disableAllTools();
         forEachViewport(function(element) {
-            cornerstoneTools.wwwc.activate(element, 1);
+            cornerstoneTools.zoom.deactivate(element, 1);
+            cornerstoneTools.wwwc.activate(element, 5);
             cornerstoneTools.wwwcTouchDrag.activate(element);
         });
     });
@@ -120,10 +125,11 @@ function setupButtons() {
     // Zoom
     $('#zoom').on('click touchstart', function() {
         activate('#zoom');
-        disableAllTools();
+        disableAllTools();        
         forEachViewport(function(element) {
-            cornerstoneTools.zoom.activate(element, 5); // 5 is right mouse button and left mouse button
+            cornerstoneTools.zoom.activate(element, 1); // 5 is right mouse button and left mouse button
             cornerstoneTools.zoomTouchDrag.activate(element);
+           
         });
     });
 
@@ -132,7 +138,8 @@ function setupButtons() {
         activate('#pan');
         disableAllTools();
         forEachViewport(function(element) {
-            cornerstoneTools.pan.activate(element, 3); // 3 is middle mouse button and left mouse button
+            cornerstoneTools.pan.activate(element, 3); // 3 is middle mouse button and left mouse button            
+            cornerstoneTools.zoom.deactivate(element, 1);
             cornerstoneTools.panTouchDrag.activate(element);
         });
     });
