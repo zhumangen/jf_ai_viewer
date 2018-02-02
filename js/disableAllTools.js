@@ -1,9 +1,9 @@
 // Disable all tools
 function disableAllTools() {
     forEachViewport(function(element) {
-        cornerstoneTools.wwwc.disable(element);
+        cornerstoneTools.wwwc.activate(element,4);
         cornerstoneTools.pan.activate(element, 2); // 2 is middle mouse button
-        cornerstoneTools.zoom.activate(element, 4); // 4 is right mouse button
+        //cornerstoneTools.zoom.activate(element, 4); // 4 is right mouse button
         cornerstoneTools.probe.deactivate(element, 1);
         cornerstoneTools.length.deactivate(element, 1);
         cornerstoneTools.angle.deactivate(element, 1);

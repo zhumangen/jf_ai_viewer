@@ -76,11 +76,12 @@ function setupViewportOverlays(element, data) {
         }
     }
     // Add a CornerstoneNewImage event listener on the 'element' (viewer) (?)
-    $(element).on("CornerstoneNewImage", onNewImage);
+    $(element).on("cornerstonenewimage", onNewImage);
 
 
     // On image rendered
     function onImageRendered(e, eventData) {
+		eventData = e.detail;
         // Set zoom overlay text
         $(bottomLeft[0]).text("Zoom:" + eventData.viewport.scale.toFixed(2));
         // Set WW/WL overlay text
@@ -89,7 +90,7 @@ function setupViewportOverlays(element, data) {
         // $(bottomLeft[1]).text("Render Time:" + eventData.renderTimeInMs + " ms");
     }
     // Add a CornerstoneImageRendered event listener on the 'element' (viewer) (?)
-    $(element).on("CornerstoneImageRendered", onImageRendered);
+    $(element).on("cornerstoneimagerendered", onImageRendered);
 
 
 }
