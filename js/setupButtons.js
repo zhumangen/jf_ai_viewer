@@ -19,14 +19,64 @@ function setupButtons() {
 
     $('#marker').on('click touchstart', function() {
         activate('#marker');
+        forEachViewport(function(element) {
+            cornerstoneTools.zoom.deactivate(element, 1);
+        });
+        
     })
+
+    $('#toolbar').find('div').click(function() {
+        $('#toolbar').find('div').not($(this)).find('ul').hide();       
+        if($(this).find('ul').css('display') == 'none'){
+            $(this).find('ul').show();
+        }else{
+            $(this).find('ul').hide();
+        }           
+    })  
 
     $('#rotation').click(function() { // 旋转
         activate("#rotation");
+        $(this).find('ul').hide();         
+        $('#rrotate').trigger('click');
     });
+
+    $('#rotation').find('.caret').click(function(e){  
+        $('#toolbar').find('div').not($(this).parent().parent()).find('ul').hide();
+        if(e && e.stopPropagation){
+            e.stopPropagation();
+        }else{
+            window.event.cancelBubble = true;
+        }             
+        if($('#rotation').find('ul').css('display') == 'none'){
+            $('#rotation').find('ul').show();
+        }else{
+            $('#rotation').find('ul').hide();
+        }         
+    })
+
+    $(document).click(function() {
+        $('#toolbar').find('ul').hide();
+    })     
+
 
     $('#reverse').on('click touchstart', function() {
         activate('#reverse');
+        $(this).find('ul').hide();         
+        $('#hReverse').trigger('click');
+    })
+
+    $('#reverse').find('.caret').click(function(e){
+        $('#toolbar').find('div').not($(this).parent().parent()).find('ul').hide();
+        if($('#reverse').find('ul').css('display') == 'none'){
+            $('#reverse').find('ul').show();
+        }else{
+            $('#reverse').find('ul').hide();
+        }      
+        if(e && e.stopPropagation){
+            e.stopPropagation();
+        }else{
+            window.event.cancelBubble = true;
+        }            
     })
 
     $('#preSearch').on('click touchstart', function() {
@@ -66,7 +116,8 @@ function setupButtons() {
         activate('#enableWindowLevelTool')
         disableAllTools();
         forEachViewport(function(element) {
-            cornerstoneTools.wwwc.activate(element, 1);
+            cornerstoneTools.zoom.deactivate(element, 1);
+            cornerstoneTools.wwwc.activate(element, 5);
             cornerstoneTools.wwwcTouchDrag.activate(element);
         });
     });
@@ -74,10 +125,11 @@ function setupButtons() {
     // Zoom
     $('#zoom').on('click touchstart', function() {
         activate('#zoom');
-        disableAllTools();
+        disableAllTools();        
         forEachViewport(function(element) {
-            cornerstoneTools.zoom.activate(element, 5); // 5 is right mouse button and left mouse button
+            cornerstoneTools.zoom.activate(element, 1); // 5 is right mouse button and left mouse button
             cornerstoneTools.zoomTouchDrag.activate(element);
+           
         });
     });
 
@@ -86,7 +138,8 @@ function setupButtons() {
         activate('#pan');
         disableAllTools();
         forEachViewport(function(element) {
-            cornerstoneTools.pan.activate(element, 3); // 3 is middle mouse button and left mouse button
+            cornerstoneTools.pan.activate(element, 3); // 3 is middle mouse button and left mouse button            
+            cornerstoneTools.zoom.deactivate(element, 1);
             cornerstoneTools.panTouchDrag.activate(element);
         });
     });
@@ -204,6 +257,11 @@ function setupButtons() {
     });
 
     $('#hReverse').click(function(e) { // 水平翻转
+        if(e && e.stopPropagation){
+            e.stopPropagation();
+        }else{
+            window.event.cancelBubble = true;
+        }
         forEachViewport(function(element) {
             let viewport = cornerstone.getViewport(element);
             viewport.hflip = !viewport.hflip;
@@ -212,6 +270,11 @@ function setupButtons() {
         
     });
     $('#vReverse').click(function(e) { // 垂直翻转
+        if(e && e.stopPropagation){
+            e.stopPropagation();
+        }else{
+            window.event.cancelBubble = true;
+        }
         forEachViewport(function(element) {
             let viewport = cornerstone.getViewport(element);
             viewport.vflip = !viewport.vflip;
@@ -226,7 +289,12 @@ function setupButtons() {
         })
     });
 
-    $('#lrotate').click(function() { // 左旋
+    $('#lrotate').click(function(e) { // 左旋        
+        if(e && e.stopPropagation){
+            e.stopPropagation();
+        }else{
+            window.event.cancelBubble = true;
+        }
         forEachViewport(function(element) {
             let viewport = cornerstone.getViewport(element);
             viewport.rotation -= 90;
@@ -234,7 +302,12 @@ function setupButtons() {
         })
     });
 
-    $('#rrotate').click(function() { // 右旋
+    $('#rrotate').click(function(e) { // 右旋  
+        if(e && e.stopPropagation){
+            e.stopPropagation();
+        }else{
+            window.event.cancelBubble = true;
+        }      
         forEachViewport(function(element) {
             let viewport = cornerstone.getViewport(element);
             viewport.rotation += 90;
