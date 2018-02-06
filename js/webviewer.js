@@ -36,9 +36,22 @@ cornerstone.events.addEventListener('cornerstoneimageloadprogress', function(eve
   updateImageProgress(event.detail);
 });
 
-var baseStudyUrl = '/pacs/studies/';
-// var baseStudyUrl = 'http://v2.jfhealthcare.cn/v1/picl/aets/piclarc/rs/studies/';
-var baseAiUrl = 'http://47.100.46.22:8915/diagnose?jpgurl=';
+// For Develop
+var wadoUri = 'http://v2.jfhealthcare.cn/v1/picl/aets/piclarc/wado';
+var wadoRs = '/pacs/rs';
+var baseAiUrl = 'http://47.100.165.4:8915/diagnose?jpgurl=';
+
+
+// For Production
+/**
+var wadoUri = 'http://v2.jfhealthcare.cn/v1/picl/aets/piclarc/wado';
+var wadoRs = 'http://v2.jfhealthcare.cn/v1/picl/aets/piclarc/rs';
+var baseAiUrl = 'http://v2.jfhealthcare.cn:8915/diagnose?jpgurl=';
+ **/
+ 
+var baseStudyUrl = wadoRs + '/studies/';
+
+
 var showAiResult = false;
 var enableAi = false;
 

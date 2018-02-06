@@ -59,8 +59,8 @@ function aiRequest(metaData, stackIdx, callback) {
 	let studyUid = metaData["0020000D"].Value[0];
 	let seriesUid = metaData["0020000E"].Value[0];
 	let imageUid = metaData["00080018"].Value[0];
-	let aiStr = 'http://10.10.10.50:8080/dcm4chee-arc/aets/DCM4CHEE/wado?requestType=WADO&contentType=image/jpeg';
-	aiStr += '&studyUid=' + studyUid;
+	let aiStr = wadoUri + '?requestType=WADO&contentType=image/jpeg';
+	aiStr += '&studyUID=' + studyUid;
 	aiStr += '&seriesUID=' + seriesUid;
 	aiStr += '&objectUID=' + imageUid;
 	let aiUrl = encodeURIComponent(aiStr).replace(/'/g,"%27").replace(/"/g,"%22");
