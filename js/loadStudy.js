@@ -14,8 +14,6 @@ function loadStudy(studyUid) {
     var seriesIndex = imageViewer.stacks.length;
 
     // Get the JSON data for the selected studyId
-    // var baseUrl = 'http://v2.jfhealthcare.cn/v1/picl/aets/piclarc/rs/studies/';
-    ///dcm4chee-arc/aets/DCM4CHEE/rs/studies/';
     var metaDataUri = baseStudyUrl + studyUid + '/metadata';
     $.ajax({
         url: metaDataUri,
