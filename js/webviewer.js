@@ -1,23 +1,23 @@
 // Load in HTML templates
 var config = {
-    webWorkerPath:'lib/cornerstoneWADOImageLoaderWebWorker.js',
-    taskConfiguration:{
-         'decodeTask':{
-            codecsPath:'cornerstoneWADOImageLoaderCodecs.js'
-        }
+  webWorkerPath:'lib/cornerstoneWADOImageLoaderWebWorker.js',
+  taskConfiguration:{
+    'decodeTask':{
+       codecsPath:'cornerstoneWADOImageLoaderCodecs.js'
     }
+  }
 };
 cornerstoneWADOImageLoader.webWorkerManager.initialize(config);
 
 cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
 cornerstoneWADOImageLoader.configure({
-    beforeSend: function(xhr) {
-        // Add custom headers here (e.g. auth tokens)
-        // var apiKey = $('#apikey').val();
-        // if(apiKey && apiKey.length) {
-        //     xhr.setRequestHeader('APIKEY', apiKey);
-        // }
-    }
+  beforeSend: function(xhr) {
+    // Add custom headers here (e.g. auth tokens)
+    // var apiKey = $('#apikey').val();
+    // if(apiKey && apiKey.length) {
+    //     xhr.setRequestHeader('APIKEY', apiKey);
+    // }
+  }
 });
 
 cornerstoneTools.external.cornerstone = cornerstone;
@@ -55,11 +55,11 @@ var baseStudyUrl = wadoRs + '/studies/';
 var showAiResult = false;
 var enableAi = false;
 
-function getQueryString(name) { 
-  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
-  var r = window.location.search.substr(1).match(reg); 
+function getQueryString(name) {
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+  var r = window.location.search.substr(1).match(reg);
   if (r != null) return unescape(r[2]); return null;
-} 
+}
 
 if (getQueryString('ai') === 'on') {
   enableAi = true;
@@ -77,48 +77,51 @@ if (window.location.protocol == "https:") {
   enableAi = false;
 }
 
-var studyUid = getQueryString('studyUid');
+// load templates
+var viewportTemplate; // the viewport template
+var studyViewerTemplate; // the study viewer template
+var imageViewer;
 
-if (studyUid != null && studyUid.length > 0) {
-  var viewportTemplate; // the viewport template
-  var studyViewerTemplate; // the study viewer template
-  var imageViewer;
+loadTemplate("templates/viewport.html", function(element) {
+  viewportTemplate = element;
 
-  loadTemplate("templates/viewport.html", function(element) {
-      viewportTemplate = element;
+  loadTemplate("templates/studyViewer.html", function(element) {
+  studyViewerTemplate = element;
+  studyViewerTemplate.appendTo('#studyContainerWrapper');
 
-      loadTemplate("templates/studyViewer.html", function(element) {
-        studyViewerTemplate = element;
-        studyViewerTemplate.appendTo('#studyContainerWrapper');
-
-        // thumbnail position
-        function changePosition() {
-          if($(window).height() > $(window).width()){
-            $(".thumbnailSelector").addClass('thumbnailSelector1');
-            $(".viewer").addClass("viewer1").css("height", $(window).height() - 72 - 123 - 16);              
-          }else{
-            $(".thumbnailSelector").removeClass('thumbnailSelector1');
-            $(".viewer").removeClass("viewer1").css("height",$(window).height() - 72);             
-          }
-        }    
-        changePosition();
-        $(window).resize(function() {         
-          changePosition();
-        });
-
-        initImageViewer();
-        setupButtons();
-
-        if (enableAi && getQueryString('ai') === 'on') {
-          $('#ai').click();
-        }
-
-        loadStudy(studyUid);
-    });
+  // thumbnail position
+  function changePosition() {
+    if($(window).height() > $(window).width()){
+    $(".thumbnailSelector").addClass('thumbnailSelector1');
+    $(".viewer").addClass("viewer1").css("height", $(window).height() - 72 - 123 - 16);              
+    }else{
+    $(".thumbnailSelector").removeClass('thumbnailSelector1');
+    $(".viewer").removeClass("viewer1").css("height",$(window).height() - 72);             
+    }
+  }  
+  changePosition();
+  $(window).resize(function() {      
+    changePosition();
   });
+
+  initImageViewer();
+  setupButtons();
+
+  if (enableAi && getQueryString('ai') === 'on') {
+    $('#ai').click();
+  }
   
-  
-}
+  let studyUid = getQueryString('studyUid');
+  let imageArrStr = getQueryString('objects');
+  if (studyUid !== null && studyUid !== '') {
+    loadStudy(studyUid);
+  } else if (imageArrStr !== null && imageArrStr !== '') {
+    loadImages(imageArrStr);
+  }
+
+  });
+});
+
 
 // Resize main
 function resizeMain() {
@@ -128,7 +131,7 @@ function resizeMain() {
 
 // Call resize main on window resize
 $(window).resize(function() {
-    resizeMain();    
+  resizeMain();
 });
 resizeMain();
 
