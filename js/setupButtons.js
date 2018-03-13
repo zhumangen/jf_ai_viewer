@@ -256,28 +256,37 @@ function setupButtons() {
         })
     });
 
-    $('#hReverse').click(function(e) { // 水平翻转
+    $('#hReverse').click(function(e) { // 水平翻转        
         if(e && e.stopPropagation){
             e.stopPropagation();
         }else{
             window.event.cancelBubble = true;
         }
         forEachViewport(function(element) {
-            let viewport = cornerstone.getViewport(element);
-            viewport.hflip = !viewport.hflip;
+            let viewport = cornerstone.getViewport(element);            
+            if(viewport.rotation == 90 || viewport.rotation == 270){
+                viewport.vflip = !viewport.vflip;
+            }else{
+                viewport.hflip = !viewport.hflip;
+            }            
             cornerstone.setViewport(element, viewport);
         })
         
     });
-    $('#vReverse').click(function(e) { // 垂直翻转
+    $('#vReverse').click(function(e) { // 垂直翻转       
         if(e && e.stopPropagation){
             e.stopPropagation();
         }else{
             window.event.cancelBubble = true;
         }
         forEachViewport(function(element) {
-            let viewport = cornerstone.getViewport(element);
-            viewport.vflip = !viewport.vflip;
+            let viewport = cornerstone.getViewport(element);           
+            if(viewport.rotation == 90 || viewport.rotation == 270){
+                viewport.hflip = !viewport.hflip;
+            }else{
+                viewport.vflip = !viewport.vflip;
+            }
+                        
             cornerstone.setViewport(element, viewport);
         })
     });
