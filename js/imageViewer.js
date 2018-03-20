@@ -21,10 +21,28 @@ ImageViewer = function(root, viewport) {
           }).appendTo(self.root.find('.imageViewer'));
           elem.find('.viewport').data('index', i).data('waiting', true);
 
-          self.viewports.push(elem);
+          self.viewports.push(elem);          
           i++;
-        }
+        }       
+        
+        self.root.find('.imageViewer .viewportWrapper').eq(0).addClass('selected'); // 默认第一个
+        self.root.find('.imageViewer').on({
+         /* mouseenter: function(){            
+            $(this).css('border','2px solid #f00');
+            $(this).siblings().css('border', '2px solid #777');
+          },
+          mouseleave: function() {
+            $(this).css('border', '2px solid #777');
+          },*/
+          click: function() {
+            console.log(1);
+            $(this).addClass('selected');
+            $(this).siblings().removeClass('selected');
+          }
+        },'.viewportWrapper')
+
     }
+
 
     self.getRowsCols = function() {
       var s = self.layout.split(' X ');

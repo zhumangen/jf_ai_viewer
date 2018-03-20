@@ -99,7 +99,20 @@ function setupButtons() {
     $('#invert').on('click touchstart', function() {
         activate('#invert');
         disableAllTools();
-        forEachViewport(function(element) {
+        // 给选中的设置垂直负相
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        var viewport = cornerstone.getViewport($ele);
+        if(viewport){ // 如果有图像的时候
+            // Toggle invert
+            if (viewport.invert === true) {
+                viewport.invert = false;
+            } else {
+                viewport.invert = true;
+            }
+            cornerstone.setViewport($ele, viewport);
+        }
+       
+        /*forEachViewport(function(element) {
             var viewport = cornerstone.getViewport(element);
             // Toggle invert
             if (viewport.invert === true) {
@@ -108,7 +121,7 @@ function setupButtons() {
                 viewport.invert = true;
             }
             cornerstone.setViewport(element, viewport);
-        });
+        });*/
     })
 
     // WW/WL
@@ -262,7 +275,18 @@ function setupButtons() {
         }else{
             window.event.cancelBubble = true;
         }
-        forEachViewport(function(element) {
+        // 选中时进行水平翻转
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        let viewport = cornerstone.getViewport($ele);  
+        if(viewport){ // 如果有图像的时候  
+            if(viewport.rotation == 90 || viewport.rotation == 270){
+                viewport.vflip = !viewport.vflip;
+            }else{
+                viewport.hflip = !viewport.hflip;
+            }            
+            cornerstone.setViewport($ele, viewport);
+        }
+        /*forEachViewport(function(element) {
             let viewport = cornerstone.getViewport(element);            
             if(viewport.rotation == 90 || viewport.rotation == 270){
                 viewport.vflip = !viewport.vflip;
@@ -270,7 +294,7 @@ function setupButtons() {
                 viewport.hflip = !viewport.hflip;
             }            
             cornerstone.setViewport(element, viewport);
-        })
+        })*/
         
     });
     $('#vReverse').click(function(e) { // 垂直翻转       
@@ -279,7 +303,19 @@ function setupButtons() {
         }else{
             window.event.cancelBubble = true;
         }
-        forEachViewport(function(element) {
+        // 选中时进行垂直翻转
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        let viewport = cornerstone.getViewport($ele);  
+        if(viewport)  {  // 如果有图像的时候
+            if(viewport.rotation == 90 || viewport.rotation == 270){
+                viewport.hflip = !viewport.hflip;
+            }else{
+                viewport.vflip = !viewport.vflip;
+            }                    
+            cornerstone.setViewport($ele, viewport);
+        }      
+        
+        /*forEachViewport(function(element) {
             let viewport = cornerstone.getViewport(element);           
             if(viewport.rotation == 90 || viewport.rotation == 270){
                 viewport.hflip = !viewport.hflip;
@@ -288,14 +324,17 @@ function setupButtons() {
             }
                         
             cornerstone.setViewport(element, viewport);
-        })
+        })*/
     });
 
     $('#reset').click(function(e) { // 重置
         activate('#reset');
-        forEachViewport(function(element) {
+        // 给选中设置重置
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        cornerstone.reset($ele);
+        /*forEachViewport(function(element) {
             cornerstone.reset(element);
-        })
+        })*/
     });
 
     $('#lrotate').click(function(e) { // 左旋        
@@ -304,11 +343,20 @@ function setupButtons() {
         }else{
             window.event.cancelBubble = true;
         }
-        forEachViewport(function(element) {
+        // 给选中的设置左旋
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);               
+        let viewport = cornerstone.getViewport($ele);        
+        if(viewport){ // 如果有图像的时候
+            viewport.rotation -= 90;  
+            cornerstone.setViewport($ele, viewport);
+        }                  
+       
+        /*forEachViewport(function(element) {
+            console.log('el',element);
             let viewport = cornerstone.getViewport(element);
-            viewport.rotation -= 90;
+            viewport.rotation -= 90;           
             cornerstone.setViewport(element, viewport);
-        })
+        })*/
     });
 
     $('#rrotate').click(function(e) { // 右旋  
@@ -316,12 +364,19 @@ function setupButtons() {
             e.stopPropagation();
         }else{
             window.event.cancelBubble = true;
-        }      
-        forEachViewport(function(element) {
+        }
+        //  给选中的设置右旋 
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);     
+        let viewport = cornerstone.getViewport($ele);
+        if(viewport){ // 如果有图像的时候
+            viewport.rotation += 90;
+            cornerstone.setViewport($ele, viewport);
+        }        
+        /*forEachViewport(function(element) {
             let viewport = cornerstone.getViewport(element);
             viewport.rotation += 90;
             cornerstone.setViewport(element, viewport);
-        })
+        })*/
     });
 
     $('#ai').click(function() { // AI
