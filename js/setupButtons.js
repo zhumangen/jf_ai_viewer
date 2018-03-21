@@ -126,14 +126,30 @@ function setupButtons() {
 
     // WW/WL
     $('#enableWindowLevelTool').on('click touchstart', function() {
+        $(this).find('ul').hide();  
         activate('#enableWindowLevelTool')
-        disableAllTools();
+        disableAllTools();        
         forEachViewport(function(element) {
             cornerstoneTools.zoom.deactivate(element, 1);
+            cornerstoneTools.wwwcRegion.activate(element, 1);
             cornerstoneTools.wwwc.activate(element, 5);
             cornerstoneTools.wwwcTouchDrag.activate(element);
         });
     });
+
+    $('#enableWindowLevelTool .caret').on('click touchstart', function(e) {
+        $('#toolbar').find('div').not($(this).parent().parent()).find('ul').hide();
+        if($('#enableWindowLevelTool').find('ul').css('display') == 'none'){
+            $('#enableWindowLevelTool').find('ul').show();
+        }else{
+            $('#enableWindowLevelTool').find('ul').hide();
+        }      
+        if(e && e.stopPropagation){
+            e.stopPropagation();
+        }else{
+            window.event.cancelBubble = true;
+        }   
+    })
 
     // Zoom
     $('#zoom').on('click touchstart', function() {
@@ -275,6 +291,7 @@ function setupButtons() {
         }else{
             window.event.cancelBubble = true;
         }
+
         // 选中时进行水平翻转
         let $ele = $('.viewportWrapper.selected .viewport').get(0);
         let viewport = cornerstone.getViewport($ele);  
