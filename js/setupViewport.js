@@ -20,10 +20,12 @@ function setupViewport(element, stack, image) {
     //cornerstoneTools.zoom.activate(element, 1); // zoom is the default tool for right mouse button
     cornerstoneTools.zoomWheel.activate(element, 2);
     cornerstoneTools.wwwcRegion.activate(element, 1);
-    cornerstoneTools.probe.enable(element); 
-    cornerstoneTools.length.enable(element);
-    cornerstoneTools.ellipticalRoi.enable(element);
-    cornerstoneTools.rectangleRoi.enable(element);
+    cornerstoneTools.probe.deactivate(element); 
+    cornerstoneTools.length.deactivate(element);
+    cornerstoneTools.ellipticalRoi.deactivate(element);
+    cornerstoneTools.rectangleRoi.deactivate(element);
+    cornerstoneTools.angle.deactivate(element);
+    cornerstoneTools.arrowAnnotate.deactivate(element);
     cornerstoneTools.wwwcTouchDrag.activate(element);
     cornerstoneTools.zoomTouchPinch.activate(element);
 
