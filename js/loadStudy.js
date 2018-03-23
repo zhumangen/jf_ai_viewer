@@ -132,8 +132,9 @@ function loadStudy(studyUid) {
             });
 
             // Handle thumbnail click
-            $(seriesElement).on('click touchstart', function() {
-              useItemStack(0, stackIndex);
+            $(seriesElement).on('dblclick touchstart', function() {
+              var inx = $(".imageViewer .viewportWrapper").index($(".imageViewer .viewportWrapper.selected"));                        
+              useItemStack(inx, stackIndex);
             }).data('stack', stackIndex);
 
         });

@@ -98,43 +98,26 @@ function setupButtons() {
 
     $('#invert').on('click touchstart', function() {
         activate('#invert');
-        disableAllTools();
-        // 给选中的设置垂直负相
+        
+        // 给选中的设置负相
         let $ele = $('.viewportWrapper.selected .viewport').get(0);
         var viewport = cornerstone.getViewport($ele);
         if(viewport){ // 如果有图像的时候
             // Toggle invert
-            if (viewport.invert === true) {
-                viewport.invert = false;
-            } else {
-                viewport.invert = true;
-            }
+            viewport.invert = !viewport.invert;
             cornerstone.setViewport($ele, viewport);
         }
-       
-        /*forEachViewport(function(element) {
-            var viewport = cornerstone.getViewport(element);
-            // Toggle invert
-            if (viewport.invert === true) {
-                viewport.invert = false;
-            } else {
-                viewport.invert = true;
-            }
-            cornerstone.setViewport(element, viewport);
-        });*/
     })
 
     // WW/WL
     $('#enableWindowLevelTool').on('click touchstart', function() {
         $(this).find('ul').hide();  
         activate('#enableWindowLevelTool')
-        disableAllTools();        
-        forEachViewport(function(element) {
-            cornerstoneTools.zoom.deactivate(element, 1);
-            cornerstoneTools.wwwcRegion.activate(element, 1);
-            cornerstoneTools.wwwc.activate(element, 5);
-            cornerstoneTools.wwwcTouchDrag.activate(element);
-        });
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        disableTools($ele);
+        cornerstoneTools.wwwcRegion.activate($ele, 1);
+        cornerstoneTools.wwwcRegionTouch.activate($ele);
+   
     });
 
     $('#enableWindowLevelTool .caret').on('click touchstart', function(e) {
@@ -154,135 +137,134 @@ function setupButtons() {
     // Zoom
     $('#zoom').on('click touchstart', function() {
         activate('#zoom');
-        disableAllTools();        
-        forEachViewport(function(element) {
-            cornerstoneTools.zoom.activate(element, 1); // 5 is right mouse button and left mouse button
-            cornerstoneTools.zoomTouchDrag.activate(element);
-           
-        });
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        disableTools($ele);
+        cornerstoneTools.zoom.activate($ele, 1);
+        cornerstoneTools.zoomTouchDrag.activate($ele);
     });
 
     // Pan
     $('#pan').on('click touchstart', function() {
         activate('#pan');
-        disableAllTools();
-        forEachViewport(function(element) {
-            cornerstoneTools.pan.activate(element, 3); // 3 is middle mouse button and left mouse button            
-            cornerstoneTools.zoom.deactivate(element, 1);
-            cornerstoneTools.panTouchDrag.activate(element);
-        });
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        disableTools($ele);
+        cornerstoneTools.pan.activate($ele, 1);           
+        cornerstoneTools.panTouchDrag.activate($ele);
     });
 
     // Length measurement
     $('#enableLength').on('click touchstart', function() {
-        disableAllTools();
-        forEachViewport(function(element) {
-            cornerstoneTools.length.activate(element, 1);
-        });
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        disableTools($ele);
+        cornerstoneTools.length.activate($ele, 1);
     });
 
     // Angle measurement
     $('#angle').on('click touchstart', function() {
-        disableAllTools();
-        forEachViewport(function(element) {
-            cornerstoneTools.angle.activate(element, 1);
-        });
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        disableTools($ele);
+        cornerstoneTools.angle.activate($ele, 1);
     });
 
     // Pixel probe
     $('#probe').on('click touchstart', function() {
-        disableAllTools();
-        forEachViewport(function(element) {
-            cornerstoneTools.probe.activate(element, 1);
-        });
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        disableTools($ele);
+        cornerstoneTools.probe.activate($ele, 1);
     });
 
     // Elliptical ROI
     $('#circleroi').on('click touchstart', function() {
-        disableAllTools();
-        forEachViewport(function(element) {
-            cornerstoneTools.ellipticalRoi.activate(element, 1);
-        });
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        disableTools($ele);
+        cornerstoneTools.ellipticalRoi.activate($ele, 1);
     });
 
     // Rectangle ROI
     $('#rectangleroi').on('click touchstart', function() {
-        disableAllTools();
-        forEachViewport(function (element) {
-            cornerstoneTools.rectangleRoi.activate(element, 1);
-        });
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        disableTools($ele);
+        cornerstoneTools.rectangleRoi.activate($ele, 1);
     });
 
     $("#head").click(function() {
-        forEachViewport(function(element) {
-            var viewport = cornerstone.getViewport(element);
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        let viewport = cornerstone.getViewport($ele);
+        if (viewport) {
             viewport.voi.windowWidth = 1600;
             viewport.voi.windowCenter = 450;
-            cornerstone.setViewport(element, viewport);
-        })
+            cornerstone.setViewport($ele, viewport);
+        }
     });
 
     $('#cspine').click(function() {
-        forEachViewport(function(element) {
-            var viewport = cornerstone.getViewport(element);
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        let viewport = cornerstone.getViewport($ele);
+        if (viewport) {
             viewport.voi.windowWidth = 4000;
             viewport.voi.windowCenter = 700;
-            cornerstone.setViewport(element, viewport);
-        })
+            cornerstone.setViewport($ele, viewport);
+        }
     });
 
     $('#lung').click(function() {
-        forEachViewport(function(element) {
-            var viewport = cornerstone.getViewport(element);
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        let viewport = cornerstone.getViewport($ele);
+        if (viewport) {
             viewport.voi.windowWidth = 1000;
             viewport.voi.windowCenter = -650;
-            cornerstone.setViewport(element, viewport);
-        })
+            cornerstone.setViewport($ele, viewport);
+        }
     });
 
     $('#mediastinum').click(function() {
-        forEachViewport(function(element) {
-            var viewport = cornerstone.getViewport(element);
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        let viewport = cornerstone.getViewport($ele);
+        if (viewport) {
             viewport.voi.windowWidth = 350;
             viewport.voi.windowCenter = 40;
-            cornerstone.setViewport(element, viewport);
-        })
+            cornerstone.setViewport($ele, viewport);
+        }
     });
 
     $('#abdomen').click(function() {
-        forEachViewport(function(element) {
-            var viewport = cornerstone.getViewport(element);
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        let viewport = cornerstone.getViewport($ele);
+        if (viewport) {
             viewport.voi.windowWidth = 1500;
             viewport.voi.windowCenter = -700;
-            cornerstone.setViewport(element, viewport);
-        })
+            cornerstone.setViewport($ele, viewport);
+        }
     });
 
     $('#liver').click(function() {
-        forEachViewport(function(element) {
-            var viewport = cornerstone.getViewport(element);
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        let viewport = cornerstone.getViewport($ele);
+        if (viewport) {
             viewport.voi.windowWidth = 400;
             viewport.voi.windowCenter = 40;
-            cornerstone.setViewport(element, viewport);
-        })
+            cornerstone.setViewport($ele, viewport);
+        }
     });
 
     $('#joint').click(function() {
-        forEachViewport(function(element) {
-            var viewport = cornerstone.getViewport(element);
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        let viewport = cornerstone.getViewport($ele);
+        if (viewport) {
             viewport.voi.windowWidth = 1600;
             viewport.voi.windowCenter = 550;
-            cornerstone.setViewport(element, viewport);
-        })
+            cornerstone.setViewport($ele, viewport);
+        }
     });
 
     $('#vessel').click(function() {
-        forEachViewport(function(element) {
-            var viewport = cornerstone.getViewport(element);
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        let viewport = cornerstone.getViewport($ele);
+        if (viewport) {
             viewport.voi.windowWidth = 500;
             viewport.voi.windowCenter = 40;
-            cornerstone.setViewport(element, viewport);
-        })
+            cornerstone.setViewport($ele, viewport);
+        }
     });
 
     $('#hReverse').click(function(e) { // 水平翻转        
@@ -303,17 +285,8 @@ function setupButtons() {
             }            
             cornerstone.setViewport($ele, viewport);
         }
-        /*forEachViewport(function(element) {
-            let viewport = cornerstone.getViewport(element);            
-            if(viewport.rotation == 90 || viewport.rotation == 270){
-                viewport.vflip = !viewport.vflip;
-            }else{
-                viewport.hflip = !viewport.hflip;
-            }            
-            cornerstone.setViewport(element, viewport);
-        })*/
-        
     });
+    
     $('#vReverse').click(function(e) { // 垂直翻转       
         if(e && e.stopPropagation){
             e.stopPropagation();
@@ -331,17 +304,6 @@ function setupButtons() {
             }                    
             cornerstone.setViewport($ele, viewport);
         }      
-        
-        /*forEachViewport(function(element) {
-            let viewport = cornerstone.getViewport(element);           
-            if(viewport.rotation == 90 || viewport.rotation == 270){
-                viewport.hflip = !viewport.hflip;
-            }else{
-                viewport.vflip = !viewport.vflip;
-            }
-                        
-            cornerstone.setViewport(element, viewport);
-        })*/
     });
 
     $('#reset').click(function(e) { // 重置
@@ -349,9 +311,9 @@ function setupButtons() {
         // 给选中设置重置
         let $ele = $('.viewportWrapper.selected .viewport').get(0);
         cornerstone.reset($ele);
-        /*forEachViewport(function(element) {
-            cornerstone.reset(element);
-        })*/
+        disableTools($ele);
+        cornerstoneTools.wwwcRegion.activate($ele, 1);
+        cornerstoneTools.wwwcRegionTouch.activate($ele);
     });
 
     $('#lrotate').click(function(e) { // 左旋        
@@ -367,13 +329,6 @@ function setupButtons() {
             viewport.rotation -= 90;  
             cornerstone.setViewport($ele, viewport);
         }                  
-       
-        /*forEachViewport(function(element) {
-            console.log('el',element);
-            let viewport = cornerstone.getViewport(element);
-            viewport.rotation -= 90;           
-            cornerstone.setViewport(element, viewport);
-        })*/
     });
 
     $('#rrotate').click(function(e) { // 右旋  
@@ -389,11 +344,6 @@ function setupButtons() {
             viewport.rotation += 90;
             cornerstone.setViewport($ele, viewport);
         }        
-        /*forEachViewport(function(element) {
-            let viewport = cornerstone.getViewport(element);
-            viewport.rotation += 90;
-            cornerstone.setViewport(element, viewport);
-        })*/
     });
 
     $('#ai').click(function() { // AI
