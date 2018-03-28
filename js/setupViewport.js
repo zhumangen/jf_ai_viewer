@@ -19,21 +19,20 @@ function setupViewport(element, stack, image) {
     cornerstoneTools.pan.activate(element, 2); // pan is the default tool for middle mouse button
     //cornerstoneTools.zoom.activate(element, 1); // zoom is the default tool for right mouse button
     cornerstoneTools.zoomWheel.activate(element, 2);
-    cornerstoneTools.wwwcRegion.activate(element, 1);
-    cornerstoneTools.probe.deactivate(element); 
-    cornerstoneTools.length.deactivate(element);
-    cornerstoneTools.ellipticalRoi.deactivate(element);
-    cornerstoneTools.rectangleRoi.deactivate(element);
-    cornerstoneTools.angle.deactivate(element);
-    cornerstoneTools.arrowAnnotate.deactivate(element);
+    cornerstoneTools.probe.deactivate(element, 1); 
+    cornerstoneTools.length.deactivate(element, 1);
+    cornerstoneTools.ellipticalRoi.deactivate(element, 1);
+    cornerstoneTools.rectangleRoi.deactivate(element, 1);
+    cornerstoneTools.angle.deactivate(element, 1);
+    cornerstoneTools.arrowAnnotate.deactivate(element, 1);
     cornerstoneTools.wwwcTouchDrag.activate(element);
     cornerstoneTools.zoomTouchPinch.activate(element);
+    cornerstoneTools.wwwcRegion.activate(element, 1);
 
     // Stack tools
     cornerstoneTools.addStackStateManager(element, ['playClip']);
     cornerstoneTools.addToolState(element, 'stack', stack);
     cornerstoneTools.stackScrollWheel.activate(element);
     cornerstoneTools.stackPrefetch.enable(element);
-
 
 }

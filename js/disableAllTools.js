@@ -16,6 +16,7 @@ function disableTools(element) {
     cornerstoneTools.stackScrollTouchDrag.deactivate(element);
     cornerstoneTools.arrowAnnotate.deactivate(element, 1);
     cornerstoneTools.arrowAnnotateTouch.deactivate(element)
+    cornerstoneTools.pan.activate(element, 2);
 }
 
 // Disable all tools

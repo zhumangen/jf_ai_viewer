@@ -100,7 +100,7 @@ function loadImages(imageArrStr) {
                 // Handle thumbnail click
                 {
                     var stackIndex = seriesIndex;
-                    $(seriesElement).on('dblclick touchstart', function() {
+                    $(seriesElement).on('click touchstart', function() {
                         var inx = $(".imageViewer .viewportWrapper").index($(".imageViewer .viewportWrapper.selected"));                        
                         useItemStack(inx, stackIndex);
                     }).data('stack', stackIndex);
