@@ -445,18 +445,16 @@ function setupButtons() {
     cornerstoneTools.arrowAnnotate.setConfiguration(configImg);
 
     $('#markerText').click(function() { // 文本标注
-        disableAllTools();
-        forEachViewport(function(element) {
-            cornerstoneTools.arrowAnnotate.activate(element, 1);
-            cornerstoneTools.arrowAnnotateTouch.activate(element);
-        });
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        disableTools($ele);
+        cornerstoneTools.arrowAnnotate.activate($ele, 1);
+        cornerstoneTools.arrowAnnotateTouch.activate($ele);
     });
 
     $('#clearToolData').click(function() { // 清除所有标记
-        forEachViewport(function(element) {
-            var toolStateManager = cornerstoneTools.globalImageIdSpecificToolStateManager;
-            toolStateManager.clear(element);
-            cornerstone.updateImage(element);
-        });
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        var toolStateManager = cornerstoneTools.globalImageIdSpecificToolStateManager;
+        toolStateManager.clear($ele);
+        cornerstone.updateImage($ele);
     });
 };
