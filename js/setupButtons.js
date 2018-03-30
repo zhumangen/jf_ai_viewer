@@ -12,17 +12,13 @@ function setupButtons() {
 
     $('#saveImage').on('click touchstart', function() {
         activate('#saveImage');
-        if (imageViewer.viewports.length > 0)
-            cornerstoneTools.saveAs(imageViewer.viewports[0], randomString());
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        cornerstoneTools.saveAs($ele, randomString());
         return false;
     })
 
     $('#marker').on('click touchstart', function() {
         activate('#marker');
-        forEachViewport(function(element) {
-            cornerstoneTools.zoom.deactivate(element, 1);
-        });
-        
     })
 
     $('#toolbar').find('div').click(function() {
