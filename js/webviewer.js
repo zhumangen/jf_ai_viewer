@@ -39,8 +39,8 @@ cornerstone.events.addEventListener('cornerstoneimageloadprogress', function(eve
 // For Develop
 var wadoUri = 'http://v2.jfhealthcare.cn/v1/picl/aets/piclarc/wado';
 var wadoRs = '/pacs/rs';
-var baseAiUrl = 'http://47.100.165.4:8915/diagnose?jpgurl=';
-
+//var baseAiUrl = 'http://47.100.165.4:8915/diagnose?jpgurl=';
+var baseAiUrl = 'http://180.167.46.105:8915/predict?jpgurl=';
 
 // For Production
 /**

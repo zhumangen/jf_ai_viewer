@@ -229,3 +229,39 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
    float:left;
    height:100%;
  } 
+
+ #studyContainerWrapper{
+  width: 80%;
+ }
+
+ #pulmonary img{
+  margin: 0 auto;
+  margin-bottom: 20px;
+ }
+
+ #pulmonary img:last-child{
+  margin-bottom: 0;
+ }
+
+::-webkit-scrollbar
+{
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track-piece
+{
+    background-color: #CCCCCC;
+    -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:vertical
+{
+    height: 5px;
+    background-color: #999999;
+    -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:horizontal
+{
+    width: 5px;
+    background-color: #CCCCCC;
+    -webkit-border-radius: 6px;
+}

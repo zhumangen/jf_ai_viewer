@@ -1,6 +1,9 @@
 function aiCallback(stackIdx, aiResult) {
-	console.log(aiResult);
-
+	console.log(aiResult);	
+	// 追加图片
+	let imgSrc = aiResult.url;
+	$("#pulmonary").append("<img src="+imgSrc+" alt='暂无' style=' height: 300px; display: block; margin: 0 auto;'>");	
+	//$("#pulmonaryImg").attr('src',imgSrc);
 	if (aiResult["reportStatus"] === 5000) {
 		// let seriesList = $(studyViewerTemplate).find('.thumbnails')[0];
 		// let seriesElement = $(seriesList).find('.list-group-item')[stackIdx];
@@ -71,7 +74,7 @@ function aiRequest(metaData, stackIdx, callback) {
 		dataType: "json",
 		type: "GET",
 		success: function(aiResult) {
-			callback(stackIdx, aiResult);
+			callback(stackIdx, aiResult);			
 			AIFinshed(true);
 		},
 		error: function(aiResult){

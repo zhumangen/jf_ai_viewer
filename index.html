@@ -41,7 +41,7 @@
     <span style="font-size:20px;">Loading</span>
   </div>
 
-  <div id = "main" class="main" style="height: 100%;">
+  <div id = "main" class="main" style="height: 100%; position: relative;">
     <!-- <div class="head">
       <img src="img/favicon.ico" class="logo" />
       <span class="header_text">DICOM Viewer H5 阅片工作站</span>
@@ -54,6 +54,13 @@
     <!-- StudyContainer -->
     <div id="studyContainerWrapper" class="studyContainerWrapper">
     </div>
+    <div id="pulmonaryWrapper" style='position: absolute;  right: 0; top:0;width: 20%; height: 100vh;'>
+      <div id="pulmonary" style="position: absolute; right: 0; top: 72px; width: 100%; height: calc(100vh - 72px); overflow-y: auto;">
+        <!-- <img id='pulmonaryImg' src="http://180.167.46.105/img/normal.jpg" alt="" style='width: 100%'>
+        <img id='pulmonaryImg' src="http://180.167.46.105/img/normal.jpg" alt="" style='width: 100%'> -->
+      </div>
+    </div>
+    
   </div>
 
 
