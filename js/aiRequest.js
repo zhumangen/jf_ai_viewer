@@ -3,10 +3,22 @@ function initEcharts(data) {
 	console.log(data);
 	var option = {
 		grid: {
-			left: '15%'
+			left: '15%',
+			top: '10%',
+			bottom: '20%'
+
 		},	
 		tooltip: {
-        trigger: 'axis'
+				show: true,
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'line' ,       // 默认为直线，可选为：'line' | 'shadow'
+            show: false
+        },
+        formatter: function(params){
+        	console.log(params);
+        	return params[0].name + ": " + params[0].data.toFixed(2) + "%"
+        }
     },	
 		xAxis:[{
             type:'category',//默认为类目
@@ -44,6 +56,9 @@ function initEcharts(data) {
 		        		type: 'dashed'
 		        	}
 		        },
+		        axisPointer: {
+		        	label: "aaaa"
+		        },
         		min: 0,
         		max: 100 
         }
@@ -75,22 +90,28 @@ function setChecked(aiResult) {
 	let $ele1 = $(".pulmonaryInfo .partTwo input");
 	let $ele2 = $(".pulmonaryInfo .partThree input");
 	
-	for(let i = 0 ; i < $ele.length; i++){		
+	for(let i = 0 ; i < $ele.length; i++){
+		console.log('id', $ele.eq(i).val(), aiResult.normality.id);
 		if($ele.eq(i).val() == aiResult.normality.id){			
 			$ele.eq(i).attr("checked","checked");
+			$ele.eq(i).parent().addClass("radio-success").siblings().removeClass("radio-success");
 		}
 	}
 
 	for(let j = 0 ; j < $ele1.length; j++){
+		console.log('id', $ele.eq(j).val(), aiResult.tb_consistency.id);
 		if($ele1.eq(j).val() == aiResult.tb_consistency.id){			
-			$ele1.eq(j).attr("checked","checked");
+			$ele1.eq(j).attr("checked","checked");	
+			$ele1.eq(j).parent().addClass("radio-success").siblings().removeClass("radio-success");		
 		}
 	}
 
 	for(let k = 0 ; k < $ele1.length; k++){
+		console.log('id', $ele.eq(k).val(), aiResult.advice.id);
 		if($ele2.eq(k).val() == aiResult.advice.id){
 			console.log('k',k);
 			$ele2.eq(k).attr("checked","checked");
+			$ele2.eq(k).parent().addClass("radio-success").siblings().removeClass("radio-success");
 		}
 	}
 }

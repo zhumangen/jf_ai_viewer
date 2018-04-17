@@ -21,6 +21,9 @@
   <!-- Bootstrap CSS -->
   <link href="lib/bootstrap.min.css" rel="stylesheet">
 
+  <link href="lib/font-awesome.css" rel="stylesheet">
+  <link href="lib/build.css" rel="stylesheet">
+
   <!-- UI CSS -->
   <link href="lib/jquery-ui.min.css" rel="stylesheet">  
 
@@ -59,28 +62,44 @@
         <span style="font-size:20px;">Loading</span>
     </div>
     <div id="pulmonaryWrapper">      
-      <div class="tub">
+      <div class="tub">        
         <div id="pulmonary">
-        </div>
+        </div>               
         <div class="pulmonaryInfo">
           <div class="partOne">
             <h4>是否正常：</h4>
-            <label class="radio-inline">
-              <input type="radio" name="inlineRadioOptions"  value="0" > 正常
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="inlineRadioOptions"  value="1"> 基本正常
-            </label><br> 
-            <label class="radio-inline">
-              <input type="radio" name="inlineRadioOptions"  value="2" > 无法判断
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="inlineRadioOptions"  value="3"> 异常
-            </label>         
+            <!-- <label class="radio-inline">
+                     <input type="radio" name="inlineRadioOptions"  value="0" > 正常
+                   </label>
+                   <label class="radio-inline">
+                     <input type="radio" name="inlineRadioOptions"  value="1"> 基本正常
+                   </label><br> 
+                   <label class="radio-inline">
+                     <input type="radio" name="inlineRadioOptions"  value="2" > 无法判断
+                   </label>
+                   <label class="radio-inline">
+                     <input type="radio" name="inlineRadioOptions"  value="3"> 异常
+                   </label>   -->  
+                <div class="radio radio-inline">
+                    <input type="radio" name="inlineRadioOptions"  value="0" id="normal">
+                    <label for="normal">正常</label>
+                </div> 
+                <div class="radio radio-inline">
+                    <input type="radio" name="inlineRadioOptions"  value="1" id="basenormal">
+                    <label for="basenormal">基本正常</label>
+                </div><br>
+                <div class="radio radio-inline">
+                    <input type="radio" name="inlineRadioOptions"  value="2" id='nojudge'>
+                    <label for="nojudge">无法判断</label>
+                </div>  
+                <div class="radio radio-inline">
+                    <input type="radio" name="inlineRadioOptions"  value="3" id="abnormal">
+                    <label for="abnormal">异常</label>
+                </div>  
           </div>
           <div class="partTwo">
             <h4>是否符合肺TB胸片表现：</h4>
-            <label class="radio-inline">
+            <!-- <label class="radio-inline">
               <input type="radio" name="according"  value="3"> 高度符合
             </label>
             <label class="radio-inline">
@@ -91,19 +110,47 @@
             </label>
              <label class="radio-inline">
               <input type="radio" name="according"  value="0"> 不符合
-            </label>
+            </label> -->
+            <div class="radio radio-inline">
+                <input type="radio" name="according"  value="3" id="high">
+                <label for="high">高度符合</label>
+            </div> 
+            <div class="radio radio-inline">
+                <input type="radio" name="according"  value="2" id="middle">
+                <label for="middle">中度符合</label>
+            </div><br>
+            <div class="radio radio-inline">
+                <input type="radio" name="according"  value="1" id="low">
+                <label for="low">轻度符合</label>
+            </div> 
+            <div class="radio radio-inline">
+                <input type="radio" name="according"  value="3" id="no">
+                <label for="no">不符合</label>
+            </div> 
           </div>
           <div class="partThree">
             <h4>建议：</h4>
-            <label class="radio-inline">
-              <input type="radio" name="suggestion"  value="0"> 无
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="suggestion"  value="1">进一步做肺结核病确诊
-            </label><br>
-            <label class="radio-inline" style='width: 100%;'>
-              <input type="radio" name="suggestion" value="2">其他检查
-            </label>          
+            <!-- <label class="radio-inline">
+                        <input type="radio" name="suggestion"  value="0"> 无
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="suggestion"  value="1">进一步做肺结核病确诊
+                      </label><br>
+                      <label class="radio-inline" style='width: 100%;'>
+                        <input type="radio" name="suggestion" value="2">其他检查
+                      </label> -->   
+            <div class="radio radio-inline">
+                  <input type="radio" name="suggestion"  value="0" id="none">
+                  <label for="none">无</label>
+            </div><br>
+            <div class="radio radio-inline">
+                  <input type="radio" name="suggestion"  value="1" id="more">
+                  <label for="more">进一步做肺结核病确诊</label>
+            </div><br> 
+            <div class="radio radio-inline">
+                  <input type="radio" name="suggestion"  value="2" id="other">
+                  <label for="other">其他检查</label>
+            </div>     
           </div>
         </div>
       </div>
@@ -147,7 +194,7 @@
 
 <script src="lib/dialogPolyfill.js"></script>
 
-<script src="lib/echarts.simple.min.js"></script>
+<script src="lib/echarts.common.min.js"></script>
 
 
 <!-- include cornerstoneDemo.js -->
@@ -172,6 +219,7 @@
 <script src="js/scroll/jquery.mousewheel.min.js"></script>
 <script src="js/scroll/jquery.mCustomScrollbar.js"></script>
 
+<script src="js/radioClick.js"></script>
 <script>
   $("#loadingUI").hide();
 </script>
