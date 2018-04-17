@@ -4,7 +4,10 @@ function initEcharts(data) {
 	var option = {
 		grid: {
 			left: '15%'
-		},		
+		},	
+		tooltip: {
+        trigger: 'axis'
+    },	
 		xAxis:[{
             type:'category',//默认为类目
             data : ["异常度","肺结核疑似度"],
@@ -58,14 +61,13 @@ function initEcharts(data) {
             },
             },
             "data": data,
-            "barWidth": 50,
-            tooltip: {
-            	show: true
-            }
+            "barWidth": 50            
         }
     ]
 	};
+
 	myChart.setOption(option);	
+	resize(myChart);
 }
 
 function setChecked(aiResult) {
@@ -74,30 +76,35 @@ function setChecked(aiResult) {
 	let $ele2 = $(".pulmonaryInfo .partThree input");
 	
 	for(let i = 0 ; i < $ele.length; i++){		
-		if($ele.eq(i).val() == aiResult.normality.cn){			
+		if($ele.eq(i).val() == aiResult.normality.id){			
 			$ele.eq(i).attr("checked","checked");
 		}
 	}
 
 	for(let j = 0 ; j < $ele1.length; j++){
-		if($ele1.eq(j).val() == aiResult.tb_consistency.cn){			
+		if($ele1.eq(j).val() == aiResult.tb_consistency.id){			
 			$ele1.eq(j).attr("checked","checked");
 		}
 	}
 
 	for(let k = 0 ; k < $ele1.length; k++){
-		if($ele2.eq(k).val() == aiResult.advice.cn){
+		if($ele2.eq(k).val() == aiResult.advice.id){
 			console.log('k',k);
 			$ele2.eq(k).attr("checked","checked");
-		}else{
-			$ele2.eq(1).attr("checked","checked");
 		}
 	}
 }
 
+function resize(echart) {
+	window.onresize = function() {
+		echart.resize();
+	}
+}
+
 function aiCallback(stackIdx, aiResult) {
-	console.log(aiResult);	
-	$("#pulmonaryWrapper").show();
+	console.log(aiResult);
+	$("#loadingUI.waiting").hide();	
+	$("#pulmonaryWrapper .tub").show();
 	let scoreData = [];
 	scoreData.push(aiResult.abnormal_score * 100);
 	scoreData.push(aiResult.tb_score * 100);
@@ -108,6 +115,9 @@ function aiCallback(stackIdx, aiResult) {
 	initEcharts(scoreData);
 
 	setChecked(aiResult);
+	
+	
+
 
 	if (aiResult["reportStatus"] === 5000) {
 		// let seriesList = $(studyViewerTemplate).find('.thumbnails')[0];
