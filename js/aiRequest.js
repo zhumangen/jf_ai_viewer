@@ -72,26 +72,25 @@ function setChecked(aiResult) {
 	let $ele = $(".pulmonaryInfo .partOne input");
 	let $ele1 = $(".pulmonaryInfo .partTwo input");
 	let $ele2 = $(".pulmonaryInfo .partThree input");
-	console.log($ele.length);
-	for(let i = 0 ; i < $ele.length; i++){
-		console.log('val', $ele.eq(i).val());
-		if($ele.eq(i).val() == aiResult.normality.cn){
-			console.log(i);
+	
+	for(let i = 0 ; i < $ele.length; i++){		
+		if($ele.eq(i).val() == aiResult.normality.cn){			
 			$ele.eq(i).attr("checked","checked");
 		}
 	}
 
 	for(let j = 0 ; j < $ele1.length; j++){
-		if($ele1.eq(j).val() == aiResult.tb_consistency.cn){
-			console.log(j);
+		if($ele1.eq(j).val() == aiResult.tb_consistency.cn){			
 			$ele1.eq(j).attr("checked","checked");
 		}
 	}
 
 	for(let k = 0 ; k < $ele1.length; k++){
 		if($ele2.eq(k).val() == aiResult.advice.cn){
-			console.log(k);
+			console.log('k',k);
 			$ele2.eq(k).attr("checked","checked");
+		}else{
+			$ele2.eq(1).attr("checked","checked");
 		}
 	}
 }
