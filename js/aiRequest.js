@@ -91,7 +91,7 @@ function setChecked(aiResult) {
 	let $ele2 = $(".pulmonaryInfo .partThree input");
 	
 	for(let i = 0 ; i < $ele.length; i++){
-		console.log('id', $ele.eq(i).val(), aiResult.normality.id);
+		console.log('是否正常id', $ele.eq(i).val(), aiResult.normality.id);
 		if($ele.eq(i).val() == aiResult.normality.id){			
 			$ele.eq(i).attr("checked","checked");
 			$ele.eq(i).parent().addClass("radio-success").siblings().removeClass("radio-success");
@@ -99,17 +99,16 @@ function setChecked(aiResult) {
 	}
 
 	for(let j = 0 ; j < $ele1.length; j++){
-		console.log('id', $ele.eq(j).val(), aiResult.tb_consistency.id);
+		console.log('是否符合肺TB胸片表现id', $ele1.eq(j).val(), aiResult.tb_consistency.id);
 		if($ele1.eq(j).val() == aiResult.tb_consistency.id){			
 			$ele1.eq(j).attr("checked","checked");	
 			$ele1.eq(j).parent().addClass("radio-success").siblings().removeClass("radio-success");		
 		}
 	}
 
-	for(let k = 0 ; k < $ele1.length; k++){
-		console.log('id', $ele.eq(k).val(), aiResult.advice.id);
-		if($ele2.eq(k).val() == aiResult.advice.id){
-			console.log('k',k);
+	for(let k = 0 ; k < $ele2.length; k++){
+		console.log('建议id', $ele2.eq(k).val(), aiResult.advice.id);
+		if($ele2.eq(k).val() == aiResult.advice.id){			
 			$ele2.eq(k).attr("checked","checked");
 			$ele2.eq(k).parent().addClass("radio-success").siblings().removeClass("radio-success");
 		}
