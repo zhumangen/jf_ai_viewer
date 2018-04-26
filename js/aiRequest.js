@@ -233,8 +233,8 @@ function aiCallback(stackIdx, aiResult) {
 	//$("#pulmonaryImg").attr('src',imgSrc);*/
 
 	console.log('scoreData', scoreData);
-	var colorDataList = ["#fbb1bf","#ff8ba1","#fd6683","#ff385e","##ff0000"];
-	var colorDataList1 = ["#f98a9f","#fa6380","#b395e","#d2851","##ff0e3c"];
+	var colorDataList = ["#fbb1bf","#ff8ba1","#fd6683","#ff385e","#ff0000"];
+	var colorDataList1 = ["#f98a9f","#fa6380","#fb395e","#fd2851","#ff0e3c"];
 	var colorData,colorData1,color = [];
 
 	if(scoreData[0] > 80){
