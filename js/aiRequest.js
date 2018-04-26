@@ -1,4 +1,4 @@
-function initEcharts(data) {
+function initEcharts(data,colorData) {
 	var myChart = echarts.init(document.getElementById("pulmonary"));
 	console.log(data);
 	var option = {
@@ -78,7 +78,8 @@ function initEcharts(data) {
             "itemStyle": {
             	normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
                 color: function(params) {
-                    var colorList = ['#a2a2fd', '#9755db'];
+                    /*var colorList = [colorData, colorData1];*/
+                    var colorList = colorData;
                     return colorList[params.dataIndex];
                 }
             },
@@ -93,8 +94,95 @@ function initEcharts(data) {
 	resize(myChart);
 }
 
+	/*var colorDataList = ["#fbb1bf","#ff8ba1","#fd6683","#ff385e","#ff0000"];
+	var colorDataList1 = ["#f98a9f","#fa6380","#fb395e","#fd2851","#ff0e3c"];	
+	var scoreData = [50,90];
+	var colorData,colorData1,color = [];
+
+	// 单颜色
+	if(scoreData[0] > 80){
+		colorData = colorDataList[4];
+	}else if(scoreData[0] > 60){
+		colorData = colorDataList[3];
+	}else if(scoreData[0] > 40){
+		colorData = colorDataList[2];
+	}else if(scoreData[0] > 20){
+		colorData = colorDataList[1];
+	}else{
+		colorData = colorDataList[0];
+	}
+
+	if(scoreData[1] > 80){
+		colorData1 = colorDataList1[4];
+	}else if(scoreData[1] > 60){
+		colorData1 = colorDataList1[3];
+	}else if(scoreData[1] > 40){
+		colorData1 = colorDataList1[2];
+	}else if(scoreData[1] > 20){
+		colorData1 = colorDataList1[1];
+	}else{
+		colorData1 = colorDataList1[0];
+	}
+
+	color.push(colorData);
+	color.push(colorData1);*/
+
+	// 渐变色
+	/*if(scoreData > 80){
+		colorData = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: colorDataList[4]
+                    }, {
+                        offset: 0.25,
+                        color: colorDataList[3]
+                    }, {
+                        offset: 0.5,
+                        color: colorDataList[2]
+                    }, {
+                        offset: 0.75,
+                        color: colorDataList[1]
+                    }, {
+                        offset: 1,
+                        color: colorDataList[0]
+                    }]);
+	}else if(scoreData > 60){
+		colorData = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: colorDataList[3]
+                    }, {
+                        offset: 0.33,
+                        color: colorDataList[2]
+                    }, {
+                        offset: 0.66,
+                        color: colorDataList[2]
+                    }, {
+                        offset: 1,
+                        color: colorDataList[1]
+                    }]);
+	}else if(scoreData > 40){
+		colorData = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: colorDataList[2]
+                    }, {
+                        offset: 0.5,
+                        color: colorDataList[1]
+                    }, {
+                        offset: 1,
+                        color: colorDataList[0]
+                    }]);
+	}else if(scoreData > 20){
+		colorData = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: colorDataList[1]
+                    }, {
+                        offset: 1,
+                        color: colorDataList[0]
+                    }]);
+	}else{
+		colorData = colorDataList[0];
+	}*/
 /*$("#loadingUI.waiting").hide();	
-initEcharts([79,60]);*/
+initEcharts(scoreData,color);*/
 
 function setChecked(aiResult) {
 	let $ele = $(".pulmonaryInfo .partOne input");
@@ -143,7 +231,40 @@ function aiCallback(stackIdx, aiResult) {
 	let imgSrc = aiResult.url;
 	$("#pulmonary").append("<img src="+imgSrc+" alt='暂无' style=' height: 300px; display: block;'>");	
 	//$("#pulmonaryImg").attr('src',imgSrc);*/
-	initEcharts(scoreData);
+
+	console.log('scoreData', scoreData);
+	var colorDataList = ["#fbb1bf","#ff8ba1","#fd6683","#ff385e","##ff0000"];
+	var colorDataList1 = ["#f98a9f","#fa6380","#b395e","#d2851","##ff0e3c"];
+	var colorData,colorData1,color = [];
+
+	if(scoreData[0] > 80){
+		colorData = colorDataList[4];
+	}else if(scoreData[0] > 60){
+		colorData = colorDataList[3];
+	}else if(scoreData[0] > 40){
+		colorData = colorDataList[2];
+	}else if(scoreData[0] > 20){
+		colorData = colorDataList[1];
+	}else{
+		colorData = colorDataList[0];
+	}
+
+	if(scoreData[1] > 80){
+		colorData1 = colorDataList1[4];
+	}else if(scoreData[1] > 60){
+		colorData1 = colorDataList1[3];
+	}else if(scoreData[1] > 40){
+		colorData1 = colorDataList1[2];
+	}else if(scoreData[1] > 20){
+		colorData1 = colorDataList1[1];
+	}else{
+		colorData1 = colorDataList[0];
+	}
+
+	color.push(colorData);
+	color.push(colorData1);
+
+	initEcharts(scoreData,color);
 
 	setChecked(aiResult);
 	
