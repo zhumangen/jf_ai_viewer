@@ -96,7 +96,7 @@ function initEcharts(data,colorData) {
 
 	/*var colorDataList = ["#fbb1bf","#ff8ba1","#fd6683","#ff385e","#ff0000"];
 	var colorDataList1 = ["#f98a9f","#fa6380","#fb395e","#fd2851","#ff0e3c"];	
-	var scoreData = [50,90];
+	var scoreData = [10,10];
 	var colorData,colorData1,color = [];
 
 	// 单颜色
@@ -234,7 +234,7 @@ function aiCallback(stackIdx, aiResult) {
 
 	console.log('scoreData', scoreData);
 	var colorDataList = ["#fbb1bf","#ff8ba1","#fd6683","#ff385e","#ff0000"];
-	var colorDataList1 = ["#f98a9f","#fa6380","#fb395e","#fd2851","#ff0e3c"];
+	var colorDataList1 = ["#f98a9f","#fa6380","#fb395e","#f32135","#d91729"];
 	var colorData,colorData1,color = [];
 
 	if(scoreData[0] > 80){
@@ -258,7 +258,7 @@ function aiCallback(stackIdx, aiResult) {
 	}else if(scoreData[1] > 20){
 		colorData1 = colorDataList1[1];
 	}else{
-		colorData1 = colorDataList[0];
+		colorData1 = colorDataList1[0];
 	}
 
 	color.push(colorData);
