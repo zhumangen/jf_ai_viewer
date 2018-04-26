@@ -64,7 +64,7 @@ body {
 }
 
 .viewportWrapper.selected {
-  border-color: #f00;
+  border-color: #0c98ff;
 }
 
 .renderTime {}
@@ -242,8 +242,13 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
   height: calc(100vh -72px);  
 }
 
+#pulmonaryWrapper .block{
+  height: calc(4vh - 24px);
+  width: 100%;
+}
+
 #pulmonaryWrapper .tub{
-  display: none;
+   display: none; 
 }
 
 #pulmonaryWrapper #pulmonary{
@@ -252,8 +257,8 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
   top: 72px;  */
   width: 100%; 
   /* height: 328px;  */
-  height: calc(50vh - 36px);    
-  overflow-y: auto;
+  height: calc(42vh - 24px);    
+  /* overflow-y: auto; */
 }
 
  /* #pulmonary img:last-child{
@@ -263,47 +268,77 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
   /* position: absolute; */
   width: 100%;
   /* height: calc(100vh - 400px); */
-  height: calc(50vh - 36px);
+  height: calc(54vh - 24px);
   padding: 10px;
-  padding-top: 20px;  
+  /* padding-top: 20px; */  
   overflow-y: auto;
   font-size: 16px;
   /* top: 400px; */
+
+  font-family: "Microsoft YaHei";
 }
 
 .pulmonaryInfo h4{
-  color: lightblue;
-  font-size: 18px;
-  text-indent: 20px;
+  color: #428ad3;
+  font-size: 20px; 
+  font-weight: normal; 
+  font-family: "Microsoft YaHei";
+}
+
+.pulmonaryInfo .line{
+  height: 1px;
+  background-color: #2f5e8e;
 }
 
 .pulmonaryInfo > div{
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
+  padding: 0 10px;
+  border: 2px solid #2d5a87;
+  border-radius: 4px;
+  margin-top: 20px;
+  background-color: #0a1522;
 }
 
-.pulmonaryInfo > div:last-child{
+.pulmonaryInfo > div:first-child{
+  margin-top: 0;
+}
+
+/* .pulmonaryInfo > div:last-child{
   margin-bottom: 0;
+} */
+
+.pulmonaryInfo .radio{
+  line-height: 45px;
 }
 
 .pulmonaryInfo label{
-  color: #fff;
+  font-size: 18px;
+  color: #b6daff;
+  padding-left: 10px;
 }
 
 
 .partOne .radio-inline,
-.partTwo .radio-inline
+.partTwo .radio-inline,
+.partThree .radio-inline
 {
   min-width: 110px;  
 }
 
 .radio label::before{
-  top: 2px;
+  top: 13px;
+  width: 20px;
+  height: 20px;
+  margin-left: -20px;
+  border: none;
+  background: url(../img/WEIXUANZHONG.png) center no-repeat ;
 }
 
 .radio label::after{
-  top: 5px;
+  width: 0;
+}
+
+.radio-success input[type="radio"]:checked + label::before{
+  background: url(../img/check1.png) center no-repeat ;
 }
 
 ::-webkit-scrollbar

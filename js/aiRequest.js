@@ -3,9 +3,9 @@ function initEcharts(data) {
 	console.log(data);
 	var option = {
 		grid: {
-			left: '15%',
-			top: '10%',
-			bottom: '20%'
+			left: '16%',
+			top: '5%'	,
+			right: '5%'		
 
 		},	
 		tooltip: {
@@ -26,12 +26,14 @@ function initEcharts(data) {
             axisLine:{
             		show: false,
                 lineStyle:{
-                    color:'#fff',
-                    type: 'dashed'
+                    color:'#3870a9',
+                    type: 'dotted'
                 }
             },
             axisLabel: {
-            	fontSize: 14
+            	fontSize: 16,
+            	fontWeight: 'bold',
+            	fontFamily: 'Microsoft YaHei'
             },
             axisTick:{  
         　　　　show: false  
@@ -42,18 +44,22 @@ function initEcharts(data) {
             type : 'value',//默认为值类型
             axisLine:{
                 lineStyle:{
-                    color:'#fff'
+                    color:'#3971a9'
                 }
             },
             axisTick:{  
         　　　　show:false  
         　　},
 		        axisLabel: {
-		        	formatter: '{value}%'
+		        	formatter: '{value}%',
+		        	fontSize: 16,
+		        	color: '#52a5f7',
+            	fontFamily: 'Arial'
 		        },
 		        splitLine: {
 		        	lineStyle: {
-		        		type: 'dashed'
+		        		type: 'dotted',
+		        		color: '#3870a9'
 		        	}
 		        },
 		        axisPointer: {
@@ -70,13 +76,13 @@ function initEcharts(data) {
             "itemStyle": {
             	normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
                 color: function(params) {
-                    var colorList = ['rgb(250,0,0)', 'rgb(255,255,0)'];
+                    var colorList = ['#a2a2fd', '#9755db'];
                     return colorList[params.dataIndex];
                 }
             },
             },
             "data": data,
-            "barWidth": 50            
+            "barWidth": 56           
         }
     ]
 	};
@@ -84,6 +90,9 @@ function initEcharts(data) {
 	myChart.setOption(option);	
 	resize(myChart);
 }
+
+/*$("#loadingUI.waiting").hide();	
+initEcharts([79,60]);*/
 
 function setChecked(aiResult) {
 	let $ele = $(".pulmonaryInfo .partOne input");

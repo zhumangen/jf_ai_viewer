@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Dicom Viewer H5 阅片工作站</title>
+  <!-- <title>Dicom Viewer H5 阅片工作站</title> -->
+  <title>肺结核筛查AI辅助诊断工作站</title>
   <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
   <!-- Support for mobile touch devices -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -64,10 +65,12 @@
     <div id="pulmonaryWrapper">      
       <div class="tub">        
         <div id="pulmonary">
-        </div>               
+        </div> 
+        <div class="block"></div>              
         <div class="pulmonaryInfo">
           <div class="partOne">
-            <h4>是否正常：</h4>
+            <h4>是否正常</h4>
+            <div class="line"></div>
             <!-- <label class="radio-inline">
                      <input type="radio" name="inlineRadioOptions"  value="0" > 正常
                    </label>
@@ -80,8 +83,8 @@
                    <label class="radio-inline">
                      <input type="radio" name="inlineRadioOptions"  value="3"> 异常
                    </label>   -->  
-                <div class="radio radio-inline">
-                    <input type="radio" name="inlineRadioOptions"  value="0" id="normal">
+                <div class="radio radio-inline radio-success">
+                    <input type="radio" name="inlineRadioOptions" checked value="0" id="normal">
                     <label for="normal">正常</label>
                 </div> 
                 <div class="radio radio-inline">
@@ -98,7 +101,8 @@
                 </div>  
           </div>
           <div class="partTwo">
-            <h4>是否符合肺TB胸片表现：</h4>
+            <h4>是否符合肺TB胸片表现</h4>
+            <div class="line"></div>
             <!-- <label class="radio-inline">
               <input type="radio" name="according"  value="3"> 高度符合
             </label>
@@ -129,7 +133,8 @@
             </div> 
           </div>
           <div class="partThree">
-            <h4>建议：</h4>
+            <h4>建议</h4>
+            <div class="line"></div>
             <!-- <label class="radio-inline">
                         <input type="radio" name="suggestion"  value="0"> 无
                       </label>
@@ -142,15 +147,15 @@
             <div class="radio radio-inline">
                   <input type="radio" name="suggestion"  value="0" id="none">
                   <label for="none">无</label>
+            </div>            
+            <div class="radio radio-inline">
+                  <input type="radio" name="suggestion"  value="2" id="other">
+                  <label for="other">其他检查</label>
             </div><br>
             <div class="radio radio-inline">
                   <input type="radio" name="suggestion"  value="1" id="more">
                   <label for="more">进一步做肺结核病确诊</label>
-            </div><br> 
-            <div class="radio radio-inline">
-                  <input type="radio" name="suggestion"  value="2" id="other">
-                  <label for="other">其他检查</label>
-            </div>     
+            </div>   
           </div>
         </div>
       </div>
