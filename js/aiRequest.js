@@ -5,6 +5,7 @@ function initEcharts(data) {
 		grid: {
 			left: '16%',
 			top: '5%'	,
+			bottom: '10%',
 			right: '5%'		
 
 		},	
@@ -33,6 +34,7 @@ function initEcharts(data) {
             axisLabel: {
             	fontSize: 16,
             	fontWeight: 'bold',
+            	color: '#52a5f7',
             	fontFamily: 'Microsoft YaHei'
             },
             axisTick:{  
