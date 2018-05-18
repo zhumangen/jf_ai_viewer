@@ -302,6 +302,16 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
   background-color: #0a1522;
 }
 
+.pulmonaryInfo #saveBar{
+  text-align: right;
+  border: none;
+  background-color: transparent;
+} 
+
+.pulmonaryInfo #saveBar #save{
+  font-size: 18px;
+}
+
 .pulmonaryInfo > div:first-child{
   margin-top: 0;
 }
@@ -326,6 +336,12 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 .partThree .radio-inline
 {
   min-width: 110px;  
+  width: calc(50% - 20px);
+  margin-left: 0;
+}
+
+.partThree .radio-inline:last-child{
+  width: 100%;
 }
 
 .radio label::before{
@@ -341,7 +357,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
   width: 0;
 }
 
-.radio-success input[type="radio"]:checked + label::before{
+.radio-success input[type="radio"] + label::before{
   background: url(../img/check1.png) center no-repeat ;
 }
 
@@ -366,4 +382,21 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
     width: 5px;
     background-color: #CCCCCC;
     -webkit-border-radius: 6px;
+}
+
+#AIFixing{
+  position: absolute;
+  height: 40px;
+  font-size: 30px;
+  line-height: 40px;
+  width: 20%;
+  top: 50%;
+  margin-top: -20px;
+  right: 0;
+  text-align: center; 
+  display: none;
+}
+
+#loadingUI.waiting{
+  /* display: none; */
 }

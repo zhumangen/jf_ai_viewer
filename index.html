@@ -64,6 +64,10 @@
         <img width="80" height="80" src="img/progress_spin.svg"><br>
         <span style="font-size:20px;">Loading</span>
     </div>
+    <div id="AIFixing">
+      AI处理中
+    </div>
+    <!-- tuberculosis -->
     <div id="pulmonaryWrapper">      
       <div class="tub"> 
         <div style='padding: 0 10px;'>
@@ -74,19 +78,7 @@
         <div class="pulmonaryInfo">
           <div class="partOne">
             <h4>是否正常</h4>
-            <div class="line"></div>
-            <!-- <label class="radio-inline">
-                     <input type="radio" name="inlineRadioOptions"  value="0" > 正常
-                   </label>
-                   <label class="radio-inline">
-                     <input type="radio" name="inlineRadioOptions"  value="1"> 基本正常
-                   </label><br> 
-                   <label class="radio-inline">
-                     <input type="radio" name="inlineRadioOptions"  value="2" > 无法判断
-                   </label>
-                   <label class="radio-inline">
-                     <input type="radio" name="inlineRadioOptions"  value="3"> 异常
-                   </label>   -->  
+            <div class="line"></div>              
                 <div class="radio radio-inline">
                     <input type="radio" name="inlineRadioOptions" value="0" id="normal">
                     <label for="normal">正常</label>
@@ -94,7 +86,7 @@
                 <div class="radio radio-inline">
                     <input type="radio" name="inlineRadioOptions"  value="1" id="basenormal">
                     <label for="basenormal">基本正常</label>
-                </div><br>
+                </div><!-- <br> -->
                 <div class="radio radio-inline">
                     <input type="radio" name="inlineRadioOptions"  value="2" id='nojudge'>
                     <label for="nojudge">无法判断</label>
@@ -106,19 +98,7 @@
           </div>
           <div class="partTwo">
             <h4>是否符合肺TB胸片表现</h4>
-            <div class="line"></div>
-            <!-- <label class="radio-inline">
-              <input type="radio" name="according"  value="3"> 高度符合
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="according"  value="2"> 中度符合
-            </label><br>
-            <label class="radio-inline">
-              <input type="radio" name="according" value="1"> 轻度符合
-            </label>
-             <label class="radio-inline">
-              <input type="radio" name="according"  value="0"> 不符合
-            </label> -->
+            <div class="line"></div>            
             <div class="radio radio-inline">
                 <input type="radio" name="according"  value="3" id="high">
                 <label for="high">高度符合</label>
@@ -126,7 +106,7 @@
             <div class="radio radio-inline">
                 <input type="radio" name="according"  value="2" id="middle">
                 <label for="middle">中度符合</label>
-            </div><br>
+            </div><!-- <br> -->
             <div class="radio radio-inline">
                 <input type="radio" name="according"  value="1" id="low">
                 <label for="low">低度符合</label>
@@ -155,11 +135,14 @@
             <div class="radio radio-inline">
                   <input type="radio" name="suggestion"  value="2" id="other">
                   <label for="other">其他检查</label>
-            </div><br>
+            </div><!-- <br> -->
             <div class="radio radio-inline">
                   <input type="radio" name="suggestion"  value="1" id="more">
                   <label for="more">进一步做肺结核病确诊</label>
             </div>   
+          </div>
+          <div id="saveBar">
+            <button id='save' class="btn btn-primary">保存</button>
           </div>
         </div>
       </div>
@@ -207,6 +190,7 @@
 
 
 <!-- include cornerstoneDemo.js -->
+<script src="js/initEchart.js"></script>
 <script src="js/setupViewport.js?version=2.2.3"></script>
 <script src="js/displayThumbnail.js?version=2.2.3"></script>
 <script src="js/loadStudy.js?version=2.2.3"></script>
