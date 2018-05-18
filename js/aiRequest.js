@@ -241,7 +241,7 @@ function aiCallback(stackIdx, aiResult) {
 	setChecked(aiResult);*/
 
 	// 判断ai是否保存过
-	var baseUrl = 'http://47.100.43.165:8090'; // 部署的地址
+	var baseUrl = 'http://47.100.43.165:9090'; // 部署的地址
 	//var baseUrl = 'http://192.168.10.50:8080'; // 测试地址
 	//var baseUrl = 'http://172.16.87.221:80'; // 文dev
 	let aiDataUrl = baseUrl + '/v2/rmis/sysop/ai/plumTB/isCheck';
@@ -314,7 +314,7 @@ function aiCallback(stackIdx, aiResult) {
 	  // 保存按钮 去掉
 	  $("#saveBar #save").hide();
 	  // 请求数据
-	  let baseUrl = 'http://47.100.43.165:8090'; // 部署的地址
+	  let baseUrl = 'http://47.100.43.165:9090'; // 部署的地址
 	  //let baseUrl = 'http://192.168.10.50:8080'; // 测试地址
 	 	//let baseUrl = 'http://172.16.87.221:80'; // 文dev	
 	  let dataUrl = baseUrl + '/v2/rmis/sysop/ai/plumTB/record';
