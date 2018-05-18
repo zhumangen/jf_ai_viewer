@@ -14,8 +14,7 @@ $(".pulmonaryInfo").on("click", "input[type='radio']", function() {
 });
 
 // 点击保存 
-$("#saveBar #save").on("click", function() {
-	console.log('save');	
+$("#saveBar #save").on("click", function() {		
 	let baseUrl = 'http://47.100.43.165:9090'; // 部署的地址	
 	//let baseUrl = 'http://192.168.10.50:8080'; // 测试地址
 	//let baseUrl = 'http://172.16.87.221:80'; // 文dev		
@@ -56,9 +55,14 @@ $("#saveBar #save").on("click", function() {
 					data: JSON.stringify(data),					
 					success: function(result) {
 						console.log('save', result);
-						console.log('人工保存成功！');
-						$(this).prop('disabled',true).addClass("disabled"); // 禁用
-						$(this).hide(); // 隐藏
+						if(result.code == 200){
+							console.log('人工保存成功！');
+							$('#saveBar #save').prop('disabled',true).addClass("disabled"); // 禁用
+							$('#saveBar #save').hide(); // 隐藏
+						}else{
+							console.log('人工保存失败！');
+						}
+						
 					},
 					error: function(result){
 						console.log('人工保存失败！');

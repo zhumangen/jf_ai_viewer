@@ -295,7 +295,12 @@ function aiCallback(stackIdx, aiResult) {
 						type: "PUT",
 						data: JSON.stringify(data),
 						success: function(result) {
-							console.log('ai保存成功！');
+							console.log('res', result);
+							if(result.code == 200){
+								console.log('ai保存成功！');
+							}else{
+								console.log('ai保存失败！');
+							}							
 						},
 						error: function(result){
 							console.log('ai保存失败！');
