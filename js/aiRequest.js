@@ -190,7 +190,7 @@ function setData(id){
 	if(id == 2){
 		return (Math.random() * 625 + 125) / 1000;
 	}
-	if(id == 3){
+	if(id == 3){		
 		return (Math.random() * 250 + 750) / 1000;
 	}
 }
@@ -272,8 +272,10 @@ function aiCallback(stackIdx, aiResult) {
 					let advice = aiResult.advice.id;
 					let normalFlag = aiResult.normality.id;
 					let pulmTbFlag = aiResult.tb_consistency.id;
+					let extend1 = aiResult.abnormal_score; // 保存正常
+					let extend2 = aiResult.tb_score; // tb
 					let isAi = 1;
-					let docName = getQueryString("docName");
+					let docName = 'AI';
 					let accessionNum = getQueryString("accessionNum");
 
 					let data = {
@@ -285,7 +287,9 @@ function aiCallback(stackIdx, aiResult) {
 						objectUid: objectUid,
 						pulmTbFlag: pulmTbFlag,
 						seriesUid: seriesUid,
-						studyUid: studyUid
+						studyUid: studyUid,
+						extend1: extend1,
+						extend2: extend2
 					}
 
 					$.ajax({
@@ -345,34 +349,39 @@ function aiCallback(stackIdx, aiResult) {
 	    type: "POST",    
 	    success: function(result) {
 	    	console.log('record', result);
-	      $("#pulmonaryWrapper .tub").show();	
-			  $("#loadingUI.waiting").hide();
-			  var AIResult = {};
-			  var RGResult = {};
-			  result.data.forEach((val,index) => {			  			  	
-			  	if(val.isAi == 0){
-			  		// 不是ai			  		
-			  		AIResult = val;
-			  	}else{
-			  		// ai
-			  		RGResult = val;
-			  	}
-			  });
-			  console.log(AIResult, RGResult);
+	    	if(result.code == 200){
+	    		$("#pulmonaryWrapper .tub").show();	
+				  $("#loadingUI.waiting").hide();
+				  var AIResult = {};
+				  var RGResult = {};
+				  result.data.forEach((val,index) => {			  			  	
+				  	if(val.isAi == 0){
+				  		// 不是ai			  		
+				  		RGResult = val; // 人工结果
+				  	}else{
+				  		// ai
+				  		AIResult = val; // AI结果
+				  	}
+				  });
+				  console.log(AIResult, RGResult);
 
-			  let normalPer = (setData(AIResult.normalFlag) * 0.2 + setData(RGResult.normalFlag) * 0.8);
-			  let tbPer = (setData(AIResult.pulmTbFlag) * 0.2 + setData(RGResult.pulmTbFlag) * 0.8);
-			  console.log(normalPer,tbPer)
-			  initEcharts([normalPer * 100, tbPer * 100]);
-			  let isNormal = setId(normalPer);
-			  let isTb = setId(tbPer);
-			  let RGadvice = 	RGResult.advice;		  
-			  setChecked(isNormal, $(".pulmonaryInfo .partOne input"));
-			  setChecked(isTb, $(".pulmonaryInfo .partTwo input"));
-			  setChecked(RGadvice, $(".pulmonaryInfo .partThree input"));
-			  $(".pulmonaryInfo .radio:not(.radio-success) input")
-			      .attr("disabled", "disabled")
-			      .parent().addClass('disabled');
+				  let normalPer = AIResult.extend1 * 0.2 + setData(RGResult.normalFlag) * 0.8;
+				  let tbPer = AIResult.extend2 * 0.2 + setData(RGResult.pulmTbFlag) * 0.8;
+				  console.log(normalPer,tbPer)
+				  initEcharts([normalPer * 100, tbPer * 100]);
+				  let isNormal = RGResult.normalFlag;
+				  let isTb = RGResult.pulmTbFlag;
+				  let RGadvice = 	RGResult.advice;		  
+				  setChecked(isNormal, $(".pulmonaryInfo .partOne input"));
+				  setChecked(isTb, $(".pulmonaryInfo .partTwo input"));
+				  setChecked(RGadvice, $(".pulmonaryInfo .partThree input"));
+				  $(".pulmonaryInfo .radio:not(.radio-success) input")
+				      .attr("disabled", "disabled")
+				      .parent().addClass('disabled');
+				}else{
+					console.log('请求失败！');
+				}
+	      
 			},
 	    error: function(result){
 	      console.log('请求失败！');

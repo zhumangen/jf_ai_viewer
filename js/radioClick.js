@@ -57,6 +57,7 @@ $("#saveBar #save").on("click", function() {
 						console.log('save', result);
 						if(result.code == 200){
 							console.log('人工保存成功！');
+							alert('保存成功！');
 							$('#saveBar #save').prop('disabled',true).addClass("disabled"); // 禁用
 							$('#saveBar #save').hide(); // 隐藏
 						}else{
