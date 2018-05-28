@@ -44,8 +44,7 @@ function setupButtons() {
 
         $(this).parent().hide();
 
-        let $ele = $('.viewportWrapper.selected .viewport').get(0);
-        saveAs($ele, randomString(), 'dcm');
+        saveAs('dcm');
     })
 
     $("#savePNG").click(function(e) {
@@ -57,8 +56,7 @@ function setupButtons() {
 
         $(this).parent().hide();
 
-        let $ele = $('.viewportWrapper.selected .viewport').get(0);
-        saveAs($ele, randomString(), 'png');
+        saveAs('png');
     })
 
 

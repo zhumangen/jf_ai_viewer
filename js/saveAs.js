@@ -1,6 +1,6 @@
-function saveAs(element, fileName, type) {
-    if (currentStackIndex < imageViewer.stacks.length) {
-        let metaData = imageViewer.stacks[currentStackIndex].metaData;
+function saveAs(type) {
+    for (let i = 0; i < imageViewer.stacks.length; ++i) {
+        let metaData = imageViewer.stacks[i].metaData;
         if (!metaData) return;
         let studyUid = metaData["0020000D"].Value[0];
         let seriesUid = metaData["0020000E"].Value[0];
@@ -14,11 +14,10 @@ function saveAs(element, fileName, type) {
         imageId += '&studyUID=' + studyUid;
         imageId += '&seriesUID=' + seriesUid;
         imageId += '&objectUID=' + imageUid;
-        window.open(imageId);
-        /*
+
         const lnk = document.createElement('a');
-        lnk.download = fileName;
-        lnk.href = imageId;
+        lnk.download = imageUid + '.dcm';
+        lnk.href = 'data:application/octet-stream,' + imageId;
         
         if (document.createEvent) {
             const e = document.createEvent('MouseEvents');
@@ -27,6 +26,5 @@ function saveAs(element, fileName, type) {
         } else if (lnk.fireEvent) {
             lnk.fireEvent('onclick');
         }
-        */
     }
 }
