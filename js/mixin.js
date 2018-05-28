@@ -87,6 +87,7 @@ function updateImageProgress(eventData) {
 }
 
 function useItemStack(item, stack) {
+    currentStackIndex = stack;
     var imageId = imageViewer.stacks[stack].imageIds[0], element = imageViewer.getElement(item);
     if ($(element).data('waiting')) {
         imageViewer.viewports[item].find('.overlay-text').remove();

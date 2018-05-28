@@ -13,9 +13,9 @@ function setupButtons() {
     $('#saveImage').on('click touchstart', function() {
         activate('#saveImage');
         $(this).find('ul').hide(); 
-        $("#DCM").trigger('click');
-        /*let $ele = $('.viewportWrapper.selected .viewport').get(0);
-        cornerstoneTools.saveAs($ele, randomString());*/
+        $("#saveDCM").trigger('click');
+        /* let $ele = $('.viewportWrapper.selected .viewport').get(0);
+           cornerstoneTools.saveAs($ele, randomString()); */
         //return false;
     })
 
@@ -35,7 +35,7 @@ function setupButtons() {
 
     })
 
-    $("#DCM").click(function(e) {
+    $("#saveDCM").click(function(e) {
         if(e && e.stopPropagation){
             e.stopPropagation();
         }else{
@@ -43,23 +43,22 @@ function setupButtons() {
         }
 
         $(this).parent().hide();
-
-        console.log('dcm');
-
-    })
-
-    $("#PNG").click(function(e) {
-        if(e && e.stopPropagation){
-            e.stopPropagation();
-        }else{
-            window.event.cancelBubble = true;
-        }
-
-        $(this).parent().hide();
-        console.log('png');
 
         let $ele = $('.viewportWrapper.selected .viewport').get(0);
-        cornerstoneTools.saveAs($ele, randomString());
+        saveAs($ele, randomString(), 'dcm');
+    })
+
+    $("#savePNG").click(function(e) {
+        if(e && e.stopPropagation){
+            e.stopPropagation();
+        }else{
+            window.event.cancelBubble = true;
+        }
+
+        $(this).parent().hide();
+
+        let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        saveAs($ele, randomString(), 'png');
     })
 
 

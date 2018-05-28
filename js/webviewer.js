@@ -37,7 +37,8 @@ cornerstone.events.addEventListener('cornerstoneimageloadprogress', function(eve
 });
 
 // For Develop
-var wadoUri = 'http://v2.jfhealthcare.cn/v1/picl/aets/piclarc/wado';
+var wadoUri = 'http://10.10.10.54:8080/dcm4chee-arc/aets/DCM4CHEE/wado';
+// var wadoUri = 'http://v2.jfhealthcare.cn/v1/picl/aets/piclarc/wado';
 var wadoRs = '/pacs/rs';
 var baseAiUrl = 'http://47.100.165.4:8915/diagnose?jpgurl=';
 
@@ -81,6 +82,7 @@ if (window.location.protocol == "https:") {
 var viewportTemplate; // the viewport template
 var studyViewerTemplate; // the study viewer template
 var imageViewer;
+var currentStackIndex = 0;
 
 loadTemplate("templates/viewport.html", function(element) {
   viewportTemplate = element;
