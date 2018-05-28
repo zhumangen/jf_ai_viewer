@@ -64,7 +64,7 @@ body {
 }
 
 .viewportWrapper.selected {
-  border-color: #f00;
+  border-color: #0c98ff;
 }
 
 .renderTime {}

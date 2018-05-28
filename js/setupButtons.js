@@ -12,10 +12,56 @@ function setupButtons() {
 
     $('#saveImage').on('click touchstart', function() {
         activate('#saveImage');
+        $(this).find('ul').hide(); 
+        $("#DCM").trigger('click');
+        /*let $ele = $('.viewportWrapper.selected .viewport').get(0);
+        cornerstoneTools.saveAs($ele, randomString());*/
+        //return false;
+    })
+
+
+    $('#saveImage').find('.caret').click(function(e){  
+        $('#toolbar').find('div').not($(this).parent().parent()).find('ul').hide();
+        if(e && e.stopPropagation){
+            e.stopPropagation();
+        }else{
+            window.event.cancelBubble = true;
+        }             
+        if($('#saveImage').find('ul').css('display') == 'none'){
+            $('#saveImage').find('ul').show();
+        }else{
+            $('#saveImage').find('ul').hide();
+        }    
+
+    })
+
+    $("#DCM").click(function(e) {
+        if(e && e.stopPropagation){
+            e.stopPropagation();
+        }else{
+            window.event.cancelBubble = true;
+        }
+
+        $(this).parent().hide();
+
+        console.log('dcm');
+
+    })
+
+    $("#PNG").click(function(e) {
+        if(e && e.stopPropagation){
+            e.stopPropagation();
+        }else{
+            window.event.cancelBubble = true;
+        }
+
+        $(this).parent().hide();
+        console.log('png');
+
         let $ele = $('.viewportWrapper.selected .viewport').get(0);
         cornerstoneTools.saveAs($ele, randomString());
-        return false;
     })
+
 
     $('#marker').on('click touchstart', function() {
         activate('#marker');
@@ -281,6 +327,7 @@ function setupButtons() {
             }            
             cornerstone.setViewport($ele, viewport);
         }
+        $(this).parent().hide();
     });
     
     $('#vReverse').click(function(e) { // 垂直翻转       
@@ -299,7 +346,8 @@ function setupButtons() {
                 viewport.vflip = !viewport.vflip;
             }                    
             cornerstone.setViewport($ele, viewport);
-        }      
+        }  
+        $(this).parent().hide();    
     });
 
     $('#reset').click(function(e) { // 重置
@@ -324,7 +372,8 @@ function setupButtons() {
         if(viewport){ // 如果有图像的时候
             viewport.rotation -= 90;  
             cornerstone.setViewport($ele, viewport);
-        }                  
+        }    
+        $(this).parent().hide();              
     });
 
     $('#rrotate').click(function(e) { // 右旋  
@@ -339,7 +388,8 @@ function setupButtons() {
         if(viewport){ // 如果有图像的时候
             viewport.rotation += 90;
             cornerstone.setViewport($ele, viewport);
-        }        
+        }  
+        $(this).parent().hide();      
     });
 
     $('#ai').click(function() { // AI

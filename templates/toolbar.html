@@ -17,10 +17,18 @@
 		</ul>
 	</div>
 	<div class="btn-group hideOnPhone btn-group-lg" title="导出图像" id="saveImage">
-		<a type="button" class="btn btn-link changeOffset  btn-lg">
-			<i class="glyphicon glyphicon-floppy-save"></i>
+		<a type="button" class="btn btn-link changeOffset  dropdown-toggle hideOnPhone btn-lg">
+			<i class="glyphicon glyphicon-floppy-save"></i><span class="caret"></span>
 			<p class="toolbar-text">导出</p>
 		</a>
+		<ul class="dropdown-menu" role="menu">
+			<li id="DCM">
+				<a href="#"><span>DCM</span></a>
+			</li>
+			<li id="PNG">
+				<a href="#"><span>PNG</span></a>
+			</li>
+		</ul>
 	</div>
 	<div class="btn-group hideOnPhone btn-group-lg" title="图像布局" id="imageLayout">
 		<a type="button" class="btn btn-link dropdown-toggle hideOnPhone btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
