@@ -56,7 +56,7 @@ function setupButtons() {
 
         $(this).parent().hide();
 
-        saveAs('png');
+        saveAs('png', $('.viewportWrapper.selected .viewport').get(0));
     })
 
 
