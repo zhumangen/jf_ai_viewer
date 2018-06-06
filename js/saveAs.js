@@ -44,5 +44,5 @@ function saveAs(type, element) {
         } else if (lnk.fireEvent) {
             lnk.fireEvent('onclick');
         }
-    }, 300);
+    }, 1000);
 }
