@@ -140,7 +140,6 @@ function resize(echart) {
 // 获取数据设置为选中状态
 function setChecked(data, ele){
     for(let i = 0 ; i < ele.length; i++){
-        console.log('是否正常id', ele.eq(i).val(), data);
         if(ele.eq(i).val() == data){ 
             ele.eq(i).parent().addClass("radio-success")
                .siblings().removeClass("radio-success");

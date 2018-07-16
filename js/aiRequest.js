@@ -1,173 +1,4 @@
-/*function initEcharts(data) {
-	var myChart = echarts.init(document.getElementById("pulmonary"));
-	console.log(data);
-	var option = {
-		grid: {
-			left: '16%',
-			top: '5%'	,
-			bottom: '10%',
-			right: '5%'		
-
-		},	
-		tooltip: {
-				show: true,
-        trigger: 'axis',
-        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-            type : 'line' ,       // 默认为直线，可选为：'line' | 'shadow'
-            show: false
-        },
-        formatter: function(params){        	
-        	return params[0].name + ": " + params[0].data.toFixed(2) + "%"
-        }
-    },	
-		xAxis:[{
-            type:'category',//默认为类目
-            data : ["异常度","肺结核疑似度"],
-            axisLine:{
-            		show: false,
-                lineStyle:{
-                    color:'#3870a9',
-                    type: 'dotted'
-                }
-            },
-            axisLabel: {
-            	fontSize: 16,
-            	fontWeight: 'bold',
-            	color: '#52a5f7',
-            	fontFamily: 'Microsoft YaHei'
-            },
-            axisTick:{  
-        　　　　show: false  
-        　　}  
-        }],
-    yAxis : [
-        {
-            type : 'value',//默认为值类型
-            axisLine:{
-                lineStyle:{
-                    color:'#3971a9'
-                }
-            },
-            axisTick:{  
-        　　　　show:false  
-        　　},
-		        axisLabel: {
-		        	formatter: '{value}%',
-		        	fontSize: 16,
-		        	color: '#52a5f7',
-            	fontFamily: 'Arial'
-		        },
-		        splitLine: {
-		        	lineStyle: {
-		        		type: 'dotted',
-		        		color: '#3870a9'
-		        	}
-		        },
-		        axisPointer: {
-		        	label: "aaaa"
-		        },
-        		min: 0,
-        		max: 100 
-        }
-    ],
-    series : [
-        {
-            "name":"肺结核",
-            "type":"bar",
-            "itemStyle": {
-            	normal: {　　　　　　　　　　　　 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
-                color: function(params) {
-                    //var colorList = [colorData, colorData1];//
-                    var colorList = colorData(data);
-                    return colorList[params.dataIndex];
-                }
-            },
-            },
-            "data": data,
-            "barWidth": 56           
-        }
-    ]
-	};
-
-	myChart.setOption(option);	
-	resize(myChart);
-}	*/
-
-/*function setChecked(aiResult) {
-	let $ele = $(".pulmonaryInfo .partOne input");
-	let $ele1 = $(".pulmonaryInfo .partTwo input");
-	let $ele2 = $(".pulmonaryInfo .partThree input");
-	
-	for(let i = 0 ; i < $ele.length; i++){
-		console.log('是否正常id', $ele.eq(i).val(), aiResult.normality.id);
-		if($ele.eq(i).val() == aiResult.normality.id){			
-			//$ele.eq(i).attr("checked","checked");
-			$ele.eq(i).parent().addClass("radio-success").siblings().removeClass("radio-success");
-		}
-	}
-
-	for(let j = 0 ; j < $ele1.length; j++){
-		console.log('是否符合肺TB胸片表现id', $ele1.eq(j).val(), aiResult.tb_consistency.id);
-		if($ele1.eq(j).val() == aiResult.tb_consistency.id){			
-			//$ele1.eq(j).attr("checked","checked");	
-			$ele1.eq(j).parent().addClass("radio-success").siblings().removeClass("radio-success");		
-		}
-	}
-
-	for(let k = 0 ; k < $ele2.length; k++){
-		console.log('建议id', $ele2.eq(k).val(), aiResult.advice.id);
-		if($ele2.eq(k).val() == aiResult.advice.id){			
-			//$ele2.eq(k).attr("checked","checked");
-			$ele2.eq(k).parent().addClass("radio-success").siblings().removeClass("radio-success");
-		}
-	}
-}*/
-
-/*function resize(echart) {
-	window.onresize = function() {
-		echart.resize();
-	}
-}*/
-
-// 用来调配颜色的
-/*function colorData(data) {
-	var colorDataList = ["#fbb1bf","#ff8ba1","#fd6683","#ff385e","#ff0000"];
-	var colorDataList1 = ["#f98a9f","#fa6380","#fb395e","#f32135","#d91729"];
-	var colorData,colorData1,color = [];
-
-	if(data[0] > 80){
-		colorData = colorDataList[4];
-	}else if(data[0] > 60){
-		colorData = colorDataList[3];
-	}else if(data[0] > 40){
-		colorData = colorDataList[2];
-	}else if(data[0] > 20){
-		colorData = colorDataList[1];
-	}else{
-		colorData = colorDataList[0];
-	}
-
-	if(data[1] > 80){
-		colorData1 = colorDataList1[4];
-	}else if(data[1] > 60){
-		colorData1 = colorDataList1[3];
-	}else if(data[1] > 40){
-		colorData1 = colorDataList1[2];
-	}else if(data[1] > 20){
-		colorData1 = colorDataList1[1];
-	}else{
-		colorData1 = colorDataList1[0];
-	}
-
-	color.push(colorData);
-	color.push(colorData1);
-
-	return color;
-}*/
-
-//initEcharts([0,0]);
-
-function setId(data){
+/*function setId(data){
 	if(0 <= data && data <= 0.05){
   	return 0;
   }else if(data <= 0.125){
@@ -193,66 +24,20 @@ function setData(id){
 	if(id == 3){		
 		return (Math.random() * 250 + 750) / 1000;
 	}
-}
+}*/
 
 function aiCallback(stackIdx, aiResult) {
 	console.log('airesult', aiResult);
-	/*$("#loadingUI.waiting").hide();	
-	$("#pulmonaryWrapper .tub").show();
-	let scoreData = [];
-	scoreData.push(aiResult.abnormal_score * 100);
-	scoreData.push(aiResult.tb_score * 100);	
-
-	console.log('scoreData', scoreData);*/
-	/*var colorDataList = ["#fbb1bf","#ff8ba1","#fd6683","#ff385e","#ff0000"];
-	var colorDataList1 = ["#f98a9f","#fa6380","#fb395e","#f32135","#d91729"];
-	var colorData,colorData1,color = [];
-
-	if(scoreData[0] > 80){
-		colorData = colorDataList[4];
-	}else if(scoreData[0] > 60){
-		colorData = colorDataList[3];
-	}else if(scoreData[0] > 40){
-		colorData = colorDataList[2];
-	}else if(scoreData[0] > 20){
-		colorData = colorDataList[1];
-	}else{
-		colorData = colorDataList[0];
-	}
-
-	if(scoreData[1] > 80){
-		colorData1 = colorDataList1[4];
-	}else if(scoreData[1] > 60){
-		colorData1 = colorDataList1[3];
-	}else if(scoreData[1] > 40){
-		colorData1 = colorDataList1[2];
-	}else if(scoreData[1] > 20){
-		colorData1 = colorDataList1[1];
-	}else{
-		colorData1 = colorDataList1[0];
-	}
-
-	color.push(colorData);
-	color.push(colorData1);*/
-
-	//initEcharts(scoreData,color);
-	/*initEcharts(scoreData);
-
-	setChecked(aiResult);*/
-
 	// 判断ai是否保存过
-	var baseUrl = 'http://47.100.43.165:9090'; // 部署的地址
+	//var baseUrl = 'http://47.100.43.165:9090'; // 部署的地址
 	//var baseUrl = 'http://192.168.10.50:8080'; // 测试地址
 	//var baseUrl = 'http://172.16.87.221:80'; // 文dev
-	let aiDataUrl = baseUrl + '/v2/rmis/sysop/ai/plumTB/isCheck';
+	/*let aiDataUrl = baseUrl + '/v2/rmis/sysop/ai/plumTB/isCheck';
 	let AIData = {
 		accessionNum: getQueryString("accessionNum"),
 		isAi: '1'
 	}
 	console.log('an', AIData);
-	/*$.ajaxSetup({
-	 	contentType: 'application/json'
-	})*/
 	$.ajax({
 	    url: aiDataUrl,
 	    dataType: "json",
@@ -327,16 +112,6 @@ function aiCallback(stackIdx, aiResult) {
 	  //let baseUrl = 'http://192.168.10.50:8080'; // 测试地址
 	 	//let baseUrl = 'http://172.16.87.221:80'; // 文dev	
 	  let dataUrl = baseUrl + '/v2/rmis/sysop/ai/plumTB/record';
-	  //let imgArr = JSON.parse(decodeURIComponent(getQueryString('objects')))[0];
-	  /*let studyUid = imgArr.StudyUid;
-	  let seriesUid = imgArr.SeriesUid;
-	  let objectUid = imgArr.ObjectUid;	  
-	  let data = {	  	
-	  	studyUid: studyUid,
-	  	seriesUid: seriesUid,
-	  	objectUid: objectUid
-	  }*/
-	 // console.log('su', imgArr);
 	 	let accessionNum = getQueryString("accessionNum");
 	 	let data = {
 	 		accessionNum: accessionNum
@@ -388,7 +163,7 @@ function aiCallback(stackIdx, aiResult) {
 	    }
 	  }); 
 	  
-	}
+	}*/
 	
 	
 

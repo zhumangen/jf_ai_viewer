@@ -20,7 +20,10 @@ ImageViewer = function(root, viewport) {
             width : perWidth + '%', height : perHeight + '%'
           }).appendTo(self.root.find('.imageViewer'));
           elem.find('.viewport').data('index', i).data('waiting', true);
-
+          /*console.log('e', elem);
+          for(var j = 0; j < 8; j++){
+            elem.append("<div class='sep sep"+j+"'></div>");
+          }         */ 
           self.viewports.push(elem);          
           i++;
         }       

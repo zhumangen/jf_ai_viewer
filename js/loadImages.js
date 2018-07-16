@@ -20,7 +20,7 @@ function loadImages(imageArrStr) {
                 headers: {
                     accept: 'application/json'
                 }
-            }).done(function(imageMeta) {
+            }).done(function(imageMeta) {                
                 imageMeta = imageMeta[0];
                 var stack = {
                     seriesDescription: '',
@@ -83,7 +83,7 @@ function loadImages(imageArrStr) {
                 // Have cornerstone load the thumbnail image
                 cornerstone.loadAndCacheImage(stack.imageIds[0]).then(function(image) {
                     if (enableAi) {
-                        $("#ai .toolbar-text").html("<marquee style='width: 40px; position: absolute; left: 50%; margin-left: -20px; color: yellow'>AI处理中...</marquee>");                    
+                        $("#ai .toolbar-text").html("<marquee style='width: 40px; position: absolute; left: 50%; margin-left: -20px; color: yellow'>AI处理中...</marquee>");                   
                         aiRequest(stack.metaData, stackIndex, aiCallback);
                     }
 
@@ -127,7 +127,7 @@ function loadImages(imageArrStr) {
                 changeScroll();
                 $(window).resize(function() {
                     changeScroll();
-                });
+                });                
         
             if (imageViewer.isSingle())
                 useItemStack(0, 0);
@@ -137,6 +137,6 @@ function loadImages(imageArrStr) {
                 console.log(data);
             });
         });
-    }
+    }    
 
 }
