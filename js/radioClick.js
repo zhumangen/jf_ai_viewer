@@ -12,7 +12,7 @@ $(".pulmonaryInfo").on("click", "input[type='radio']", function() {
 				.siblings().removeClass("radio-success");
 });
 
-function setData(id){
+/*function setData(id){
 	// 判断数据
 	if(id == 0){
 		return (Math.random() * 50) / 1000;
@@ -85,7 +85,7 @@ function setData(id){
 	      console.log('请求失败！');
 	    }
 	  });
-	}
+	}*/
 
 // 点击保存 
 $("#saveBar #save").on("click", function() {		
@@ -104,7 +104,7 @@ $("#saveBar #save").on("click", function() {
 	let objectUid = imgArr.ObjectUid;
 
 	if(!(isNormalVal && isTbVal && adviceVal)){
-			alert('请您完所有选项！');
+			alert('请您选完所有选项！');
 	}else{	
 			//let baseUrl = 'http://47.100.43.165:8090'; // 部署的地址	  	
 
