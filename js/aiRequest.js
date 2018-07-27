@@ -167,7 +167,7 @@
 
 //initEcharts([0,0]);
 
-function setId(data){
+/*function setId(data){
 	if(0 <= data && data <= 0.05){
   	return 0;
   }else if(data <= 0.125){
@@ -193,10 +193,20 @@ function setData(id){
 	if(id == 3){		
 		return (Math.random() * 250 + 750) / 1000;
 	}
-}
+}*/
+
+$(".pulmonaryInfo .radio").addClass("disabled").find("input").attr('disabled', 'disabled');
 
 function aiCallback(stackIdx, aiResult) {
 	console.log('airesult', aiResult);
+	$("#loadingUI.waiting").hide();	
+	$("#pulmonaryWrapper .tub").show();
+
+	initEcharts([aiResult.abnormal_score * 100, aiResult.tb_score * 100]);
+	setChecked(aiResult.normality.id, $(".pulmonaryInfo .partOne input"));
+	setChecked(aiResult.tb_consistency.id, $(".pulmonaryInfo .partTwo input"));
+	setChecked(aiResult.advice.id, $(".pulmonaryInfo .partThree input"));
+	
 	/*$("#loadingUI.waiting").hide();	
 	$("#pulmonaryWrapper .tub").show();
 	let scoreData = [];
@@ -240,7 +250,7 @@ function aiCallback(stackIdx, aiResult) {
 
 	setChecked(aiResult);*/
 
-	// 判断ai是否保存过
+	/*// 判断ai是否保存过
 	var baseUrl = 'http://47.100.43.165:9090'; // 部署的地址
 	//var baseUrl = 'http://192.168.10.50:8080'; // 测试地址
 	//var baseUrl = 'http://172.16.87.221:80'; // 文dev
@@ -249,10 +259,7 @@ function aiCallback(stackIdx, aiResult) {
 		accessionNum: getQueryString("accessionNum"),
 		isAi: '1'
 	}
-	console.log('an', AIData);
-	/*$.ajaxSetup({
-	 	contentType: 'application/json'
-	})*/
+	console.log('an', AIData);	
 	$.ajax({
 	    url: aiDataUrl,
 	    dataType: "json",
@@ -327,16 +334,7 @@ function aiCallback(stackIdx, aiResult) {
 	  //let baseUrl = 'http://192.168.10.50:8080'; // 测试地址
 	 	//let baseUrl = 'http://172.16.87.221:80'; // 文dev	
 	  let dataUrl = baseUrl + '/v2/rmis/sysop/ai/plumTB/record';
-	  //let imgArr = JSON.parse(decodeURIComponent(getQueryString('objects')))[0];
-	  /*let studyUid = imgArr.StudyUid;
-	  let seriesUid = imgArr.SeriesUid;
-	  let objectUid = imgArr.ObjectUid;	  
-	  let data = {	  	
-	  	studyUid: studyUid,
-	  	seriesUid: seriesUid,
-	  	objectUid: objectUid
-	  }*/
-	 // console.log('su', imgArr);
+	  //let imgArr = JSON.parse(decodeURIComponent(getQueryString('objects')))[0];	
 	 	let accessionNum = getQueryString("accessionNum");
 	 	let data = {
 	 		accessionNum: accessionNum
@@ -388,7 +386,7 @@ function aiCallback(stackIdx, aiResult) {
 	    }
 	  }); 
 	  
-	}
+	}*/
 	
 	
 
