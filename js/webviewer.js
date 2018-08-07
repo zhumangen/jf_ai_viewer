@@ -41,8 +41,8 @@ var wadoUri = 'http://47.100.43.165/v1/picl/aets/piclarc/wado';
 //var wadoRs = '/pacs/rs';
 var wadoRs = '/v1/picl/aets/piclarc/rs';
 //var baseAiUrl = 'http://47.100.165.4:8915/diagnose?jpgurl=';
-var baseAiUrl = 'http://180.167.46.105:8915/tb?jpgurl=';
-//var baseAiUrl = 'http://117.40.83.208:8927/tb?jpgurl=';
+//var baseAiUrl = 'http://180.167.46.105:8915/tb?jpgurl=';
+var baseAiUrl = 'http://117.40.83.208:8927/tb?jpgurl=';
 
 // For Production
 /**

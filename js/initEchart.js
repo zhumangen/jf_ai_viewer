@@ -154,3 +154,11 @@ function getQueryString(name) {
   var r = window.location.search.substr(1).match(reg);
   if (r != null) return unescape(r[2]); return null;
 }
+
+
+// 设置下面框的高度
+// var h = $("#tbForm").outerHeight(true);
+// h += 72;
+// console.log(h);
+// var t = "calc(60% - "+ h +"px)";
+// $("#pulmonaryInfo").css("height", t);

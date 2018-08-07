@@ -1,0 +1,32 @@
+#toolbar .glyphicon{
+	color: #244c79;
+}
+
+#toolbar .btn-group:hover .glyphicon{
+		color: #57c0f0;
+}
+
+
+.imageViewer .sep{
+	position: absolute;	
+	background-color: #777;
+}
+
+.imageViewer .selected .sep{
+	background-color: #0068b7;
+}
+
+.imageViewer .viewportWrapper{
+	border: none;
+}
+
+.imageViewer .sep0{
+	left: 0;
+	top: 0;
+	height: 2px;
+	width: 10%;	
+}
+
+.imageViewer .sep1{
+	right: 0;
+}

@@ -242,10 +242,10 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
   height: calc(100vh -72px);  
 }
 
-#pulmonaryWrapper .block{
+/*#pulmonaryWrapper .block{
   height: calc(4vh - 24px);
   width: 100%;
-}
+}*/
 
 #pulmonaryWrapper .tub{
   display: none;
@@ -257,12 +257,15 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
   top: 72px;  */
   width: 100%; 
   /* height: 328px;  */
-  height: calc(42vh - 24px);    
+  /*height: calc(42vh - 24px);  */  
   /* overflow-y: auto; */
+  height: calc(40vh - 24px);
+  box-sizing: border-box;
 
   border: 2px solid #2d5a87;
   border-radius: 4px;  
   background-color: #0a1522;
+  box-sizing: border-box;
 }
 
  /* #pulmonary img:last-child{
@@ -272,14 +275,21 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
   /* position: absolute; */
   width: 100%;
   /* height: calc(100vh - 400px); */
-  height: calc(54vh - 24px);
+  /*height: calc(54vh - 24px);*/
+  height: calc(40vh - 24px);
   padding: 10px;
   /* padding-top: 20px; */  
   overflow-y: auto;
   font-size: 16px;
+  box-sizing: border-box;
   /* top: 400px; */
 
   font-family: "Microsoft YaHei";
+}
+
+.pulmonaryInfo.formHide{
+  height: calc(50vh - 48px);
+  margin-top: 8vh;
 }
 
 .pulmonaryInfo h4{
@@ -399,4 +409,18 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 
 #loadingUI.waiting{
   /* display: none; */
+}
+
+.tbForm{
+  box-sizing: border-box;
+  padding: 20px 10px;
+  max-height: calc(20vh - 24px);
+}
+
+.tbForm input{
+  margin: 10px 0; 
+}
+
+#tbConfirm.disabled{
+  cursor: not-allowed;
 }

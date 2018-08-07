@@ -64,9 +64,9 @@
         <img width="80" height="80" src="img/progress_spin.svg"><br>
         <span style="font-size:20px;">Loading</span>
     </div>
-    <div id="AIFixing">
+    <!-- <div id="AIFixing">
       AI处理中
-    </div>
+    </div> -->
     <!-- tuberculosis -->
     <div id="pulmonaryWrapper">      
       <div class="tub"> 
@@ -74,8 +74,18 @@
           <div id="pulmonary">
         </div>
         </div> 
-        <div class="block"></div>
-        <div class="pulmonaryInfo">
+        <div class="tbForm" id='tbForm'>
+          <form class='form-inline'>
+            <div class='form-group'>
+              <input type="text" class='form-control' id='extend1' placeholder="请输入异常度(0-1)">
+            </div>
+            <div class='form-group'>
+              <input type="text" class='form-control' id='extend2' placeholder="请输入疑似度(0-1)">
+            </div>
+            <button type='button' class='btn btn-primary' id='tbConfirm'>提交</button>
+          </form>          
+        </div>
+        <div class="pulmonaryInfo" id='pulmonaryInfo'>
           <div class="partOne">
             <h4>是否正常</h4>
             <div class="line"></div>              
@@ -141,9 +151,9 @@
                   <label for="more">进一步做肺结核病确诊</label>
             </div>   
           </div>
-          <div id="saveBar">
+          <!-- <div id="saveBar">
             <button id='save' class="btn btn-primary">保存</button>
-          </div>
+          </div> -->
         </div>
       </div>
       
