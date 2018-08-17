@@ -99,9 +99,9 @@ $("#tbConfirm").on("click", function(e) {
 	var baseUrl = 'http://47.100.43.165:9090'; // 部署的地址	
 	//let baseUrl = 'http://192.168.10.50:8080'; // 测试地址
 	//let baseUrl = 'http://172.16.87.221:80'; // 文dev	
-	let aiDataUrl = baseUrl + '/v2/rmis/sysop/ai/plumTB/record';	
+	var aiDataUrl = baseUrl + '/v2/rmis/sysop/ai/plumTB/record';	
 	var normalFlagData, pulmTbFlagData;
-	let AIData = {
+	var AIData = {
 		accessionNum: getQueryString("accessionNum")
 	}
 	$.ajax({
@@ -166,10 +166,36 @@ $("#tbConfirm").on("click", function(e) {
 							if(result.code == 200){
 								console.log('人工保存成功！');
 								alert('保存成功！');
-								$('#tbConfirm').attr('disabled','disabled').addClass("disabled"); // 禁用	
+								$('#tbConfirm').attr('disabled','disabled'); // 禁用	
 								$(".pulmonaryInfo .radio input")
 				   				.attr("disabled", "disabled")
-				  				.parent().addClass('disabled');							
+				  				.parent().addClass('disabled');			
+
+				  			// 重新渲染数据
+				  			var RGData = {};
+				  			$.ajax({
+				  				url: aiDataUrl,
+							    dataType: "json",
+							    data: JSON.stringify(AIData),
+							    contentType: 'application/json',
+							    type: "POST",    
+							    success: function(result) {
+							    	console.log('res', result);	 
+							    	result.data.forEach((val,index) => {	
+							    		if(val.isAi == 0){ // 取人工结果
+							    			RGData = val;
+							    		}
+									  });  
+
+									  initEcharts([RGData.extend1 * 100, RGData.extend2 * 100]);
+								  	let isNormal = RGData.normalFlag;
+									  let isTb = RGData.pulmTbFlag;
+									  let RGadvice = 	RGData.advice;		  
+									  setChecked(isNormal, $(".pulmonaryInfo .partOne input"));
+									  setChecked(isTb, $(".pulmonaryInfo .partTwo input"));
+									  setChecked(RGadvice, $(".pulmonaryInfo .partThree input"));
+				  				}		
+				  			});	
 							}else{
 								console.log('人工保存失败！');
 							}
