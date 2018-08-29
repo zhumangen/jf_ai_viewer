@@ -32,6 +32,7 @@ function setupViewport(element, stack, image) {
     cornerstoneTools.rectangleRoi.deactivate(element, 1);
     cornerstoneTools.angle.deactivate(element, 1);
     cornerstoneTools.arrowAnnotate.deactivate(element, 1);
+    cornerstoneTools.rectangleAi.deactivate(element, 1);
     cornerstoneTools.wwwcTouchDrag.activate(element);
     cornerstoneTools.zoomTouchPinch.activate(element);
     // cornerstoneTools.wwwcRegion.activate(element, 1);

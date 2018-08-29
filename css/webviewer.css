@@ -279,7 +279,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
   /*height: calc(40vh - 24px);*/
   height: calc(100vh - 72px - 280px - 216px);
   padding: 10px;
-  margin-top: 10px;
+  /*margin-top: 10px;*/
   /* padding-top: 20px; */
   font-size: 16px;
   box-sizing: border-box;

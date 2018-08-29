@@ -30,6 +30,7 @@ cornerstoneTools.ellipticalRoi.setConfiguration(measurementConfig);
 cornerstoneTools.rectangleRoi.setConfiguration(measurementConfig);
 cornerstoneTools.angle.setConfiguration(measurementConfig);
 cornerstoneTools.arrowAnnotate.setConfiguration(measurementConfig);
+cornerstoneTools.rectangleAi.setConfiguration(measurementConfig);
 
 cornerstone.events.addEventListener('cornerstoneimageloadprogress', function(event){
   updateImageProgress(event.detail);

@@ -2,23 +2,10 @@
 var wadoUri = 'http://47.100.43.165/v1/picl/aets/piclarc/wado';
 var wadoRs = '/pacs/rs';
 //var wadoRs = '/v1/picl/aets/piclarc/rs';
-//var baseAiUrl = 'http://47.100.165.4:8915/diagnose?jpgurl=';
-//var baseAiUrl = 'http://180.167.46.105:8915/tb?jpgurl=';
-//var baseAiUrl = 'http://117.40.83.208:8927/tb?jpgurl=';
-var baseAiUrl = 'http://117.40.83.208:8926/tb?jpgurl=';
-
-// For Production
-/**
-var wadoUri = 'http://v2.jfhealthcare.cn/v1/picl/aets/piclarc/wado';
-var wadoRs = 'http://v2.jfhealthcare.cn/v1/picl/aets/piclarc/rs';
-var baseAiUrl = 'http://v2.jfhealthcare.cn:8915/diagnose?jpgurl=';
- **/
- 
+var baseAiUrl = 'http://101.132.45.197:8310';
 var baseStudyUrl = wadoRs + '/studies/';
 
-
-var showAiResult = false;
-var enableAi = false;
+var tbData = [];
 
 function getQueryString(name) {
   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
@@ -26,18 +13,10 @@ function getQueryString(name) {
   if (r != null) return unescape(r[2]); return null;
 }
 
-if (getQueryString('ai') === 'on') {
-  enableAi = true;  
-}
-
-
-
-// 如果是还未标的时候
-/*if(getQueryString('isMark') === 'false'){
-  $("#loadingUI.waiting").hide();
-  $("#pulmonaryWrapper .tub").show();
-  initEcharts([0,0]);
-}*/
+var showAiResult = false;
+var enableAi = getQueryString('ai') === 'on';
+var token = getQueryString('token');
+var accessionNum = getQueryString('accessionNum');
 
 if (window.location.protocol == "https:") {
   if (baseStudyUrl.substr(0, 1) !== '/') {
