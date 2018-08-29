@@ -21,7 +21,7 @@ ImageViewer = function(root, viewport) {
           }).appendTo(self.root.find('.imageViewer'));
           elem.find('.viewport').data('index', i).data('waiting', true);
 
-          self.viewports.push(elem);          
+          self.viewports.push(elem);
           i++;
         }       
         

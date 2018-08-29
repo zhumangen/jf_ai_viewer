@@ -208,8 +208,22 @@ function aiCallback(stackIdx, aiResult) {
 	  
 	//}
 	
-	
-
+	const aiData = {
+		element: $('.csthumbnail')[stackIdx],
+		data: {
+			x0:100,
+			y0:100,
+			x1:500,
+			y1:500
+		},
+		type:"肺结核"
+	}
+	cornerstoneTools.rectangleAi.addNewMeasurement(aiData);
+	console.log('tool state: ', cornerstoneTools.getToolState(aiData.element, 'rectangleAi'));
+	forEachViewport(function(element){
+		cornerstoneTools.rectangleAi.deactivate(element, 1);
+		cornerstone.updateImage(element);
+	});
 
 	if (aiResult["reportStatus"] === 5000) {
 		// let seriesList = $(studyViewerTemplate).find('.thumbnails')[0];

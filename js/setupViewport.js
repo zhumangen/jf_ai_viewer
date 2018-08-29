@@ -34,7 +34,7 @@ function setupViewport(element, stack, image) {
     cornerstoneTools.arrowAnnotate.deactivate(element, 1);
     cornerstoneTools.wwwcTouchDrag.activate(element);
     cornerstoneTools.zoomTouchPinch.activate(element);
-    cornerstoneTools.wwwcRegion.activate(element, 1);
+    // cornerstoneTools.wwwcRegion.activate(element, 1);
 
     // Stack tools
     cornerstoneTools.addStackStateManager(element, ['playClip']);
