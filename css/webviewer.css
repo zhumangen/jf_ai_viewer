@@ -239,7 +239,8 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
   right: 0; 
   top: 72px;
   width: 20%; 
-  height: calc(100vh -72px);  
+  height: calc(100vh - 72px);
+  overflow-y: auto;   
 }
 
 /*#pulmonaryWrapper .block{
@@ -259,8 +260,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
   /* height: 328px;  */
   /*height: calc(42vh - 24px);  */  
   /* overflow-y: auto; */
-  /*height: calc(40vh - 24px);*/
-  height: 280px;
+  height: calc(40vh - 24px);
 
   border: 2px solid #2d5a87;
   border-radius: 4px;  
@@ -280,8 +280,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
   height: calc(100vh - 72px - 280px - 216px);
   padding: 10px;
   margin-top: 10px;
-  /* padding-top: 20px; */  
-  overflow-y: auto;
+  /* padding-top: 20px; */
   font-size: 16px;
   box-sizing: border-box;
   /* top: 400px; */
@@ -416,7 +415,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 
 .tbForm{
   /*box-sizing: border-box;*/
-  height: 196px;
+  /*height: 196px;*/
   padding: 10px;
 }
 
@@ -435,9 +434,9 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
   margin: 10px 0; 
 }
 
-#tbConfirm {
+/*#tbConfirm {
   max-width: 20%;
-}
+}*/
 
 #tbConfirm.disabled{
   cursor: not-allowed;
