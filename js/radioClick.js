@@ -26,7 +26,7 @@ $("#tbConfirm").on("click", function(e) {
     return;
   }
 
-  let data = {
+  let hiData = {
     normalityCode: $(".partOne .radio-success input").val(),
     tbConsistencyCode: $(".partTwo .radio-success input").val(),
     adviceCode: $(".partThree .radio-success input").val(),
@@ -36,35 +36,61 @@ $("#tbConfirm").on("click", function(e) {
     activeScore
   }
 
-  console.log('data', data);
-  $.ajax({
-    url: saveUrl,
-    type: "PUT",
-    data: JSON.stringify(data),
-    success: function(result) {
-      console.log('save', result);
-      if(result.code == 200){
-        console.log('人工保存成功！');
-        alert('保存成功！');
-        $('#tbConfirm').attr('disabled','disabled'); // 禁用  
-        $(".pulmonaryInfo .radio input")
-           .attr("disabled", "disabled")
-          .parent().addClass('disabled');      
+  let count = 0;
+  tbData.forEach(data => {
+    const thumbs = $('.csthumbnail');
+    thumbs.each(idx => {
+      const thumb = thumbs[idx];
+      const image = cornerstone.getEnabledElement(thumb).image;
+      if (image && image.imageId.indexOf(data.objectUid) >= 0) {
+        Object.assign(data, hiData);
+        const toolData = cornerstoneTools.getToolState(thumb, cornerstoneTools.rectangleAi.toolType);
+        data.lesions = [];
+        if (toolData && toolData.data) {
+          toolData.data.forEach(measurement => {
+            const lesion = Object.assign({}, measurement.otherData, {
+              type: measurement.textbox.aiType,
+              xmin: Math.min(measurement.handles.start.x, measurement.handles.end.x),
+              ymin: Math.min(measurement.handles.start.y, measurement.handles.end.y),
+              xmax: Math.max(measurement.handles.start.x, measurement.handles.end.x),
+              ymax: Math.max(measurement.handles.start.y, measurement.handles.end.y)
+            });
+            data.lesions.push(lesion);
+          });
+        }
 
-        // 重新渲染数据
-        initEcharts([RGData.extend1 * 100, RGData.extend2 * 100]);
-        let isNormal = RGData.normalFlag;
-        let isTb = RGData.pulmTbFlag;
-        let RGadvice =   RGData.advice;      
-        setChecked(isNormal, $(".pulmonaryInfo .partOne input"));
-        setChecked(isTb, $(".pulmonaryInfo .partTwo input"));
-        setChecked(RGadvice, $(".pulmonaryInfo .partThree input"));
-      } else {
-        console.log('保存失败：', result);
+        $.ajax({
+          url: baseAiUrl + '/v2/rmis/sysop/ai/tb',
+          type: "PUT",
+          headers: {
+            token
+          },
+          dataType: 'json',
+          contentType: 'application/json',
+          data: JSON.stringify(data),
+          success: function(result) {
+            console.log('save: ', result);
+            if(result.code === 200){
+              console.log('保存成功！');
+              count++;
+              if (count === tbData.length) {
+                alert('保存成功！');
+                $('#tbConfirm').attr('disabled','disabled'); // 禁用  
+                $(".pulmonaryInfo .radio input").attr("disabled", "disabled")
+                                                .parent().addClass('disabled');
+                initEcharts({abnormalScore, tbScore, activeScore});
+              }
+            } else {
+              allOk = false;
+              console.log('保存失败：', result);
+            }
+          },
+          error: function(result){
+            allOk = false;
+            console.log('保存失败：', result);
+          }
+        })
       }
-    },
-    error: function(result){
-      console.log('保存失败：', result);
-    }
-  })
+    });
+  });
 })

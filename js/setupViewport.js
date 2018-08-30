@@ -4,13 +4,6 @@ function setupViewport(element, stack, image) {
 
     $(element).find('.loading').remove();
 
-    // 如果是还未标的时候
-    if(getQueryString('isMark') === 'false'){
-      $("#loadingUI.waiting").hide();
-      $("#pulmonaryWrapper .tub").show();
-      //initEcharts([0,0]);
-    }
-
     // If it's a movie (has frames), then play the clip
     if (stack.frameRate !== undefined) {
         cornerstone.playClip(element, stack.frameRate);

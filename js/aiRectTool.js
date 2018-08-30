@@ -7,6 +7,11 @@ function createNewMeasurement (annoData) {
     visible: true,
     active: false,
     invalidated: true,
+    otherData: {
+      aiTbId: annoData.aiTbId,
+      id: annoData.id,
+      prob: annoData.prob
+    },
     handles: {
       start: {
         x: annoData.data.x0,
@@ -260,5 +265,6 @@ const rectangleAi = cornerstoneTools.mouseButtonTool({
 });
 
 rectangleAi.addNewMeasurement = addNewMeasurement;
+rectangleAi.toolType = toolType;
 
 cornerstoneTools[toolType] = rectangleAi;

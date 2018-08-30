@@ -1,6 +1,9 @@
 function aiCallback(stackIdx, data) {
   console.log('airesult', data);
 
+  $("#loadingUI.waiting").hide();
+  $("#pulmonaryWrapper .tub").show();
+
   tbData = data.filter(item => !item.isAi);
   // 如果是已经标了的
   if(tbData.length > 0){
@@ -13,8 +16,11 @@ function aiCallback(stackIdx, data) {
   }
 
   tbData.forEach(data => {
-    $('.csthumbnail').each((index, thumb) => {
-      if (imageViewer.stacks[index].imageIds[0].indexOf(data.objectUid) >= 0) {
+    const thumbs = $('.csthumbnail');
+    thumbs.each(idx => {
+      const thumb = thumbs[idx];
+      const image = cornerstone.getEnabledElement(thumb).image;
+      if (image && image.imageId.indexOf(data.objectUid) >= 0) {
         data.lesions.forEach(lesion => {
           const initData = {
             element: thumb,
@@ -63,19 +69,19 @@ function AIFinshed(status){
 }
 
 function aiRequest(metaData, stackIdx, callback) {
-	if (tbData.length > 0) return;
-
-  let dataUrl = baseAiUrl + '/v2/rmis/sysop/ai/record';   
+  let dataUrl = baseAiUrl + '/v2/rmis/sysop/ai/tb/record';   
   $.ajax({
     url: dataUrl,
     headers: {
       token
     },
-    data: { accessionNum },
-    type: "POST",    
+    data: JSON.stringify({ accessionNum }),
+    type: "POST",
+    dataType: 'json',
+    contentType: 'application/json',
     success: function(result) {
-      if (result.data && result.data.code === 200) {
-        callback(stackIdx, result.data.data);
+      if (result.code === 200) {
+        callback(stackIdx, result.data);
         AIFinshed(true);
       } else {
         console.log("error: ", result);

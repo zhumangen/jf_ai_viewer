@@ -3,6 +3,7 @@ function loadImages(imageArrStr) {
     
     var seriesIndex = imageViewer.stacks.length;
     var seriesList = $(studyViewerTemplate).find('.thumbnails')[0];
+    var count = 0;
 
     // Get the JSON data for the selected studyId
     let imageArr = JSON.parse(decodeURIComponent(imageArrStr));
@@ -83,8 +84,11 @@ function loadImages(imageArrStr) {
                 // Have cornerstone load the thumbnail image
                 cornerstone.loadAndCacheImage(stack.imageIds[0]).then(function(image) {
                     if (enableAi) {
-                        $("#ai .toolbar-text").html("<marquee style='width: 40px; position: absolute; left: 50%; margin-left: -20px; color: yellow'>AI处理中...</marquee>");                    
-                        aiRequest(stack.metaData, stackIndex, aiCallback);
+                        $("#ai .toolbar-text").html("<marquee style='width: 40px; position: absolute; left: 50%; margin-left: -20px; color: yellow'>AI处理中...</marquee>");  
+                        count++;
+                        if (count === imageArr.length) {
+                            aiRequest(stack.metaData, stackIndex, aiCallback);
+                        }
                     }
 
                     // Make the first thumbnail active
