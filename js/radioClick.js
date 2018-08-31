@@ -49,6 +49,7 @@ $("#tbConfirm").on("click", function(e) {
         if (toolData && toolData.data) {
           toolData.data.forEach(measurement => {
             const lesion = Object.assign({}, measurement.otherData, {
+              docName,
               type: measurement.textbox.aiType,
               xmin: Math.min(measurement.handles.start.x, measurement.handles.end.x),
               ymin: Math.min(measurement.handles.start.y, measurement.handles.end.y),
@@ -63,7 +64,8 @@ $("#tbConfirm").on("click", function(e) {
           url: baseAiUrl + '/v2/rmis/sysop/ai/tb',
           type: "PUT",
           headers: {
-            token
+            token,
+            version
           },
           dataType: 'json',
           contentType: 'application/json',
@@ -75,9 +77,8 @@ $("#tbConfirm").on("click", function(e) {
               count++;
               if (count === tbData.length) {
                 alert('保存成功！');
-                $('#tbConfirm').attr('disabled','disabled'); // 禁用  
-                $(".pulmonaryInfo .radio input").attr("disabled", "disabled")
-                                                .parent().addClass('disabled');
+                $("#tbForm").hide();
+                $("#pulmonaryInfo").addClass("formHide");
                 initEcharts({abnormalScore, tbScore, activeScore});
               }
             } else {

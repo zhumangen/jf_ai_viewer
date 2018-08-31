@@ -17,6 +17,8 @@ var showAiResult = false;
 var enableAi = getQueryString('ai') === 'on';
 var token = getQueryString('token');
 var accessionNum = getQueryString('accessionNum');
+var version = getQueryString('version');
+var docName = getQueryString('docName');
 
 if (window.location.protocol == "https:") {
   if (baseStudyUrl.substr(0, 1) !== '/') {

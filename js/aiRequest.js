@@ -44,9 +44,9 @@ function aiCallback(stackIdx, data) {
     }
     initEcharts(echartData);
 
-    $("#abnormalScore").val(tbData[0].abnormalScore);
-    $("#tbScore").val(tbData[0].tbScore);
-    $("#activeScore").val(tbData[0].activeScore);
+    $("#abnormalScore").val(tbData[0].abnormalScore.toFixed(2));
+    $("#tbScore").val(tbData[0].tbScore.toFixed(2));
+    $("#activeScore").val(tbData[0].activeScore.toFixed(2));
     setChecked(tbData[0].normalityCode, $(".pulmonaryInfo .partOne input"));
     setChecked(tbData[0].tbConsistencyCode, $(".pulmonaryInfo .partTwo input"));
     setChecked(tbData[0].adviceCode, $(".pulmonaryInfo .partThree input"));
@@ -73,7 +73,8 @@ function aiRequest(metaData, stackIdx, callback) {
   $.ajax({
     url: dataUrl,
     headers: {
-      token
+      token,
+      version
     },
     data: JSON.stringify({ accessionNum }),
     type: "POST",

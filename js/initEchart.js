@@ -20,6 +20,8 @@ function initEcharts(data) {
         xAxis: {
             type: 'value',
             boundaryGap: [0, 1],
+            min: 0,
+            max: 1,
             axisLabel: {
              fontSize: 16,
              color: '#3870a9',
@@ -50,7 +52,7 @@ function initEcharts(data) {
         series:[{
             name: '活动性,疑似度,异常度',
             type: 'bar',
-            data: [data.activeScore, data.tbScore, data.abnormalScore],
+            data: [data.activeScore.toFixed(2), data.tbScore.toFixed(2), data.abnormalScore.toFixed(2)],
             itemStyle: {
                 normal: {
                     barBorderRadius: [15, 15, 15, 15],
@@ -75,7 +77,6 @@ function resize(echart) {
 // 获取数据设置为选中状态
 function setChecked(data, ele){
     for(let i = 0 ; i < ele.length; i++){
-        console.log('是否正常id', ele.eq(i).val(), data);
         if(ele.eq(i).val() == data){ 
             ele.eq(i).parent().addClass("radio-success")
                .siblings().removeClass("radio-success");
