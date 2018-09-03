@@ -6,13 +6,13 @@ $(".pulmonaryInfo").on("click", "input[type='radio']", function() {
 
 $("#tbConfirm").on("click", function(e) {
   e.preventDefault();
-  var reg = /^(0.\d+|0|1)$/;
+  var reg = /^(0(\.\d+)?|1(\.0+)?)$/;
   const abnormalScore = $("#abnormalScore").val();
   const tbScore = $("#tbScore").val();
   const activeScore = $("#activeScore").val();
   if(!reg.test(abnormalScore)) {
     alert('输入格式有误！');
-    $("#abnormalScore").val('');      
+    $("#abnormalScore").val('');
     return;
   }
   if(!reg.test(tbScore)){
@@ -50,7 +50,7 @@ $("#tbConfirm").on("click", function(e) {
           toolData.data.forEach(measurement => {
             const lesion = Object.assign({}, measurement.otherData, {
               docName,
-              type: measurement.textbox.aiType,
+              type: measurement.handles.textBox.aiType,
               xmin: Math.min(measurement.handles.start.x, measurement.handles.end.x),
               ymin: Math.min(measurement.handles.start.y, measurement.handles.end.y),
               xmax: Math.max(measurement.handles.start.x, measurement.handles.end.x),

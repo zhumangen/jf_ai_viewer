@@ -1,8 +1,8 @@
 // For Develop
 var wadoUri = 'http://47.100.43.165/v1/picl/aets/piclarc/wado';
-var wadoRs = '/pacs/rs';
-//var wadoRs = '/v1/picl/aets/piclarc/rs';
-var baseAiUrl = 'http://101.132.45.197:8310';
+//var wadoRs = '/pacs/rs';
+var wadoRs = 'http://101.132.45.197:8090/v1/picl/aets/piclarc/rs';
+var baseAiUrl = 'http://101.132.45.197:8311';
 var baseStudyUrl = wadoRs + '/studies/';
 
 var tbData = [];
@@ -17,7 +17,7 @@ var showAiResult = false;
 var enableAi = getQueryString('ai') === 'on';
 var token = getQueryString('token');
 var accessionNum = getQueryString('accessionNum');
-var version = getQueryString('version');
+var version = '3.0.1.20180509'; //getQueryString('version');
 var docName = getQueryString('docName');
 
 if (window.location.protocol == "https:") {

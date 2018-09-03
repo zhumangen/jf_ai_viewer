@@ -14,14 +14,14 @@ function createNewMeasurement (annoData) {
     },
     handles: {
       start: {
-        x: annoData.data.x0,
-        y: annoData.data.y0,
+        x: annoData.xmin,
+        y: annoData.ymin,
         highlight: true,
         active: false
       },
       end: {
-        x: annoData.data.x1,
-        y: annoData.data.y1,
+        x: annoData.xmax,
+        y: annoData.ymax,
         highlight: true,
         active: false
       },
@@ -43,7 +43,7 @@ function createNewMeasurement (annoData) {
 function addNewMeasurement (aiData) {
   const element = aiData.element;
 
-  const measurementData = createNewMeasurement(aiData);
+  const measurementData = createNewMeasurement(aiData.data);
 
   // Associate this data with this imageId so we can render it and manipulate it
   cornerstoneTools.addToolState(element, toolType, measurementData);
