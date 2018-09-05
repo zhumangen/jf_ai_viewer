@@ -40,13 +40,13 @@ function aiCallback(stackIdx, data) {
     const echartData = {
       abnormalScore: tbData[0].abnormalScore,
       tbScore: tbData[0].tbScore,
-      activeScore: tbData[0].activeScore
+      //activeScore: tbData[0].activeScore
     }
     initEcharts(echartData);
 
-    $("#abnormalScore").val(tbData[0].abnormalScore.toFixed(2));
-    $("#tbScore").val(tbData[0].tbScore.toFixed(2));
-    $("#activeScore").val(tbData[0].activeScore.toFixed(2));
+    $("#abnormalScore").val(tbData[0].abnormalScore.toFixed(2)*100 + '%');
+    $("#tbScore").val(tbData[0].tbScore.toFixed(2)*100 + '%');
+    //$("#activeScore").val(tbData[0].activeScore.toFixed(2));
     setChecked(tbData[0].normalityCode, $(".pulmonaryInfo .partOne input"));
     setChecked(tbData[0].tbConsistencyCode, $(".pulmonaryInfo .partTwo input"));
     setChecked(tbData[0].adviceCode, $(".pulmonaryInfo .partThree input"));

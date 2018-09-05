@@ -4,38 +4,41 @@ $(".pulmonaryInfo").on("click", "input[type='radio']", function() {
         .siblings().removeClass("radio-success");
 });
 
+$('.form-control').on('change', function() {
+  let score = $(this).val();
+  if(score !== '') {
+    if(score.indexOf('%') == -1) {
+      score = score + '%';
+    }
+  }
+})
 $("#tbConfirm").on("click", function(e) {
   e.preventDefault();
-  var reg = /^(0(\.\d+)?|1(\.0+)?)$/;
-  const abnormalScore = $("#abnormalScore").val();
-  const tbScore = $("#tbScore").val();
-  const activeScore = $("#activeScore").val();
+  var reg = /^(100|[1-9]?\d(\.\d\d?\d?)?)%$|0$/;
+  let abnormalScore = $("#abnormalScore").val();
+  let tbScore = $("#tbScore").val();
   if(!reg.test(abnormalScore)) {
     alert('输入格式有误！');
     $("#abnormalScore").val('');
     return;
+  }else {
+    abnormalScore = toPercent(abnormalScore);
   }
   if(!reg.test(tbScore)){
     alert('输入格式有误！');
     $("#tbScore").val('');
     return;
+  }else {
+    tbScore = toPercent(tbScore)
   }
-  if(!reg.test(activeScore)){
-    alert('输入格式有误！');
-    $("#activeScore").val('');
-    return;
-  }
-
   let hiData = {
     normalityCode: $(".partOne .radio-success input").val(),
     tbConsistencyCode: $(".partTwo .radio-success input").val(),
     adviceCode: $(".partThree .radio-success input").val(),
     isAi: 0,
     abnormalScore,
-    tbScore,
-    activeScore
+    tbScore
   }
-
   let count = 0;
   tbData.forEach(data => {
     const thumbs = $('.csthumbnail');
@@ -45,7 +48,7 @@ $("#tbConfirm").on("click", function(e) {
       if (image && image.imageId.indexOf(data.objectUid) >= 0) {
         Object.assign(data, hiData);
         const toolData = cornerstoneTools.getToolState(thumb, cornerstoneTools.rectangleAi.toolType);
-        data.lesions = [];
+        data.lesions = []; 
         if (toolData && toolData.data) {
           toolData.data.forEach(measurement => {
             const lesion = Object.assign({}, measurement.otherData, {
@@ -79,7 +82,7 @@ $("#tbConfirm").on("click", function(e) {
                 alert('保存成功！');
                 $("#tbForm").hide();
                 $("#pulmonaryInfo").addClass("formHide");
-                initEcharts({abnormalScore, tbScore, activeScore});
+                initEcharts({abnormalScore, tbScore});
               }
             } else {
               allOk = false;
@@ -95,3 +98,8 @@ $("#tbConfirm").on("click", function(e) {
     });
   });
 })
+// 将百分数转换成小数
+function toPercent(percent) {
+  var str = percent.replace('%', '');
+  return str = str / 100;
+}

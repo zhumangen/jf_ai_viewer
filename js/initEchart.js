@@ -1,7 +1,7 @@
 // 初始化echarts
-function initEcharts(data) {
+function initEcharts(datas) {
     var myChart = echarts.init(document.getElementById("pulmonary"));
-    console.log(data);
+    console.log(datas);
  
     var option = {
         grid: {
@@ -14,7 +14,7 @@ function initEcharts(data) {
             trigger: 'item',
             formatter: function(data) {
                 let arr = data.seriesName.split(',');
-                return '肺结核' + '<br><span style="display: inline-block;margin-right: 5px;border-radius: 10px;width: 9px;height: 9px;background-color:' + data.color +'"></span>' + arr[data.dataIndex] + ': ' + data.value;
+                return '<span style="display: inline-block;margin-right: 5px;border-radius: 10px;width: 9px;height: 9px;background-color:' + data.color +'"></span>' + arr[data.dataIndex] + ': ' + data.value;
             }
         },
         xAxis: {
@@ -31,7 +31,7 @@ function initEcharts(data) {
         yAxis: [
             {
                 type: 'category',
-                data: ['陈旧', '正常', '正常'],
+                data: ['正常', '正常'],
                 axisLabel: {
                  fontSize: 16,
                  color: '#fff',
@@ -41,7 +41,7 @@ function initEcharts(data) {
             },
             {
                 type: 'category',
-                data: ['活动', '结核', '异常'],
+                data: ['结核', '异常'],
                 axisLabel: {
                  fontSize: 16,
                  color: '#fff',
@@ -50,9 +50,9 @@ function initEcharts(data) {
             }
         ],
         series:[{
-            name: '活动性,疑似度,异常度',
+            name: '疑似度,异常度',
             type: 'bar',
-            data: [data.activeScore.toFixed(2), data.tbScore.toFixed(2), data.abnormalScore.toFixed(2)],
+            data: [datas.tbScore.toFixed(2), datas.abnormalScore.toFixed(2)],
             itemStyle: {
                 normal: {
                     barBorderRadius: [15, 15, 15, 15],
@@ -63,7 +63,7 @@ function initEcharts(data) {
         }]
     };
 
-    myChart.setOption(option);  
+    myChart.setOption(option);
     resize(myChart);
 }   
 
