@@ -14,14 +14,13 @@ function initEcharts(datas) {
             trigger: 'item',
             formatter: function(data) {
                 let arr = data.seriesName.split(',');
-                return '<span style="display: inline-block;margin-right: 5px;border-radius: 10px;width: 9px;height: 9px;background-color:' + data.color +'"></span>' + arr[data.dataIndex] + ': ' + data.value;
+                return '<span style="display: inline-block;margin-right: 5px;border-radius: 10px;width: 9px;height: 9px;background-color:' + data.color +'"></span>' + arr[data.dataIndex] + ': ' + data.value + '%';
             }
         },
         xAxis: {
             type: 'value',
-            boundaryGap: [0, 1],
             min: 0,
-            max: 1,
+            max: 100,
             axisLabel: {
              fontSize: 16,
              color: '#3870a9',
@@ -52,7 +51,7 @@ function initEcharts(datas) {
         series:[{
             name: '疑似度,异常度',
             type: 'bar',
-            data: [datas.tbScore.toFixed(2), datas.abnormalScore.toFixed(2)],
+            data: [datas.tbScore.toFixed(2)*100, datas.abnormalScore.toFixed(2)*100],
             itemStyle: {
                 normal: {
                     barBorderRadius: [15, 15, 15, 15],

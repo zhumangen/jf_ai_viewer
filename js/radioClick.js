@@ -9,9 +9,11 @@ $('.form-control').on('change', function() {
   if(score !== '') {
     if(score.indexOf('%') == -1) {
       score = score + '%';
+      $(this).val(score);
     }
   }
 })
+
 $("#tbConfirm").on("click", function(e) {
   e.preventDefault();
   var reg = /^(100|[1-9]?\d(\.\d\d?\d?)?)%$|0$/;
