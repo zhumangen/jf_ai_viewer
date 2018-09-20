@@ -47,8 +47,10 @@ $("#tbConfirm").on("click", function(e) {
     thumbs.each(idx => {
       const thumb = thumbs[idx];
       const image = cornerstone.getEnabledElement(thumb).image;
+      console.log(thumb, image);
       if (image && image.imageId.indexOf(data.objectUid) >= 0) {
         Object.assign(data, hiData);
+        console.log(111, data)
         const toolData = cornerstoneTools.getToolState(thumb, cornerstoneTools.rectangleAi.toolType);
         data.lesions = []; 
         if (toolData && toolData.data) {
@@ -62,6 +64,7 @@ $("#tbConfirm").on("click", function(e) {
               ymax: Math.max(measurement.handles.start.y, measurement.handles.end.y)
             });
             data.lesions.push(lesion);
+            console.log("data.lessions",data.lesions)
           });
         }
 
@@ -80,10 +83,9 @@ $("#tbConfirm").on("click", function(e) {
             if(result.code === 200){
               console.log('保存成功！');
               count++;
+              console.log("count",count);
               if (count === tbData.length) {
                 alert('保存成功！');
-                $("#tbForm").hide();
-                $("#pulmonaryInfo").addClass("formHide");
                 initEcharts({abnormalScore, tbScore});
               }
             } else {

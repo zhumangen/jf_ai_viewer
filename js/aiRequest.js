@@ -3,18 +3,12 @@ function aiCallback(stackIdx, data) {
 
   $("#loadingUI.waiting").hide();
   $("#pulmonaryWrapper .tub").show();
-
   tbData = data.filter(item => !item.isAi);
   // 如果是已经标了的
-  if(tbData.length > 0){
-    $("#tbForm").hide();
-    $("#pulmonaryInfo").addClass("formHide");
-  }else{
-    $("#tbForm").show();
-    $("#pulmonaryInfo").removeClass("formHide");
+  console.log("data",tbData.length)
+  if(tbData.length == 0){
     tbData = data;
   }
-
   tbData.forEach(data => {
     const thumbs = $('.csthumbnail');
     thumbs.each(idx => {
@@ -36,12 +30,14 @@ function aiCallback(stackIdx, data) {
     cornerstone.updateImage(element);
   });
 
+  console.log("tbDataLength",tbData.length)
   if (tbData.length > 0) {
     const echartData = {
       abnormalScore: tbData[0].abnormalScore,
       tbScore: tbData[0].tbScore,
       //activeScore: tbData[0].activeScore
     }
+    console.log("tbData9999",tbData[0]);
     initEcharts(echartData);
 
     $("#abnormalScore").val(tbData[0].abnormalScore.toFixed(2)*100 + '%');
