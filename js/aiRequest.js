@@ -40,8 +40,8 @@ function aiCallback(stackIdx, data) {
     console.log("tbData9999",tbData[0]);
     initEcharts(echartData);
 
-    $("#abnormalScore").val(tbData[0].abnormalScore.toFixed(2)*100 + '%');
-    $("#tbScore").val(tbData[0].tbScore.toFixed(2)*100 + '%');
+    $("#abnormalScore").val(tbData[0].abnormalScore.toFixed(2)*100);
+    $("#tbScore").val(tbData[0].tbScore.toFixed(2)*100);
     //$("#activeScore").val(tbData[0].activeScore.toFixed(2));
     setChecked(tbData[0].normalityCode, $(".pulmonaryInfo .partOne input"));
     setChecked(tbData[0].tbConsistencyCode, $(".pulmonaryInfo .partTwo input"));

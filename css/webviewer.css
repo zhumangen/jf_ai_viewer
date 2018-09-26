@@ -429,11 +429,13 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 .tbForm .form-inline .form-group{
   width: 80%;
 }
+.tbForm .form-inline .form-group span{
+  margin-left:-20px;
+}
 .tbForm input{
   width: calc(100% - 50px) !important;
   margin: 10px 0; 
 }
-
 /*#tbConfirm {
   max-width: 20%;
 }*/

@@ -20,7 +20,6 @@ ImageViewer = function(root, viewport) {
             width : perWidth + '%', height : perHeight + '%'
           }).appendTo(self.root.find('.imageViewer'));
           elem.find('.viewport').data('index', i).data('waiting', true);
-
           self.viewports.push(elem);
           i++;
         }       
@@ -36,11 +35,11 @@ ImageViewer = function(root, viewport) {
           },*/
           click: function() {
             console.log(1);
+            console.log("self",self.viewports);
             $(this).addClass('selected');
             $(this).siblings().removeClass('selected');
           }
         },'.viewportWrapper')
-
     }
 
 

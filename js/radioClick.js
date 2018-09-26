@@ -7,16 +7,36 @@ $(".pulmonaryInfo").on("click", "input[type='radio']", function() {
 $('.form-control').on('change', function() {
   let score = $(this).val();
   if(score !== '') {
-    if(score.indexOf('%') == -1) {
-      score = score + '%';
       $(this).val(score);
-    }
   }
+})
+
+$('.form-control').on('input',function(){
+    let abnormalScore=$('#abnormalScore').val();
+    let tbScore=$('#tbScore').val();
+    let reg = /^(|0 | 100|[1-9]?\d(\.\d\d?\d?)?)$/;
+    if(!reg.test(abnormalScore)){ //如果格式错误,则归为0
+      if(abnormalScore!==''){
+        abnormalScore=0;
+        alert('输入格式不正确！');
+        $("#abnormalScore").val('');
+      }
+    }
+    if(!reg.test(tbScore)){
+      if(tbScore!==''){
+        tbScore=0;
+        alert("输入格式不正确！");
+        $("#tbScore").val('');
+      }
+    }
+    abnormalScore=abnormalScore/100;
+    tbScore=tbScore/100;
+    initEcharts({abnormalScore, tbScore});
 })
 
 $("#tbConfirm").on("click", function(e) {
   e.preventDefault();
-  var reg = /^(100|[1-9]?\d(\.\d\d?\d?)?)%$|0$/;
+  var reg = /^(0 | 100|[1-9]?\d(\.\d\d?\d?)?)$/;
   let abnormalScore = $("#abnormalScore").val();
   let tbScore = $("#tbScore").val();
   if(!reg.test(abnormalScore)) {
@@ -50,7 +70,6 @@ $("#tbConfirm").on("click", function(e) {
       console.log(thumb, image);
       if (image && image.imageId.indexOf(data.objectUid) >= 0) {
         Object.assign(data, hiData);
-        console.log(111, data)
         const toolData = cornerstoneTools.getToolState(thumb, cornerstoneTools.rectangleAi.toolType);
         data.lesions = []; 
         if (toolData && toolData.data) {
@@ -86,7 +105,7 @@ $("#tbConfirm").on("click", function(e) {
               console.log("count",count);
               if (count === tbData.length) {
                 alert('保存成功！');
-                initEcharts({abnormalScore, tbScore});
+                // initEcharts({abnormalScore, tbScore});
               }
             } else {
               allOk = false;
