@@ -53,6 +53,7 @@ $("#tbConfirm").on("click", function(e) {
   }else {
     tbScore = toPercent(tbScore)
   }
+
   let hiData = {
     normalityCode: $(".partOne .radio-success input").val(),
     tbConsistencyCode: $(".partTwo .radio-success input").val(),
@@ -61,6 +62,24 @@ $("#tbConfirm").on("click", function(e) {
     abnormalScore,
     tbScore
   }
+
+  forEachViewport(element => {
+    const canvas = element.querySelector('canvas');
+    const imageText = canvas.toDataUrl('image/png', 1);
+    $.ajax({
+      url: baseAiUrl + '/v2/rmis/sysop/worklist/image/text',
+      type: 'POST',
+      dataType: 'json',
+      contentType: 'application/json',
+      data: {
+        accessionNum,
+        imageText
+      },
+      success: resp => { console.log('保存截图成功'); }
+      error: error => { console.log('保存截图失败： '+ error); }
+    });
+  })
+
   let count = 0;
   tbData.forEach(data => {
     const thumbs = $('.csthumbnail');
