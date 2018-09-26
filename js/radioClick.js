@@ -75,7 +75,7 @@ $("#tbConfirm").on("click", function(e) {
         accessionNum,
         imageText
       },
-      success: resp => { console.log('保存截图成功'); }
+      success: resp => { console.log('保存截图成功'); },
       error: error => { console.log('保存截图失败： '+ error); }
     });
   })
