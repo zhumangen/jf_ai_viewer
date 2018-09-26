@@ -2,7 +2,8 @@
 var wadoUri = 'http://47.100.43.165/v1/picl/aets/piclarc/wado';
 var wadoRs = '/pacs/rs';
 //var wadoRs = 'http://101.132.45.197:8090/v1/picl/aets/piclarc/rs';
-var baseAiUrl = 'http://101.132.45.197:8311';
+//var baseAiUrl = 'http://101.132.45.197:8311';
+var baseAiUrl = 'http://47.100.43.165:8170';
 var baseStudyUrl = wadoRs + '/studies/';
 
 var tbData = [];

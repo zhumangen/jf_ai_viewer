@@ -23,6 +23,8 @@ cornerstoneTools.external.cornerstone = cornerstone;
 cornerstoneTools.external.$ = $;
 cornerstoneTools.external.Hammer = Hammer;
 
+cornerstoneTools.textStyle.setFont('20px Arial');
+
 var measurementConfig = { drawHandlesOnHover: true };
 cornerstoneTools.ellipticalAi.setConfiguration(measurementConfig);
 cornerstoneTools.length.setConfiguration(measurementConfig);

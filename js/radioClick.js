@@ -14,7 +14,7 @@ $('.form-control').on('change', function() {
 $('.form-control').on('input',function(){
     let abnormalScore=$('#abnormalScore').val();
     let tbScore=$('#tbScore').val();
-    let reg = /^(|0 | 100|[1-9]?\d(\.\d\d?\d?)?)$/;
+    let reg = /^(0|100|[1-9]?\d(\.\d\d?\d?)?)$/;
     if(!reg.test(abnormalScore)){ //如果格式错误,则归为0
       if(abnormalScore!==''){
         abnormalScore=0;
@@ -36,7 +36,7 @@ $('.form-control').on('input',function(){
 
 $("#tbConfirm").on("click", function(e) {
   e.preventDefault();
-  var reg = /^(0 | 100|[1-9]?\d(\.\d\d?\d?)?)$/;
+  var reg = /^(0|100|[1-9]?\d(\.\d\d?\d?)?)$/;
   let abnormalScore = $("#abnormalScore").val();
   let tbScore = $("#tbScore").val();
   if(!reg.test(abnormalScore)) {
@@ -65,18 +65,29 @@ $("#tbConfirm").on("click", function(e) {
 
   forEachViewport(element => {
     const canvas = element.querySelector('canvas');
-    const imageText = canvas.toDataUrl('image/png', 1);
+    const imageText = getImageDataUrl(element);;
     $.ajax({
       url: baseAiUrl + '/v2/rmis/sysop/worklist/image/text',
       type: 'POST',
+      headers: {
+        token,
+        version
+      },
       dataType: 'json',
       contentType: 'application/json',
-      data: {
+      data: JSON.stringify({
         accessionNum,
         imageText
+      }),
+      success: function(resp) {
+        console.log('保存截图： ' + resp);
+        if (resp.code === 200) {
+          console.log('保存截图成功');
+        } else {
+          console.log('保存截图失败：' + resp);
+        }
       },
-      success: resp => { console.log('保存截图成功'); },
-      error: error => { console.log('保存截图失败： '+ error); }
+      error: function(error) { console.log('保存截图失败： '+ error); }
     });
   })
 

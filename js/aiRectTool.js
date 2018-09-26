@@ -82,7 +82,7 @@ function onImageRendered (e) {
 
   const image = eventData.image;
   const element = eventData.element;
-  const lineWidth = cornerstoneTools.toolStyle.getToolWidth();
+  const lineWidth = 3; // cornerstoneTools.toolStyle.getToolWidth();
   const config = cornerstoneTools.rectangleAi.getConfiguration();
   const context = eventData.canvasContext.canvas.getContext('2d');
   const seriesModule = cornerstone.metaData.get('generalSeriesModule', image.imageId);
@@ -108,7 +108,7 @@ function onImageRendered (e) {
     }
 
     // Check which color the rendered tool should be
-    const color = cornerstoneTools.toolColors.getColorIfActive(data.active);
+    const color = 'darkred'; // cornerstoneTools.toolColors.getColorIfActive(data.active);
 
     // Convert Image coordinates to Canvas coordinates given the element
     const handleStartCanvas = cornerstone.pixelToCanvas(element, data.handles.start);
