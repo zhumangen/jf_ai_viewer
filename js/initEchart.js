@@ -59,6 +59,21 @@ function initEcharts(datas) {
                 }
             },
             barWidth: 20
+        }, {
+            name: '',
+            type: 'bar',
+            yAxisIndex: 1,
+            barGap: '-100%',
+            data: [100, 100],
+            barWidth: 22,
+            itemStyle: {
+                normal: {
+                    color: 'none',
+                    borderColor: '#00c1de',
+                    borderWidth: 2,
+                    barBorderRadius: 15,
+                }
+            }
         }]
     };
 

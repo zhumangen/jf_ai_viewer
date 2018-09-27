@@ -26,5 +26,5 @@ function getImageDataUrl(element) {
 	const imgData = ctx.getImageData(start.x, start.y, width, height);
 	const ctx1 = canvas.getContext('2d');
 	ctx1.putImageData(imgData, 0, 0);
-	return canvas.toDataURL('image/png', 1);
+	return canvas.toDataURL('image/jpeg', 0.5);
 }

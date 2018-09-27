@@ -64,8 +64,7 @@ $("#tbConfirm").on("click", function(e) {
   }
 
   forEachViewport(element => {
-    const canvas = element.querySelector('canvas');
-    const imageText = getImageDataUrl(element);;
+   const imageText = getImageDataUrl(element);
     $.ajax({
       url: baseAiUrl + '/v2/rmis/sysop/worklist/image/text',
       type: 'POST',

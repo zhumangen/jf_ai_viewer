@@ -24,6 +24,8 @@ cornerstoneTools.external.$ = $;
 cornerstoneTools.external.Hammer = Hammer;
 
 cornerstoneTools.textStyle.setFont('20px Arial');
+cornerstoneTools.toolStyle.setToolWidth(3);
+cornerstoneTools.toolColors.setToolColor('darkred');
 
 var measurementConfig = { drawHandlesOnHover: true };
 cornerstoneTools.ellipticalAi.setConfiguration(measurementConfig);
