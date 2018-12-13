@@ -15,13 +15,15 @@ function aiCallback(stackIdx, data) {
       const thumb = thumbs[idx];
       const image = cornerstone.getEnabledElement(thumb).image;
       if (image && image.imageId.indexOf(data.objectUid) >= 0) {
-        data.lesions.forEach(lesion => {
-          const initData = {
-            element: thumb,
-            data: lesion
-          };
-          cornerstoneTools.rectangleAi.addNewMeasurement(initData);
-        });
+        if(data.lesion){
+          data.lesions.forEach(lesion => {
+            const initData = {
+              element: thumb,
+              data: lesion
+            };
+            cornerstoneTools.rectangleAi.addNewMeasurement(initData);
+          });
+        }
       }
     });
   });
