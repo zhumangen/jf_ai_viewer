@@ -65,15 +65,14 @@ function AIFinshed(status){
 }
 
 function aiRequest(metaData, stackIdx, callback) {
-  let dataUrl = baseAiUrl + '/v2/rmis/sysop/ai/tb/record';   
+  let dataUrl = baseAiUrl + '/v2/rmis/apply/report/webviewer/getAIInfo/' + accessionNum; 
   $.ajax({
     url: dataUrl,
-    headers: {
-      token,
-      version
-    },
-    data: JSON.stringify({ accessionNum }),
-    type: "POST",
+    // headers: {
+    //   tolen,
+    //   version
+    // },
+    type: "get",
     dataType: 'json',
     contentType: 'application/json',
     success: function(result) {

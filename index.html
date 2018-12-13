@@ -73,7 +73,7 @@
         <div style='padding: 0 10px;'>
           <div id="pulmonary"></div>
         </div> 
-        <div class="tbForm" id='tbForm'>
+        <!-- <div class="tbForm" id='tbForm'>
           <form class='form-inline'>
             <div class='form-group'>
               <label for="abnormalScore" style="color:white">异常度</label>
@@ -85,25 +85,25 @@
             </div>
             <button type='button' class='btn btn-primary' id='tbConfirm'>提交</button>            
           </form>  
-        </div>
+        </div> -->
         <div class="pulmonaryInfo" id='pulmonaryInfo'>
           <div class="partOne">
             <h4>是否正常</h4>
             <div class="line"></div>              
                 <div class="radio radio-inline">
-                    <input type="radio" name="inlineRadioOptions" value="0" id="normal">
+                    <input type="radio" disabled name="inlineRadioOptions" value="0" id="normal">
                     <label for="normal">正常</label>
                 </div> 
                 <div class="radio radio-inline">
-                    <input type="radio" name="inlineRadioOptions"  value="1" id="basenormal">
+                    <input type="radio" disabled name="inlineRadioOptions"  value="1" id="basenormal">
                     <label for="basenormal">基本正常</label>
                 </div><!-- <br> -->
                 <div class="radio radio-inline">
-                    <input type="radio" name="inlineRadioOptions"  value="2" id='nojudge'>
+                    <input type="radio" disabled name="inlineRadioOptions"  value="2" id='nojudge'>
                     <label for="nojudge">无法判断</label>
                 </div>  
                 <div class="radio radio-inline">
-                    <input type="radio" name="inlineRadioOptions"  value="3" id="abnormal">
+                    <input type="radio" disabled name="inlineRadioOptions"  value="3" id="abnormal">
                     <label for="abnormal">异常</label>
                 </div>  
           </div>
@@ -111,19 +111,19 @@
             <h4>是否符合肺TB胸片表现</h4>
             <div class="line"></div>            
             <div class="radio radio-inline">
-                <input type="radio" name="according"  value="3" id="high">
+                <input type="radio" disabled name="according"  value="3" id="high">
                 <label for="high">高度符合</label>
             </div> 
             <div class="radio radio-inline">
-                <input type="radio" name="according"  value="2" id="middle">
+                <input type="radio" disabled name="according"  value="2" id="middle">
                 <label for="middle">中度符合</label>
             </div><!-- <br> -->
             <div class="radio radio-inline">
-                <input type="radio" name="according"  value="1" id="low">
+                <input type="radio" disabled name="according"  value="1" id="low">
                 <label for="low">低度符合</label>
             </div> 
             <div class="radio radio-inline">
-                <input type="radio" name="according"  value="0" id="no">
+                <input type="radio" disabled name="according"  value="0" id="no">
                 <label for="no">不符合</label>
             </div> 
           </div>
@@ -140,15 +140,15 @@
                         <input type="radio" name="suggestion" value="2">其他检查
                       </label> -->   
             <div class="radio radio-inline">
-                  <input type="radio" name="suggestion"  value="0" id="none">
+                  <input type="radio" disabled name="suggestion"  value="0" id="none">
                   <label for="none">无</label>
             </div>            
             <div class="radio radio-inline">
-                  <input type="radio" name="suggestion"  value="2" id="other">
+                  <input type="radio" disabled name="suggestion"  value="2" id="other">
                   <label for="other">其他检查</label>
             </div><!-- <br> -->
             <div class="radio radio-inline">
-                  <input type="radio" name="suggestion"  value="1" id="more">
+                  <input type="radio" disabled name="suggestion"  value="1" id="more">
                   <label for="more">进一步做肺结核病确诊</label>
             </div>   
           </div>

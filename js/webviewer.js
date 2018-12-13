@@ -1,9 +1,10 @@
 // For Develop
-var wadoUri = 'http://47.100.43.165/v1/picl/aets/piclarc/wado';
-var wadoRs = '/pacs/rs';
-//var wadoRs = 'http://101.132.45.197:8090/v1/picl/aets/piclarc/rs';
+//var wadoUri = 'http://47.100.43.165/v1/picl/aets/piclarc/wado';
+//var wadoRs = '/pacs/rs';
+var wadoRs = 'http://101.132.45.197:8311/v1/picl/aets/piclarc/rs';
 //var baseAiUrl = 'http://101.132.45.197:8311';
-var baseAiUrl = 'http://47.100.43.165:8170';
+//var baseAiUrl = 'http://172.16.87.112:9090';
+//var baseAiUrl = 'http://47.100.43.165:8170';
 var baseStudyUrl = wadoRs + '/studies/';
 
 var tbData = [];
@@ -18,7 +19,7 @@ var showAiResult = false;
 var enableAi = getQueryString('ai') === 'on';
 var token = getQueryString('token');
 var accessionNum = getQueryString('accessionNum');
-var version = '3.0.1.20180509'; //getQueryString('version');
+var version = '4.0.0'; //getQueryString('version');
 var docName = getQueryString('docName');
 
 if (window.location.protocol == "https:") {
