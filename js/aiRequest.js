@@ -41,7 +41,6 @@ function aiCallback(stackIdx, data) {
     }
     console.log("tbData9999",tbData[0]);
     initEcharts(echartData);
-
     $("#abnormalScore").val(tbData[0].abnormalScore.toFixed(2)*100);
     $("#tbScore").val(tbData[0].tbScore.toFixed(2)*100);
     //$("#activeScore").val(tbData[0].activeScore.toFixed(2));
@@ -49,7 +48,6 @@ function aiCallback(stackIdx, data) {
     setChecked(tbData[0].tbConsistencyCode, $(".pulmonaryInfo .partTwo input"));
     setChecked(tbData[0].adviceCode, $(".pulmonaryInfo .partThree input"));
   }
-
 }
 
 function AIFinshed(status){  
@@ -70,10 +68,10 @@ function aiRequest(metaData, stackIdx, callback) {
   let dataUrl = baseAiUrl + '/v2/rmis/apply/report/webviewer/getAIInfo/' + accessionNum; 
   $.ajax({
     url: dataUrl,
-    // headers: {
-    //   tolen,
-    //   version
-    // },
+    headers: {
+      token,
+      version
+    },
     type: "get",
     dataType: 'json',
     contentType: 'application/json',

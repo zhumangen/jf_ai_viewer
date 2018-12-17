@@ -21,6 +21,7 @@ var token = getQueryString('token');
 var accessionNum = getQueryString('accessionNum');
 var version = '4.0.0'; //getQueryString('version');
 var docName = getQueryString('docName');
+var orgVer = getQueryString('orgVer');
 
 if (window.location.protocol == "https:") {
   if (baseStudyUrl.substr(0, 1) !== '/') {
@@ -96,3 +97,9 @@ resizeMain();
 document.body.addEventListener('touchmove', function(e) {
   e.preventDefault();
 });
+
+// control form status by verWorkStation
+if(orgVer == '103101'){
+  $('#tbForm').css("display","none");
+  $('.radio input[type = "radio"]').attr("disabled",true);
+}
