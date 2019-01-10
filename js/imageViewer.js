@@ -39,7 +39,7 @@ ImageViewer = function(root, viewport) {
             $(this).addClass('selected');
             $(this).siblings().removeClass('selected');
           }
-        },'.viewportWrapper')
+        },'.viewportWrapper');
     }
 
 

@@ -1,7 +1,7 @@
 // For Develop
 //var wadoUri = 'http://47.100.43.165/v1/picl/aets/piclarc/wado';
-var wadoRs = '/pacs/rs';
-//var wadoRs = 'http://101.132.45.197:8311/v1/picl/aets/piclarc/rs';
+//var wadoRs = '/pacs/rs';
+var wadoRs = 'http://101.132.45.197:8311/v1/picl/aets/piclarc/rs';
 var baseAiUrl = 'http://101.132.45.197:8311';
 //var baseAiUrl = 'http://172.16.87.112:9090';
 //var baseAiUrl = 'http://47.100.43.165:8170';
@@ -19,9 +19,12 @@ var showAiResult = false;
 var enableAi = getQueryString('ai') === 'on';
 var token = getQueryString('token');
 var accessionNum = getQueryString('accessionNum');
-var version = '4.0.0'; //getQueryString('version');
+var imageArrStr = getQueryString('objects');
+var checkNum = getQueryString('checkNum');
+var version = '1.0.0'; //getQueryString('version');
 var docName = getQueryString('docName');
 var orgVer = getQueryString('orgVer');
+var statusCode = getQueryString('statusCode');
 
 if (window.location.protocol == "https:") {
   if (baseStudyUrl.substr(0, 1) !== '/') {
@@ -39,6 +42,7 @@ if (window.location.protocol == "https:") {
 var viewportTemplate; // the viewport template
 var studyViewerTemplate; // the study viewer template
 var imageViewer;
+var smallImgUrl = '';
 
 loadTemplate("templates/viewport.html", function(element) {
   viewportTemplate = element;
@@ -70,13 +74,11 @@ loadTemplate("templates/viewport.html", function(element) {
   }
   
   let studyUid = getQueryString('studyUid');
-  let imageArrStr = getQueryString('objects');  
   if (studyUid !== null && studyUid !== '') {
     loadStudy(studyUid);
   } else if (imageArrStr !== null && imageArrStr !== '') {
     loadImages(imageArrStr);
   }
-
   });
 });
 
@@ -98,8 +100,3 @@ document.body.addEventListener('touchmove', function(e) {
   e.preventDefault();
 });
 
-// control form status by verWorkStation
-if(orgVer == '103101'){
-  $('#tbForm').css("display","none");
-  $('.radio input[type = "radio"]').attr("disabled",true);
-}

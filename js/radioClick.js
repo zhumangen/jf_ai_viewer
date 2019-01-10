@@ -29,8 +29,6 @@ $('.form-control').on('input',function(){
         $("#tbScore").val('');
       }
     }
-    abnormalScore=abnormalScore/100;
-    tbScore=tbScore/100;
     initEcharts({abnormalScore, tbScore});
 })
 
@@ -116,25 +114,43 @@ $("#tbConfirm").on("click", function(e) {
           });
         }
 
+        var updata={ //submit the new data
+          aiTbScore:data.tbScore,
+          aiAbnormalScore:data.abnormalScore,
+          aiAdviceId:data.adviceCode,
+          aiTbConsistencyId:data.tbConsistencyCode,
+          aiNormalityId:data.normalityCode,
+          studyuid:data.studyUid
+        }
         $.ajax({
-          url: baseAiUrl + '/v2/rmis/sysop/ai/tb',
-          type: "PUT",
+          url: baseAiUrl + '/v2/rmis/apply/report/updateAIInfo',
+          type: "POST",
           headers: {
             token,
             version
           },
           dataType: 'json',
           contentType: 'application/json',
-          data: JSON.stringify(data),
+          data: JSON.stringify(updata),
           success: function(result) {
             console.log('save: ', result);
             if(result.code === 200){
-              console.log('保存成功！');
               count++;
-              console.log("count",count);
               if (count === tbData.length) {
-                alert('保存成功！');
-                // initEcharts({abnormalScore, tbScore});
+                if(result.code === 200){
+                  if(result.data.code == '1000'){ //if success , green message
+                      $('#alert div').css({"backgroundColor":"green"});
+                      $('#alert div i').css({"color":"green","borderColor":"green"})
+                  }else{
+                      $('#alert div').css({"backgroundColor":"red"});
+                      $('#alert div i').css({"color":"red","borderColor":"red"})
+                  }
+                  $('#alert div p').text(result.data.msg);
+                      $('#alert').css({"display":"block"})
+                      setTimeout(()=>{
+                          $('#alert').css({"display":"none"})
+                      },2000);
+              }
               }
             } else {
               allOk = false;

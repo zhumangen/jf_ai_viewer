@@ -51,7 +51,7 @@ function initEcharts(datas) {
         series:[{
             name: '疑似度,异常度',
             type: 'bar',
-            data: [datas.tbScore.toFixed(2)*100, datas.abnormalScore.toFixed(2)*100],
+            data: [datas.tbScore, datas.abnormalScore],
             itemStyle: {
                 normal: {
                     barBorderRadius: [15, 15, 15, 15],
@@ -65,6 +65,11 @@ function initEcharts(datas) {
             yAxisIndex: 1,
             barGap: '-100%',
             data: [100, 100],
+            tooltip:{
+                formatter:function(){
+                    return ''
+                }
+            },
             barWidth: 22,
             itemStyle: {
                 normal: {

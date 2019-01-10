@@ -10,6 +10,10 @@ function aiCallback(stackIdx, data) {
     tbData = data;
   }
   tbData.forEach(data => {
+    if(data.isModify){
+      $('#tbForm').css("display","none");
+      $('.radio input[type = "radio"]').attr("disabled",true);
+    }
     const thumbs = $('.csthumbnail');
     thumbs.each(idx => {
       const thumb = thumbs[idx];
@@ -41,8 +45,8 @@ function aiCallback(stackIdx, data) {
     }
     console.log("tbData9999",tbData[0]);
     initEcharts(echartData);
-    $("#abnormalScore").val(tbData[0].abnormalScore.toFixed(2)*100);
-    $("#tbScore").val(tbData[0].tbScore.toFixed(2)*100);
+    $("#abnormalScore").val(tbData[0].abnormalScore);
+    $("#tbScore").val(tbData[0].tbScore);
     //$("#activeScore").val(tbData[0].activeScore.toFixed(2));
     setChecked(tbData[0].normalityCode, $(".pulmonaryInfo .partOne input"));
     setChecked(tbData[0].tbConsistencyCode, $(".pulmonaryInfo .partTwo input"));
@@ -65,7 +69,8 @@ function AIFinshed(status){
 }
 
 function aiRequest(metaData, stackIdx, callback) {
-  let dataUrl = baseAiUrl + '/v2/rmis/apply/report/webviewer/getAIInfo/' + accessionNum; 
+  console.log("checkNum",checkNum)
+  let dataUrl = baseAiUrl + '/v2/rmis/apply/report/webviewer/getAIInfo/' + checkNum; 
   $.ajax({
     url: dataUrl,
     headers: {
@@ -77,12 +82,15 @@ function aiRequest(metaData, stackIdx, callback) {
     contentType: 'application/json',
     success: function(result) {
       if (result.code === 200) {
+        if($.isEmptyObject(result.data[0])){
+          $('#pulmonaryWrapper').css("display","none");
+          $('#ai').css("display","none");
+        }
         callback(stackIdx, result.data);
         AIFinshed(true);
       } else {
         console.log("error: ", result);
-      }
-      
+      }  
     },
     error: function(err){
       console.log("error: ", err);

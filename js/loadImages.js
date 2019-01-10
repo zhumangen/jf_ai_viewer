@@ -7,7 +7,6 @@ function loadImages(imageArrStr) {
 
     // Get the JSON data for the selected studyId
     let imageArr = JSON.parse(decodeURIComponent(imageArrStr));
-    console.log(imageArr);
     if ($.isEmptyObject(imageArr)) {
         $(".imageViewer .overlay-text").remove();
         $(".viewportWrapper").append( "<div class='overlay-text'><img src='img/404.png' style='position: absolute; left: 50%; top: 50%; margin-left: -200px; margin-top: -150px;'></div>");
@@ -56,6 +55,20 @@ function loadImages(imageArrStr) {
                     }
                 }
 
+                // control form status by verWorkStation
+                if(statusCode =='100607' || statusCode =='100608' || statusCode == '100609'
+                  || orgVer == '103101'){
+                    $('#tbForm').css("display","none");
+                    $('.radio input[type = "radio"]').attr("disabled",true);
+                }
+                if(window.name == 'newwindow3' || window.name == 'newwindow2'){ //if historyReport display imgUrl
+                    $('#imgUrl').css("display","none");
+                    $('#tbForm').css("display","none");
+                    $('.radio input[type = "radio"]').attr("disabled",true);
+                }
+                //默认第一张贴图
+                getImgUrls(0);
+
                 var seriesEntry = '<a class="list-group-item" style="position: relative"' +
                     'oncontextmenu="return false"' +
                     'unselectable="on"' +
@@ -77,6 +90,13 @@ function loadImages(imageArrStr) {
 
                 // Find thumbnail
                 var thumbnail = $(seriesElement).find('div')[0];
+
+                //左边栏绑定点击事件,并且给好贴图的路径
+                $('.csthumbnail').on('click',function(){
+                        let idx=$('.csthumbnail').index(this);
+                        console.log('idx',idx);
+                        getImgUrls(idx);
+                })
 
                 // Enable cornerstone on the thumbnail
                 cornerstone.enable(thumbnail);
@@ -142,5 +162,12 @@ function loadImages(imageArrStr) {
             });
         });
     }
+}
 
+//get the images urls by the imageArr
+function getImgUrls(index){
+    smallImgUrl='';
+    let item=imageViewer.stacks[index].metaData;//imageViewer.stacks[0].metaData["0020000D"].Value[0]
+    smallImgUrl=baseAiUrl + '/v1/picl/aets/piclarc/wado?requestType=WADO&contentType=image/jpeg&studyUID='+
+    item["0020000D"].Value[0] + '&seriesUID='+item["0020000E"].Value[0] +'&objectUID=' +item["00080018"].Value[0];
 }

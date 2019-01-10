@@ -9,5 +9,4 @@ function loadTemplate(url, callback) {
             }
         });
     });
-
 }

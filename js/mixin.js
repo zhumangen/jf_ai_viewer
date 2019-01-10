@@ -28,7 +28,7 @@ function randomString(len) {　　
 }
 
 function initImageViewer() {
-	imageViewer = new ImageViewer(studyViewerTemplate, viewportTemplate);
+    imageViewer = new ImageViewer(studyViewerTemplate, viewportTemplate);
     imageViewer.setLayout('1 X 1'); // default layout
     initViewports();
     // Call resize viewer on window resize
@@ -70,7 +70,7 @@ function initViewports() {
                 useItemStack(toItem, fromStack);
             }
         });
-    });            
+    });       
 }
 
 function updateImageProgress(eventData) {

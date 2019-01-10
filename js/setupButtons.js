@@ -457,4 +457,46 @@ function setupButtons() {
         toolStateManager.clear($ele);
         cornerstone.updateImage($ele);
     });
+
+    $('#imgUrl').click(()=>{ //贴图报告
+        let dataUrl=smallImgUrl;
+        let apiUrl=baseAiUrl + '/v2/rmis/apply/report/webviewer/picture';
+        $.ajax({
+            url:apiUrl,
+            headers: {
+                token,
+                version
+            },
+            type:'POST',
+            dataType: 'json',
+            data:JSON.stringify({
+                dataUrl,
+                accessionNum
+            }),
+            contentType: 'application/json',
+            success:function(result){
+                if(result.code === 200){
+                    if(result.data.code == '1000'){ //if success , green message
+                        $('#alert div').css({"backgroundColor":"green"});
+                        $('#alert div i').css({"color":"green","borderColor":"green"})
+                    }else{
+                        $('#alert div').css({"backgroundColor":"red"});
+                        $('#alert div i').css({"color":"red","borderColor":"red"})
+                    }
+                    $('#alert div p').text(result.data.msg);
+                        $('#alert').css({"display":"block"})
+                        setTimeout(()=>{
+                            $('#alert').css({"display":"none"})
+                        },2000);
+                }
+            },
+            error:function(result){
+                $('#alert div p').text('接口调用失败！');
+                $('#alert').css({"display":"block"})
+                setTimeout(()=>{
+                    $('#alert').css({"display":"none"})
+                },2000)
+            }
+        })
+    })
 };

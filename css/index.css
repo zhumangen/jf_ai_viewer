@@ -290,3 +290,55 @@ aside {
 .annotationDialogConfirm {
 	float: right;
 }
+
+#alert{
+	position: absolute;
+	margin-top: 5%;
+	margin-left: 40%;
+	z-index: 90;
+	height: 40px;
+	display: none;
+	padding: 10px 40px;
+}
+#alert div{
+	height: 40px;
+	border-radius: 20px;
+	background-color: red;
+	font-size: 25px;
+}
+#alert div b{
+	position: relative;
+	z-index: 91;
+	display: block;
+	float: left;
+	height: 40px;
+	width: 40px;
+	border: 1px solid #fff;
+	background-color: #fff;
+	border-radius: 20px;
+}
+#alert div i{
+	display: block;
+	float: left;
+	height: 38px;
+	width: 38px;
+	border-radius: 19px;
+	padding-right: 10px;
+	transform: rotate(-20deg);
+	color: red;
+	line-height: 38px;
+	text-align: center;
+	margin-right: 5px;
+	margin-left: -1px;
+	font-family: '宋体';
+	border: 1px solid red;
+}
+#alert div p{
+	float: left;
+	padding-right:10px;
+	padding-left: 10px;
+	height: 40px;
+	line-height: 40px;
+	letter-spacing: 1px;
+	color: #fff;
+}
